@@ -1,0 +1,16 @@
+{
+  "application_edition": "github_psychencode_20261101",
+  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
+  "asset_edition": "20261101_43_beams_psychencode_v1",
+  "reference_combinations": 43,
+  "input_mapping_count": 3,
+  "manuscript_edition": "psychencode_adult_revision_20261101",
+  "published": false,
+  "psychencode_input_adapter_in_web": true,
+  "cohort_inference_in_this_task": false,
+  "targeted_sample_count": 2,
+  "source_repository": "https://github.com/wz7717/braintrace-web",
+  "source_visibility_at_creation": "private",
+  "runtime_assets_in_repository": false,
+  "hosted_service_deployed": false
+}

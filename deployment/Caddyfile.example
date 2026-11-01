@@ -1,0 +1,8 @@
+# Set the real host and credentials on the deployment server. Do not commit the filled Caddyfile.
+# Start Python with --public-origin https://the-same-host (no trailing slash).
+{$BRAINTRACE_DEMO_HOST} {
+    basic_auth {
+        {$BRAINTRACE_DEMO_USER} {$BRAINTRACE_DEMO_PASSWORD_HASH}
+    }
+    reverse_proxy 127.0.0.1:8766
+}
