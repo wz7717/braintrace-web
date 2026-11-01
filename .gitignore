@@ -5,6 +5,8 @@ venv/
 .env
 .env.*
 runtime.local.json
+queue.local.json
+job_work/
 Caddyfile
 results/
 uploads/
@@ -34,3 +36,5 @@ science/lower/*.npy
 *.CEL.gz
 AGENTS.md
 PROJECT_MEMORY.md
+.streamlit/secrets.toml
+.cache/

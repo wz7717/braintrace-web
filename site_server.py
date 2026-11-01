@@ -15,7 +15,13 @@ import secrets
 import threading
 import time
 import zipfile
-from concurrent.futures import ThreadPoolExecutor
+import os
+import sys
+import tempfile
+from pathlib import Path
+from anonymous_sessions import APIError, AnonymousSessions, QueuePolicy, client_ip
+from queued_jobs import JobStore
+from process_jobs import ProcessRunner
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, unquote, urlsplit
@@ -52,12 +58,6 @@ def resource_files():
 
 def now():
     return datetime.now(timezone.utc).isoformat()
-
-
-class APIError(Exception):
-    def __init__(self, message, code='invalid_request', status=400, detail=None):
-        super().__init__(message)
-        self.code, self.status, self.detail = code, status, detail
 
 
 def require_species(species):
@@ -123,145 +123,6 @@ def validate_input(species, sample_id, filename, data):
     return summary
 
 
-class JobStore:
-    def __init__(self):
-        self.lock = threading.RLock()
-        self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix='frozen-inference')
-        self.uploads, self.jobs, self.request_keys = {}, {}, {}
-        self.stop_cleanup = threading.Event()
-        self.cleanup_thread = threading.Thread(target=self._cleanup_loop, daemon=True, name='cache-cleanup')
-        self.cleanup_thread.start()
-
-    def _cleanup_loop(self):
-        while not self.stop_cleanup.wait(30):
-            self.cleanup()
-
-    def cleanup(self):
-        cutoff = time.time() - RETENTION_SECONDS
-        with self.lock:
-            self.uploads = {k: v for k, v in self.uploads.items() if v['stored_at'] > cutoff}
-            self.jobs = {k: v for k, v in self.jobs.items() if v['status'] in ('queued', 'running') or v['finished_epoch'] > cutoff}
-            self.request_keys = {k: v for k, v in self.request_keys.items() if v in self.jobs}
-
-    def upload(self, species, sample_id, filename, data):
-        summary = validate_input(species, sample_id, filename, data)
-        self.cleanup()
-        with self.lock:
-            if len(self.uploads) >= 8 or sum(len(x['data']) for x in self.uploads.values()) + len(data) > MAX_UPLOADS_BYTES:
-                raise APIError('待运行文件已达到本机缓存上限，请移除旧文件后重试。', 'capacity', 429)
-            token = secrets.token_urlsafe(24)
-            self.uploads[token] = {'data': data, 'summary': summary, 'stored_at': time.time()}
-        return {'upload_id': token, 'summary': summary, 'expires_in_seconds': RETENTION_SECONDS}
-
-    def submit(self, payload):
-        species = require_species(payload.get('species'))
-        selected = configurations(species, payload.get('configurations'))
-        source = payload.get('source')
-        if source not in ('example', 'upload'):
-            raise APIError('请选择已验证示例或上传单样本。')
-        sample_id = require_sample_id(payload.get('sample_id'))
-        request_key = payload.get('request_key')
-        if not isinstance(request_key, str) or not 8 <= len(request_key) <= 128:
-            raise APIError('缺少有效请求标识，请刷新页面后重试。')
-        self.cleanup()
-        with self.lock:
-            if request_key in self.request_keys:
-                existing = self.jobs[self.request_keys[request_key]]
-                if existing['request'] != payload:
-                    raise APIError('同一请求标识不能用于不同输入。', 'request_conflict', 409)
-                return self.snapshot(existing['id'])
-            if not scientific_runtime_ready() or (species == 'human' and not backend.human_ready()):
-                raise APIError('当前环境未就绪。请按本地运行指南配置冻结 Python/R 环境；仍可查看保存示例。', 'runtime_unavailable', 503)
-            if sum(x['status'] in ('queued', 'running') for x in self.jobs.values()) >= 8:
-                raise APIError('任务队列已满，请等待当前推断完成。', 'queue_full', 429)
-            if source == 'example':
-                if species == 'human':
-                    sample_id='GSM755211'; path=FILES['human-example']
-                else:
-                    try: info=backend.example_info(payload.get('example_id','GSE128537'))
-                    except ValueError as exc: raise APIError(str(exc)) from exc
-                    sample_id=info['sample_id']; path=ROOT/info['input']
-                data = path.read_bytes()
-                summary = validate_input(species, sample_id, path.name, data)
-            else:
-                if payload.get('contract_confirmed') is not True:
-                    raise APIError('请确认样本符合当前参考模型的输入规范。', 'contract_required')
-                upload = self.uploads.get(payload.get('upload_id'))
-                if not upload:
-                    raise APIError('文件缓存已过期或已移除，请重新选择文件。', 'upload_expired', 410)
-                summary = upload['summary'].copy()
-                if summary['species'] != species or summary['sample_id'] != sample_id:
-                    raise APIError('文件校验上下文与当前样本不一致，请重新选择文件。', 'input_changed', 409)
-                data = upload['data']
-            job_id = secrets.token_urlsafe(18)
-            job = {'id': job_id, 'request': dict(payload), 'species': species, 'sample_id': sample_id,
-                   'configurations': selected, 'source': source, 'example_id': payload.get('example_id','GSE128537'), 'input_summary': summary,
-                   'created_at': now(), 'created_epoch': time.time(), 'status': 'queued', 'phase': 'queued',
-                   'events': [], 'result': None, 'error': None}
-            self.jobs[job_id] = job
-            self.request_keys[request_key] = job_id
-            self._event(job, 'queued', '输入检查完成，已进入本机任务队列。')
-            self.executor.submit(self._run, job_id, data, summary['suffix'])
-            return self.snapshot(job_id)
-
-    def _event(self, job, phase, message):
-        job['phase'] = phase
-        job['events'].append({'phase': phase, 'message': message, 'at': now()})
-
-    def _run(self, job_id, data, suffix):
-        with self.lock:
-            job = self.jobs[job_id]
-            job['status'], job['started_at'], job['started_epoch'] = 'running', now(), time.time()
-            self._event(job, 'inference', '正在执行冻结 CEL → PLM → 模型推断。' if job['species'] == 'human'
-                        else '正在应用冻结来源均值、尺度与所选配置，并计算候选分数。')
-        try:
-            if job['species'] == 'human':
-                program = 'BOTH' if len(job['configurations']) == 2 else job['configurations'][0]
-                result = backend.run_human(data, suffix, job['sample_id'], program)
-            else:
-                result = backend.run_macaque(data, suffix, job['sample_id'], job['configurations'])
-            if job['source'] == 'example':
-                with self.lock:
-                    self._event(job, 'verifying', '正在与原保存输出逐类别比较分数、排序与类别轴。')
-                result['saved_output_comparison'] = backend.compare_example(result,job['example_id'])
-                if job['species'] == 'macaque':
-                    backend.add_example_context(result,job['example_id'])
-            # Validate JSON before reporting success, keeping original backend result fields intact.
-            json.dumps(result, allow_nan=False)
-            with self.lock:
-                job['result'], job['status'] = result, 'succeeded'
-                self._event(job, 'complete', '真实推断完成。结果可查看及下载。')
-        except Exception as exc:
-            print(f'BrainTrace job {job_id}: {type(exc).__name__}; inference failed, no result returned.', flush=True)
-            # No local filesystem, native stdout/stderr, or stack trace in HTTP responses.
-            message = '冻结推断未完成，未生成结果。请检查文件完整性、平台与冻结运行环境。'
-            if isinstance(exc, ValueError) and '180 seconds' in str(exc):
-                message = '推断超过 180 秒，已终止该请求；未生成结果。'
-            with self.lock:
-                job['status'], job['error'] = 'failed', {'code': 'inference_failed', 'message': message}
-                self._event(job, 'error', message)
-        finally:
-            del data
-            with self.lock:
-                job['finished_at'], job['finished_epoch'] = now(), time.time()
-
-    def snapshot(self, job_id):
-        self.cleanup()
-        with self.lock:
-            job = self.jobs.get(job_id)
-            if not job:
-                raise APIError('任务不存在或已过期。请重新运行；已下载的结果不受影响。', 'job_expired', 404)
-            result = {k: v for k, v in job.items() if k not in ('request', 'created_epoch', 'started_epoch', 'finished_epoch')}
-            result['elapsed_seconds'] = round((job.get('finished_epoch') or time.time()) - job['created_epoch'], 2)
-            result['queue_position'] = sum(x['created_epoch'] < job['created_epoch'] and x['status'] in ('queued', 'running') for x in self.jobs.values()) if job['status'] == 'queued' else 0
-            return json.loads(json.dumps(result, allow_nan=False))
-
-    def close(self):
-        self.stop_cleanup.set()
-        self.cleanup_thread.join(timeout=2)
-        self.executor.shutdown(wait=True, cancel_futures=True)
-
-
 def validate_public_origin(value):
     if value is None:
         return None
@@ -277,39 +138,81 @@ def validate_public_origin(value):
 class PreviewServer(ThreadingHTTPServer):
     daemon_threads = True
 
-    def __init__(self, address, public_origin=None):
+    def __init__(self, address, public_origin=None, policy=None, runner=None, work_root=None, trust_proxy=False):
         self.public_origin = validate_public_origin(public_origin)
+        if trust_proxy and not self.public_origin:
+            raise ValueError('Trusted proxy headers require an explicit public HTTPS origin.')
+        self.trust_proxy = trust_proxy
+        self.policy = policy or QueuePolicy()
+        self.slots = threading.BoundedSemaphore(self.policy.http_connections)
         super().__init__(address, Handler)
-        self.store = JobStore()
-        self.token = secrets.token_urlsafe(32)
+        self.sessions = AnonymousSessions(self.policy, self.public_origin)
+        if not self.public_origin:
+            self.sessions.cookie_name += '_' + str(self.server_port)
+        if runner is None:
+            base = work_root or os.environ.get('BRAINTRACE_WORK_ROOT')
+            if not base:
+                base = Path(backend.legacy.runtime_config().get('temp_root') or tempfile.gettempdir())/'braintrace_anonymous'
+            runner = ProcessRunner(ROOT, base)
+        self.store = JobStore(sys.modules[__name__], self.sessions, self.policy, runner)
+
+    def process_request(self, request, address):
+        if not self.slots.acquire(blocking=False):
+            try:
+                request.settimeout(1)
+                request.sendall(b'HTTP/1.0 503 Service Unavailable\r\nContent-Length: 0\r\nConnection: close\r\n\r\n')
+            except OSError:
+                pass
+            finally:
+                self.shutdown_request(request)
+            return
+        try:
+            super().process_request(request, address)
+        except Exception:
+            self.slots.release()
+            raise
+
+    def process_request_thread(self, request, address):
+        try:
+            super().process_request_thread(request, address)
+        finally:
+            self.slots.release()
 
     def server_close(self):
         super().server_close()
-        self.store.close()
+        if hasattr(self, 'store'):
+            self.store.close()
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = 'BrainTraceLocal/1'
+    server_version = 'BrainTraceQueue/1'
+
+    def setup(self):
+        super().setup()
+        self.connection.settimeout(15)
 
     def log_message(self, *_):
         pass
 
-    def respond(self, data, status=200, content_type='application/json; charset=utf-8', filename=None):
+    def respond(self, data, status=200, content_type='application/json; charset=utf-8', filename=None, cookie=None):
         if not isinstance(data, bytes):
             data = json.dumps(data, ensure_ascii=False, allow_nan=False).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(data)))
         self.send_header('Cache-Control', 'no-store')
+        self.send_header('Vary', 'Cookie')
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('Referrer-Policy', 'no-referrer')
         self.send_header('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'")
         if filename:
             self.send_header('Content-Disposition', f'attachment; filename="{filename}"')
+        if cookie:
+            self.send_header('Set-Cookie', cookie)
         self.end_headers()
         self.wfile.write(data)
 
-    def check_local(self, mutation=False):
+    def check_local(self):
         port = self.server.server_port
         hosts = {f'127.0.0.1:{port}', f'localhost:{port}'}
         origins = {f'http://{x}' for x in hosts}
@@ -321,112 +224,149 @@ class Handler(BaseHTTPRequestHandler):
         origin = self.headers.get('Origin')
         if origin and origin not in origins:
             raise APIError('请求来源不匹配。', 'origin_rejected', 403)
-        if mutation and not secrets.compare_digest(self.headers.get('X-BrainTrace-Token', ''), self.server.token):
-            raise APIError('会话已更新，请刷新页面。', 'session_expired', 403)
+        self.ip = client_ip(self.headers, self.client_address[0], self.server.public_origin, self.server.trust_proxy)
 
-    def read_body(self, limit):
+    def session(self, create=False, mutation=False):
+        self.server.store.cleanup()
+        owner, csrf, cookie = self.server.sessions.resolve(self.headers.get('Cookie'), self.ip, create=create)
+        if mutation:
+            self.server.sessions.mutation(owner, self.ip, self.headers.get('X-BrainTrace-Token', ''))
+        return owner, csrf, cookie
+
+    def read_length(self, limit):
+        if self.headers.get('Transfer-Encoding') or len(self.headers.get_all('Content-Length', [])) != 1:
+            raise APIError('需要明确且唯一的文件大小。', 'file_size', 400)
         try:
             size = int(self.headers.get('Content-Length', '-1'))
         except ValueError:
             size = -1
         if size < 0 or size > limit:
             raise APIError('请求大小无效或超出限制。', 'file_size', 413)
-        self.connection.settimeout(60)
-        data = self.rfile.read(size)
+        return size
+
+    def read_body(self, limit):
+        size = self.read_length(limit)
+        deadline = time.monotonic() + self.server.policy.body_timeout_seconds
+        chunks, remaining = [], size
+        while remaining:
+            seconds = deadline - time.monotonic()
+            if seconds <= 0:
+                raise TimeoutError('Body deadline reached.')
+            self.connection.settimeout(seconds)
+            block = self.rfile.read1(min(remaining, 64 * 1024))
+            if not block:
+                break
+            chunks.append(block)
+            remaining -= len(block)
+        data = b''.join(chunks)
         if len(data) != size:
             raise APIError('上传未完成，请重新选择文件。', 'upload_incomplete')
         return data
 
     def dispatch(self, method):
         try:
-            self.check_local(mutation=method != 'GET')
+            self.check_local()
             parsed = urlsplit(self.path)
             path = unquote(parsed.path)
-            query = {k: v[-1] for k, v in parse_qs(parsed.query).items()}
+            query = {k:v[-1] for k,v in parse_qs(parsed.query).items()}
+            owner = self.session(mutation=True)[0] if method != 'GET' else None
             if method == 'GET':
                 if path == '/api/bootstrap':
-                    ready = scientific_runtime_ready()
-                    self.respond({'api_version': 2, 'scheme': backend.SCHEME, 'examples': backend.read_json(ROOT/'examples/three_tier/EXAMPLES.json'), 'session_token': self.server.token,
-                                  'runtime': {'human': ready and backend.human_ready(), 'macaque': ready},
-                                  'human_labels': backend.read_json(ROOT / 'metadata/human_labels.json'),
-                                  'retention_minutes': RETENTION_SECONDS // 60,
-                                  'input_formats': (ROOT / 'docs/INPUT_FORMATS.md').read_text(encoding='utf-8'),
-                                  'model_card': (ROOT / 'docs/MODEL_CARD.md').read_text(encoding='utf-8')})
+                    owner, csrf, cookie = self.session(create=True)
+                    ready = scientific_runtime_ready() and self.server.store.runner.healthy
+                    human_path = getattr(self.server.store.runner, 'work_root', Path('local'))
+                    self.respond({'api_version':3, 'scheme':backend.SCHEME,
+                        'examples':backend.read_json(ROOT/'examples/three_tier/EXAMPLES.json'), 'session_token':csrf,
+                        'anonymous_session':True, 'limits':self.server.policy.public(), 'usage':self.server.store.usage(owner),
+                        'runtime':{'human':ready and backend.human_ready() and str(human_path).isascii(), 'macaque':ready},
+                        'human_labels':backend.read_json(ROOT/'metadata/human_labels.json'),
+                        'retention_minutes':self.server.policy.retention_seconds // 60,
+                        'input_formats':(ROOT/'docs/INPUT_FORMATS.md').read_text(encoding='utf-8'),
+                        'model_card':(ROOT/'docs/MODEL_CARD.md').read_text(encoding='utf-8')}, cookie=cookie)
                 elif path == '/api/examples':
                     species = require_species(query.get('species'))
                     selected = configurations(species, query.get('configurations', '').split(','))
-                    result=backend.saved_example(species, selected,query.get('example_id','GSE128537'))
-                    if query.get('format')=='csv':
-                        self.respond(backend.result_csv(result).encode('utf-8'),content_type='text/csv; charset=utf-8',filename='braintrace_saved_scores.csv')
-                    else:self.respond(result)
+                    result = backend.saved_example(species, selected, query.get('example_id','GSE128537'))
+                    if query.get('format') == 'csv':
+                        self.respond(backend.result_csv(result).encode('utf-8'), content_type='text/csv; charset=utf-8', filename='braintrace_saved_scores.csv')
+                    else:
+                        self.respond(result)
                 elif path.startswith('/api/jobs/'):
-                    job_id=path.removeprefix('/api/jobs/').removesuffix('/scores.csv')
-                    job=self.server.store.snapshot(job_id)
+                    owner = self.session()[0]
+                    job_id = path.removeprefix('/api/jobs/').removesuffix('/scores.csv')
+                    job = self.server.store.snapshot(owner, job_id)
                     if path.endswith('/scores.csv'):
-                        if job['status']!='succeeded':raise APIError('Result is not available.', 'result_unavailable',409)
-                        self.respond(backend.result_csv(job['result']).encode('utf-8'),content_type='text/csv; charset=utf-8',filename='braintrace_live_scores.csv')
-                    else:self.respond(job)
+                        if job['status'] != 'succeeded':
+                            raise APIError('结果尚不可用。', 'result_unavailable', 409)
+                        self.respond(backend.result_csv(job['result']).encode('utf-8'), content_type='text/csv; charset=utf-8', filename='braintrace_live_scores.csv')
+                    else:
+                        self.respond(job)
                 elif path.startswith('/api/files/'):
-                    key=path.removeprefix('/api/files/')
+                    key = path.removeprefix('/api/files/')
                     file = FILES.get(key) or resource_files().get(key)
                     if not file or not file.is_file():
                         raise APIError('文件不存在。', 'not_found', 404)
                     self.respond(file.read_bytes(), content_type='application/octet-stream', filename=file.name)
                 elif path in ('/', '/index.html', '/app.js', '/styles.css', '/favicon.svg', '/resources.html', '/resources.js'):
-                    file = ROOT / 'web' / ('index.html' if path == '/' else path[1:])
+                    file = ROOT/'web'/('index.html' if path == '/' else path[1:])
                     self.respond(file.read_bytes(), content_type=mimetypes.guess_type(file.name)[0] or 'application/octet-stream')
                 else:
                     raise APIError('地址不存在。', 'not_found', 404)
             elif method == 'POST' and path == '/api/uploads':
                 species = require_species(query.get('species'))
-                data = self.read_body((80 if species == 'human' else 8) * 1024**2)
-                self.respond(self.server.store.upload(species, query.get('sample_id'), query.get('filename'), data), 201)
+                limit = (80 if species == 'human' else 8)*1024**2
+                size = self.read_length(limit)
+                with self.server.store.upload_slot(owner, self.ip, size) as ticket:
+                    data = self.read_body(limit)
+                    upload = self.server.store.upload(owner, species, query.get('sample_id'), query.get('filename'), data, ticket)
+                self.respond(upload, 201)
             elif method == 'POST' and path == '/api/jobs':
                 try:
-                    payload = json.loads(self.read_body(16 * 1024))
+                    payload = json.loads(self.read_body(16*1024))
                     if not isinstance(payload, dict):
                         raise ValueError()
                 except (ValueError, UnicodeError):
                     raise APIError('请求必须为 JSON 对象。')
-                self.respond(self.server.store.submit(payload), 202)
+                self.respond(self.server.store.submit(owner, self.ip, payload), 202)
             elif method == 'DELETE' and path.startswith('/api/uploads/'):
-                with self.server.store.lock:
-                    self.server.store.uploads.pop(path.removeprefix('/api/uploads/'), None)
-                self.respond({'removed': True})
+                self.server.store.remove_upload(owner, path.removeprefix('/api/uploads/'))
+                self.respond({'removed':True})
             else:
                 raise APIError('接口不存在。', 'not_found', 404)
         except APIError as exc:
-            self.respond({'error': {'code': exc.code, 'message': str(exc), 'detail': exc.detail}}, exc.status)
+            self.respond({'error':{'code':exc.code,'message':str(exc),'detail':exc.detail}}, exc.status)
+        except TimeoutError:
+            self.respond({'error':{'code':'upload_timeout','message':'上传超时，缓存预留已释放。'}}, 408)
         except (BrokenPipeError, ConnectionResetError):
             pass
         except Exception:
-            self.respond({'error': {'code': 'server_error', 'message': '本地服务处理失败，请检查启动终端或重新启动服务。'}}, 500)
+            self.respond({'error':{'code':'server_error','message':'服务未完成请求，请稍后重试。'}}, 500)
 
-    def do_GET(self):
-        self.dispatch('GET')
-
-    def do_POST(self):
-        self.dispatch('POST')
-
-    def do_DELETE(self):
-        self.dispatch('DELETE')
+    def do_GET(self): self.dispatch('GET')
+    def do_POST(self): self.dispatch('POST')
+    def do_DELETE(self): self.dispatch('DELETE')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8766)
-    parser.add_argument('--public-origin', help='Exact HTTPS origin served by a local reverse proxy, e.g. https://demo.example.org')
+    parser.add_argument('--public-origin', help='Exact HTTPS origin served by a local reverse proxy.')
+    parser.add_argument('--trust-proxy-client-ip', action='store_true', help='Require the local proxy to overwrite X-BrainTrace-Client-IP.')
+    parser.add_argument('--queue-config', type=Path, help='Private server quota overrides; see queue.example.json.')
+    parser.add_argument('--work-root', type=Path, help='Private job workspace root; ASCII path required for live CEL.')
     args = parser.parse_args()
     try:
         validate_public_origin(args.public_origin)
-    except ValueError as exc:
+        policy = QueuePolicy.from_file(args.queue_config)
+    except (ValueError, OSError) as exc:
         parser.error(str(exc))
     if not (ROOT/'science/lower/BEAMS.json').is_file() or not (ROOT/'examples/three_tier/EXAMPLES.json').is_file():
-        parser.error('Runtime assets are absent. Use tools/prepare_runtime.py with the separately supplied runtime_assets directory.')
-    with PreviewServer(('127.0.0.1', args.port), public_origin=args.public_origin) as server:
-        print(f'BrainTrace local preview: http://127.0.0.1:{server.server_port}', flush=True)
-        print('One inference worker; frozen models; Ctrl+C to stop.', flush=True)
+        parser.error('Runtime assets are absent. Assemble code with the separately supplied runtime_assets.')
+    with PreviewServer(('127.0.0.1', args.port), public_origin=args.public_origin, policy=policy,
+                       work_root=args.work_root, trust_proxy=args.trust_proxy_client_ip) as server:
+        print(f'BrainTrace anonymous queue: http://127.0.0.1:{server.server_port}', flush=True)
+        print('One process job at a time; no login; per-session ownership and quotas. Ctrl+C to stop.', flush=True)
         try:
-            server.serve_forever(poll_interval=0.5)
+            server.serve_forever(poll_interval=.5)
         except KeyboardInterrupt:
             pass

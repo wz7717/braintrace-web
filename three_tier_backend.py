@@ -10,6 +10,7 @@ import demo_backend as legacy
 from demo_backend import ROOT, ATOL, np, read_json, validate_id, runtime_config, human_ready
 from threadpoolctl import threadpool_limits
 from science.macaque import psychencode_adapter as adult
+from bounded_uploads import check_macaque_container
 
 ROUTES = ('floor_clip',)
 SCHEME = read_json(ROOT / 'metadata/SCHEME.json')
@@ -40,6 +41,7 @@ def read_input(data, suffix, sample_id):
     validate_id(sample_id)
     if not data or len(data) > 8*1024**2:
         raise ValueError('Prepared macaque input must be nonempty and at most 8 MiB.')
+    check_macaque_container(data, suffix)
     genes, head_rows, _ = assets()
     if suffix.lower()=='.tsv' or (suffix.lower()=='.csv' and adult.is_count_csv(data)):
         fields=adult.prepare_counts(data,suffix.lower(),sample_id)

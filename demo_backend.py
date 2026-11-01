@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tempfile
 import zipfile
+from bounded_uploads import check_macaque_container, check_cel_expansion
 
 for _name in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
     os.environ[_name] = '1'
@@ -84,6 +85,7 @@ def read_macaque_input(data: bytes, suffix: str, sample_id: str):
     genes = read_json(ROOT / 'science/macaque/baseline/genes.json')
     if len(data) > 8 * 1024**2:
         raise ValueError('Prepared macaque input must be at most 8 MiB.')
+    check_macaque_container(data, suffix)
     if suffix.lower() == '.npz':
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
             if len(archive.infolist()) > 8 or sum(x.file_size for x in archive.infolist()) > 16 * 1024**2:
@@ -165,6 +167,7 @@ def run_human(data, suffix, sample_id, program):
         raise ValueError('Use a CEL/CEL.gz input and an explicit RAW_FIXED or RANK_FIXED program.')
     if not data or len(data) > 80 * 1024**2:
         raise ValueError('CEL upload must be nonempty and at most 80 MiB.')
+    check_cel_expansion(data, suffix)
     config = runtime_config()
     if not human_ready():
         raise ValueError('The host needs the documented frozen CEL Python/R runtime. Configure runtime.local.json.')

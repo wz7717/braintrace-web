@@ -5,7 +5,10 @@
 *.json text eol=lf
 *.md text eol=lf
 *.ps1 text eol=lf
+*.sh text eol=lf
 # Frozen scientific files carry byte-level provenance; preserve their original bytes in Git.
 science/** -text
 demo_backend.py -text
 three_tier_backend.py -text
+# A private deployment branch may explicitly include separately supplied assets.
+runtime_assets/** -text

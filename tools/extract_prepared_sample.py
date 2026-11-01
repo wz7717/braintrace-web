@@ -8,7 +8,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input',type=Path,required=True)
     p.add_argument('--sample-id',required=True)
-    p.add_argument('--mapping',choices=b.SCHEME['mapping_versions'],required=True)
+    p.add_argument('--mapping',choices=[m for m in b.SCHEME['mapping_versions'] if m.startswith(('GSE128537_', 'GSE179328_'))],required=True,
+                   help='Full-library inputs only. Use prepare_psychencode_sample.py for adult common-annotation counts.')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();b.validate_id(a.sample_id)
     if a.output.exists():p.error('Output exists; use a new file.')

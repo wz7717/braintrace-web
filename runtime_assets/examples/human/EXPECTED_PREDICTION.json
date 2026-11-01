@@ -1,0 +1,73 @@
+{
+  "schema": "braintrace.rawcel.frozen_plm9.prediction.v1",
+  "status": "RESEARCH_PREDICTION_COMPLETE",
+  "sample_id": "GSM755211",
+  "bundle_sha256": "c5f040f3a78923a5c8ab60d331a262d60ecd472b52c0138d649554ac32e28b56",
+  "feature_sha256": "5be8ceecd2e960f50aa7c2d40248a5082c9bb3a7299a2ad0a7f2e810ae893074",
+  "chosen_program": "BOTH",
+  "executed_programs": [
+    "RAW_FIXED",
+    "RANK_FIXED"
+  ],
+  "predictions": {
+    "RAW_FIXED": {
+      "prediction": "4132",
+      "class_ids": [
+        "4009",
+        "4132",
+        "4180",
+        "4219",
+        "4275",
+        "4391",
+        "4696",
+        "9001",
+        "9512"
+      ],
+      "score9": [
+        0.12020093153937746,
+        0.796633218044547,
+        0.06031345693715417,
+        0.016996098787067246,
+        0.0008072736385458384,
+        0.0007570741586965305,
+        0.0007924645035822798,
+        0.0033872909898196336,
+        0.00011219140120971164
+      ]
+    },
+    "RANK_FIXED": {
+      "prediction": "4132",
+      "class_ids": [
+        "4009",
+        "4132",
+        "4180",
+        "4219",
+        "4275",
+        "4391",
+        "4696",
+        "9001",
+        "9512"
+      ],
+      "score9": [
+        0.13946928431486086,
+        0.732369810181306,
+        0.09268187753941058,
+        0.025677231110465288,
+        0.0010239011203545055,
+        0.0015862798647007005,
+        0.0019731380656155886,
+        0.00473578624104991,
+        0.00048269156223659755
+      ]
+    }
+  },
+  "warnings": [
+    "RESEARCH_ONLY: frozenPLM9 supports nine labels; it does not replace the original twelve-class system.",
+    "Unsupported regions: parietal (4084), insula (4268), pons (9131).",
+    "Target hippocampus (4219) is narrower than the original source limbic category.",
+    "Only the locked Human Exon 1.0 ST bulk-tissue input contract is supported; cfRNA/arbitrary-platform readiness is unestablished.",
+    "Nine scores sum to one over the supported labels; they are uncalibrated research model scores, not a rejection test for unsupported anatomy.",
+    "Normal adult eligibility and anatomical identity require external metadata; a valid CEL header alone cannot establish them."
+  ],
+  "new_fit_count": 0
+}

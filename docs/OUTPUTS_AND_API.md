@@ -4,7 +4,7 @@ Both website and CLI share three_tier_backend.py. JSON float values and CSV deci
 
 GET /api/bootstrap: runtime readiness, current scheme and four macaque examples (two original, two PsychENCODE), alongside the existing human example.
 POST /api/uploads?species=macaque&sample_id=ID&filename=NAME: raw bytes; summary includes input_type, lower_input_status, missing requirements and observation counts. Human CEL validation remains separate.
-POST /api/jobs: existing JSON fields species, configurations, source, sample_id, upload_id, contract_confirmed, request_key; optional example_id GSE128537, GSE179328, PsychENCODE_AMY or PsychENCODE_HIP. Current macaque configuration must be ["floor_clip"]. The local session token from bootstrap is required for mutations.
+POST /api/jobs: existing JSON fields species, configurations, source, sample_id, upload_id, contract_confirmed, request_key; optional example_id GSE128537, GSE179328, PsychENCODE_AMY or PsychENCODE_HIP. Current macaque configuration must be ["floor_clip"]. Bootstrap sets an HttpOnly anonymous cookie and returns a separate CSRF session_token. Send both the cookie and X-BrainTrace-Token for mutations; keep cookies on job/CSV GET requests. Uploads and jobs are owned by that cookie session. Reusing request_key is idempotent only within that session. A newly accepted upload job consumes its upload_id.
 GET /api/jobs/ID: actual queued/running/succeeded/failed state; no simulated progress.
 GET /api/jobs/ID/scores.csv: complete result CSV after success.
 GET /api/examples?species=macaque&configurations=floor_clip&example_id=GSE128537: saved result without inference; append &format=csv for CSV.
@@ -17,7 +17,7 @@ Adult raw-count uploads use input_type=psychencode_common_annotation_counts. The
 Statuses: succeeded; input_insufficient (Network panel only); input_incompatible (readable full axis but incompatible/missing contract information); reference_unavailable (exact Top3 combination absent); not_evaluable (original scientific signal guard rejected); failed (runtime error). Lower failures preserve Network; a Network failure does not fabricate a result. Session job status succeeded means processing completed; inspect each tier's state.
 
 Saved examples use mode=saved_example; real inference uses live_frozen_inference. Only explicitly selected built-in examples receive example_context and saved_output_comparison. Unknown uploads/CLI --input do not receive truth or a successful-reproduction mark.
-Files/results expire after 30 minutes in the running server memory; active tasks continue. Export important results. No database, external upload, hosting, training or evaluation queue is used.
+Pending files and completed results expire after 30 minutes; session expiry cancels queued/running tasks. Running jobs have species-specific hard limits. Queue status failed carries task_timeout, queue_timeout or an explicit failure code; it never silently resubmits. GET bootstrap also returns public limits and this session's usage. See ANONYMOUS_QUEUE.md. Export important results. No database, external upload, hosting, training or evaluation queue is used.
 
 Deployment: the HTTP listener remains loopback-only. --public-origin explicitly permits one configured HTTPS proxy origin. Resources are allowlisted inside the assembled directory; full-package and manuscript downloads are absent. Reference coverage is 43 combinations; scheme_id retains the frozen scientific identity, with asset edition recorded in bootstrap.scheme.deployment_asset_version.
 

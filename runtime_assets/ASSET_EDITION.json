@@ -1,0 +1,17 @@
+{
+  "edition": "20261101_43_beams_psychencode_v1",
+  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
+  "combination_count": 43,
+  "new_reference_ids": [
+    "beam_038",
+    "beam_039",
+    "beam_040",
+    "beam_041",
+    "beam_042",
+    "beam_043"
+  ],
+  "scientific_actions_in_this_packaging": [],
+  "original_reference_count": 37,
+  "note": "43 reference pairs and all frozen models unchanged. Added existing PsychENCODE correspondence, common-annotation row IDs and two selected examples. See delivery for targeted checks.",
+  "psychencode_input_adapter": true
+}

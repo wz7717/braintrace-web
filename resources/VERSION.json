@@ -1,5 +1,5 @@
 {
-  "application_edition": "github_psychencode_20261101",
+  "application_edition": "streamlit_cloud_20261101",
   "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
   "asset_edition": "20261101_43_beams_psychencode_v1",
   "reference_combinations": 43,
@@ -12,5 +12,10 @@
   "source_repository": "https://github.com/wz7717/braintrace-web",
   "source_visibility_at_creation": "private",
   "runtime_assets_in_repository": false,
-  "hosted_service_deployed": false
+  "hosted_service_deployed": false,
+  "anonymous_sessions": true,
+  "single_process_job_queue": true,
+  "source_revision_uploaded": false,
+  "linux_human_adapter": "braintrace.linux.r461.v1",
+  "streamlit_entry": "streamlit_app.py"
 }

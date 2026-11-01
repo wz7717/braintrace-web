@@ -88,6 +88,9 @@ class SyncDeliveryChecks(unittest.TestCase):
             scheme={'scheme_id':'fixture','deployment_asset_version':'fixture-v1'}
             (src/'metadata/SCHEME.json').write_text(json.dumps(scheme))
             (src/'app.py').write_bytes(b'# copy only\r\n')
+            (src/'.streamlit').mkdir()
+            (src/'.streamlit/secrets.toml').write_text('test_secret="DO_NOT_COPY"')
+            (src/'.env').write_text('TEST_SECRET=DO_NOT_COPY')
             edition={'scheme_id':'fixture','edition':'fixture-v1','combination_count':43}
             (assets/'ASSET_EDITION.json').write_text(json.dumps(edition))
             for rel in ('science/lower/BEAMS.json','examples/three_tier/EXAMPLES.json',
@@ -96,6 +99,8 @@ class SyncDeliveryChecks(unittest.TestCase):
             result=helper.prepare(src,assets,out)
             self.assertEqual(result['inference'],0)
             self.assertEqual((out/'app.py').read_bytes(),(src/'app.py').read_bytes())
+            self.assertFalse((out/'.streamlit/secrets.toml').exists())
+            self.assertFalse((out/'.env').exists())
             with self.assertRaises(ValueError):helper.prepare(src,assets,out)
             self.assertEqual((out/'app.py').read_bytes(),b'# copy only\r\n')
 

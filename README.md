@@ -1,63 +1,47 @@
-# BrainTrace web application source
+# BrainTrace
 
-Source repository: https://github.com/wz7717/braintrace-web (private at initial creation).
-It contains source, configuration templates and documentation. Runtime assets are supplied separately;
-a source checkout alone cannot run inference or display the bundled saved examples. Only application source and documentation are stored in this repository; no runtime assets or hosted service are published here.
+The Streamlit entry point is `streamlit_app.py`. It supports live human Human Exon 1.0 ST CEL inference (RAW_FIXED/RANK_FIXED) and macaque Network/Group/Exact inference, including the adult PsychENCODE common-annotation adapter.
 
-## Assemble a local runtime
+This deployment edition separates application source from `runtime_assets/`. Both are included in the authorized private-repository synchronization and are needed to run the app. Uploading GitHub does not start a hosted service or grant public redistribution rights. Models, mappings and all 43 lower-reference combinations retain their original bytes and identities. This is the web inference application, not the full research reproduction package.
 
-Use an existing Python 3.11.9 installation compatible with requirements.txt. From this source directory:
+## Streamlit Community Cloud
+
+Choose branch `main`, entry point `streamlit_app.py` and Python **3.11**. Dependencies are pinned in `requirements.txt` and its audited `requirements-lock.txt` constraints. System packages are in `packages.txt`.
+
+First startup builds a separate R 4.6.1 / CPython 3.11.9 scientific worker and may take several minutes. Actual Cloud startup, memory availability and viewer settings must be checked before sharing its assigned `*.streamlit.app` address. Read [deployment instructions](docs/STREAMLIT_CLOUD.md) and [security scope](SECURITY.md).
+
+After installing the system packages, local Linux startup is:
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+The anonymous interface has one FIFO worker, per-session and global limits, private task/result ownership and process-tree timeout recovery. Refresh, restart or Cloud sleep may lose access. This research demo has bounded capacity; it is not a confidential-data service.
+
+## Inputs and interpretation
+
+- Human: one compatible CEL/CEL.gz, at most 80 MiB input and 256 MiB after gzip expansion.
+- Macaque: one documented 5,000/21,668-axis NPZ/CSV, or all 26,514 common-annotation count rows for one PsychENCODE profile. Maximum upload 8 MiB. Array declarations and text records are bounded before scientific parsing.
+- A 5,000-gene input runs Network only. Group/Exact require the full supported contract and an available candidate combination. Forty-three references do not cover every possible combination.
+- Scores rank candidates; they are not calibrated probabilities of anatomical correctness. Group membership and Exact single-label localization are distinct.
+
+See [input formats](docs/INPUT_FORMATS.md), [PsychENCODE contract](docs/PSYCHENCODE_INPUT.md), [model card](docs/MODEL_CARD.md), [coverage](docs/COVERAGE.md) and [provenance](docs/CODE_PROVENANCE.md).
+
+## Retained Windows HTTP/CLI tools
+
+These use the original compatible scientific environment and local runtime settings. Assemble into a new directory:
 
 ```text
-python -X utf8 -B tools/prepare_runtime.py --assets ../runtime_assets --out ../assembled_runtime
+python -X utf8 -B tools/prepare_runtime.py --assets runtime_assets --out ../assembled_runtime
 cd ../assembled_runtime
 python -X utf8 -B site_server.py --port 8766
 ```
 
-The output directory must not exist. The helper copies code and assets, preserving their relative paths;
-it does not download, install dependencies, train, infer or overwrite either input directory.
-Open http://127.0.0.1:8766/ . Select saved-result mode to inspect the supplied evidence without inference.
-Human live CEL additionally requires the exact R environment and personal runtime.local.json settings.
-See [deployment instructions](docs/DEPLOYMENT_CN.md) and [human setup](docs/HUMAN_BUNDLE_SETUP.md).
+Open `http://127.0.0.1:8766/`. Assembly copies files without inference or overwriting either input. The Windows HTTP server is not the Community Cloud entry point. See [Windows deployment](docs/DEPLOYMENT_CN.md) and [human setup](docs/HUMAN_BUNDLE_SETUP.md).
 
-## Scope and versions
+## Repository contents
 
-The frozen scientific scheme identity is unchanged: floor_clip Network plus original Pearson Group/Exact.
-The deployment asset edition is `20261101_43_beams_psychencode_v1`: 37 original references plus six copied from the completed
-adult analysis. The two original web input mappings are retained; PsychENCODE has a separate [common-annotation input contract](docs/PSYCHENCODE_INPUT.md).
-The current scientific manuscript edition is `psychencode_adult_revision_20261101`; manuscripts are not included here.
-Two targeted single-profile integration checks passed in this edition. The cohort was not rerun; no training, tuning, bootstrap or performance recalculation was performed. See [code provenance and integration checks](docs/CODE_PROVENANCE.md) for the executed scope.
+Keep user uploads/results, credentials, local configuration, logs, compiled environments, private editing records, PROJECT_MEMORY.md, AGENTS.md and full reproduction archives out of Git. `.gitignore` excludes assets by default; the supplied asset directory is an explicit addition for this private deployment. Do not redact or rebind frozen identity-bound files.
 
-The web server and CLI share the original backends. For saved CLI output only:
-
-```text
-python -X utf8 -B braintrace_cli.py --example GSE128537 --saved --out results/saved_example
-```
-
-The output must be new. Omitting `--saved` requests real inference; that is not a packaging check.
-Scientific input/output definitions are in [INPUT_FORMATS](docs/INPUT_FORMATS.md),
-[MODEL_CARD](docs/MODEL_CARD.md), [COVERAGE](docs/COVERAGE.md) and [OUTPUTS_AND_API](docs/OUTPUTS_AND_API.md).
-
-## Hosting and resource links
-
-This is a Python application, not a standalone GitHub Pages site. The server stays on loopback.
-An explicit `--public-origin https://YOUR_HOST` permits a same-host HTTPS reverse proxy;
-see the Caddy template in deployment/. No domain, credentials or remote service is configured by this delivery.
-The template describes a small research demo with one in-memory inference worker, not an isolated multi-tenant service.
-
-All resource-page links target allowlisted files inside the assembled runtime. Old parent-directory ZIP,
-manuscript and full-package download routes were removed. No replacement online URL is invented.
-
-## What belongs in GitHub
-
-Keep this repository limited to application source and documentation. Keep runtime_assets, assembled runtime directories, runtime.local.json,
-uploaded data, results, environment binaries and full reproduction archives outside the repository.
-The included .gitignore covers common local additions; the human scientific files must retain exact LF bytes.
-The local runtime asset directory contains unchanged identity-bound provenance and model files;
-do not redact or rebind them to publish a nominally equivalent bundle.
-
-Existing component licence notices are retained. Their scope and the unresolved model/reference/example
-redistribution arrangements are described in [DATA_AND_LICENSES](docs/DATA_AND_LICENSES.md).
-This source-only preparation does not declare all new integration code or all assets covered by MIT.
-
-Current PsychENCODE interface: see docs/PSYCHENCODE_INPUT.md. Two example paths cover old/new reference lookup; no full-cohort rerun, model fitting or performance estimation.
+Resource-page downloads use allowlisted files inside the assembled runtime. Existing component licence notices remain in force; see [data and permissions](docs/DATA_AND_LICENSES.md). Repository access does not create a blanket MIT licence for models, references or third-party examples.

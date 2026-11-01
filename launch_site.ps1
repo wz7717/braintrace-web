@@ -1,7 +1,10 @@
 param(
     [string]$ScientificPython,
     [int]$Port=8766,
-    [string]$PublicOrigin
+    [string]$PublicOrigin,
+    [string]$WorkRoot,
+    [string]$QueueConfig,
+    [switch]$TrustProxyClientIP
 )
 $ErrorActionPreference='Stop'
 if (-not $ScientificPython) {
@@ -16,6 +19,9 @@ Push-Location -LiteralPath $PSScriptRoot
 try {
     $taskSiteArgs=@('-X','utf8','-B',(Join-Path $PSScriptRoot 'site_server.py'),'--port',"$Port")
     if ($PublicOrigin) { $taskSiteArgs+=@('--public-origin',$PublicOrigin) }
+    if ($WorkRoot) { $taskSiteArgs+=@('--work-root',$WorkRoot) }
+    if ($QueueConfig) { $taskSiteArgs+=@('--queue-config',$QueueConfig) }
+    if ($TrustProxyClientIP) { $taskSiteArgs+='--trust-proxy-client-ip' }
     & $ScientificPython @taskSiteArgs
     if ($LASTEXITCODE -ne 0) { throw "BrainTrace exited with code $LASTEXITCODE" }
 } finally { Pop-Location }

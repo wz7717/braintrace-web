@@ -1,0 +1,11 @@
+{
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "mock_scope": [
+    "uncovered combination no fallback",
+    "lower runtime failure"
+  ],
+  "real_inference": "Existing verification/real_GSE128537 and real_GSE179328 outputs compared again; no new inference in these tests.",
+  "reused_checks": "Prior unchanged human scoring and original HTTP lifecycle/idempotency checks are reused only for unaffected behavior."
+}

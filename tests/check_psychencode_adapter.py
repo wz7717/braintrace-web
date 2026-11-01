@@ -82,10 +82,14 @@ def live_checks(output):
     output.mkdir(parents=True,exist_ok=False)
     server=web.PreviewServer(('127.0.0.1',0));thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     base='http://127.0.0.1:'+str(server.server_port)
+    from http.cookiejar import CookieJar
+    from urllib.request import build_opener, HTTPCookieProcessor
+    opener=build_opener(HTTPCookieProcessor(CookieJar()))
+    with opener.open(base+'/api/bootstrap') as response: csrf=json.loads(response.read())['session_token']
     def request(path,data=None):
-        headers={'X-BrainTrace-Token':server.token}
+        headers={'X-BrainTrace-Token':csrf}
         if isinstance(data,dict):data=json.dumps(data).encode();headers['Content-Type']='application/json'
-        with urlopen(Request(base+path,data=data,headers=headers),timeout=30) as r:return json.loads(r.read())
+        with opener.open(Request(base+path,data=data,headers=headers),timeout=30) as r:return json.loads(r.read())
     comparisons=[]
     try:
         # Validate all adapter inputs before any scoring; the unittest suite runs first.

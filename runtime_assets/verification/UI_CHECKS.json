@@ -1,0 +1,20 @@
+{
+  "default_language": "en",
+  "english_chinese_saved_result_preserved": true,
+  "uploaded_file_id_and_confirmation_preserved_on_language_switch": true,
+  "language_changed_during_real_upload_job": true,
+  "unknown_upload_has_no_truth_or_saved_comparison": true,
+  "full_axis_upload_status": "compatible",
+  "legacy_panel_bilingual_status": "input_insufficient; missing requirements shown",
+  "network_group_exact_displayed_separately": true,
+  "group_members_and_member_counts_visible": true,
+  "lower_scores_without_probability_bars": true,
+  "csv_download_real_web_upload_rows": 50,
+  "csv_roundtrip_precision": "exact",
+  "resource_version": "three_tier_revision_20261101_v2",
+  "resource_coverage_rows": 37,
+  "mobile_390px": "workbench and resources fit document width; long tables scroll internally",
+  "desktop_1440px": "no document horizontal overflow",
+  "console_errors_or_warnings": [],
+  "published": false
+}

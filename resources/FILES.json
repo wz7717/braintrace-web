@@ -20,5 +20,7 @@
   "psychencode-amy-prepared": "examples/three_tier/PsychENCODE_AMY/PREPARED_SINGLE_SAMPLE.npz",
   "psychencode-amy-saved": "examples/three_tier/PsychENCODE_AMY/SAVED_ROW.json",
   "psychencode-hip-prepared": "examples/three_tier/PsychENCODE_HIP/PREPARED_SINGLE_SAMPLE.npz",
-  "psychencode-hip-saved": "examples/three_tier/PsychENCODE_HIP/SAVED_ROW.json"
+  "psychencode-hip-saved": "examples/three_tier/PsychENCODE_HIP/SAVED_ROW.json",
+  "anonymous-queue": "docs/ANONYMOUS_QUEUE.md",
+  "streamlit-deployment": "docs/STREAMLIT_CLOUD.md"
 }

@@ -1,0 +1,185 @@
+{
+  "schema": "braintrace.portable_rawcel.frozen_plm9.protocol.v1",
+  "utc": "2026-10-26T02:57:17.327097+00:00",
+  "status": "FROZEN_BEFORE_ANY_FORMAL_REFERENCE_OR_CLASSIFIER_OUTCOME",
+  "route": "New UKBEC target-supervised nine-label research route; formal mainline and frozen old77 untouched",
+  "historical_exposure": "UKBEC already exposed. FixedC0.1 chosen before newoutcomes using history; fivefold estimates are development, not pristine final confirmation. Old94.73 not a current result.",
+  "input": {
+    "samples": 1083,
+    "donors": 132,
+    "labels": [
+      "4696",
+      "4009",
+      "4219",
+      "9512",
+      "4180",
+      "4275",
+      "9001",
+      "4132",
+      "4391"
+    ],
+    "platform": "HuEx-1_0-st-v2/GPL5175 rawCEL only",
+    "geometry": [
+      2560,
+      2560
+    ],
+    "eligibility": "public metadata adult>=18 and neurologically/neuropathologically normal, exclude white matter perpreservednine-labeltask; no RIN/age/PMI outcome-dependent exclusions",
+    "clinical_limit": "dataset normal label, not independent review of complete medical history; causesofdeath retained"
+  },
+  "annotation": {
+    "definition": "Full27053MPS + fullGPL5175strictsingleEntrez + allAHBAvalidstaticEntrez; no processed26493row roster and no expression/outcomes used",
+    "genes": 16295,
+    "clusters": 19519,
+    "exon_sets": 251034,
+    "unique_PM": 997531,
+    "no_historical2014_mask_claim": true,
+    "gene_aggregation": "arithmetic mean of fixed cluster log2 frozen-PLM values for each Entrez",
+    "axis_sha256": "d65422e967c1068d3c9a63d2ce11925e79adde5241a5cc7726c90b6e2acaf000",
+    "annotation_sha256": "ea27c9ebb7b65e5cfd657113a3871d39311f7309363f1f9de55135e0178c5927",
+    "SDK_receipt_sha256": "b50c4d528b7cd40fc1ad73a0ac0a69e125269e27b9d3c529f9ba06a265ef762f"
+  },
+  "preprocessing": {
+    "name": "new frozen-PLM; not oldRMA/fullfRMA",
+    "background": "preprocessCore1.74.0 rma.background.correct per one array; intrinsic sample-local operation",
+    "quantile": "separate independent mean(sorted training samples) target in canonical sample_id order, no heldout contribution or all-minus-heldout arithmetic",
+    "probe_effects": "rcModelPLM Huber default, per fixedcluster on training arrays only, centered row effects",
+    "residual_scales": "training fitted positive finite Scale, frozen for every one-column query call",
+    "training_retransform": "every training and heldout array goes through identical frozen-target/effects/scales one-column operator",
+    "flags": "record CEL masks/outliers; neverchangefixedPMaxis or excludehardcase to improveoutcomes",
+    "precision": "float64 littleendian caches, no downcast"
+  },
+  "splits": {
+    "outer_folds": 5,
+    "original_metadata_only_assignment_confirmed": true,
+    "donor_grouping": "all specimens of a donor together",
+    "hyperparameter_tuning": false,
+    "reason_no_nested_parameter_search": "all method/hyperparameters fixed before formaloutcomes; all learned preprocessing/features/scales remain outertrainingonly"
+  },
+  "upstream_execution": {
+    "authorized": true,
+    "static_input_sha256": {
+      "axis": "d65422e967c1068d3c9a63d2ce11925e79adde5241a5cc7726c90b6e2acaf000",
+      "annotation": "ea27c9ebb7b65e5cfd657113a3871d39311f7309363f1f9de55135e0178c5927",
+      "manifest": "56e007fd439284ecf611460ce53454821829d38c145e0d583d8213536623b5d8",
+      "records": "3575a0893ab16900d24453296c18f7ee6eabba80b9a3f3ccdadc1fb4a2089227",
+      "gene_ids": "6ba4d15e42f8874d835ec41eb47bec9169139f913e0cbd7b48a65facbd3b8052"
+    },
+    "maximum_development_references": 6,
+    "probe_effect_group_fits": 117114,
+    "maximum_parallel_workers": 4,
+    "code_sha256": {
+      "frozen_plm.R": "f7f95f4d5d971468b7609e9da73a9cfc823df7835f4d74d00892abc901ea6a72",
+      "prepare_cel_cache.R": "01cfa7eec73aaa5fb5d5b6b8a4c643e8bacd8022420293700a178e2684a24f89",
+      "expand_cel_gzip.py": "7b5680ae1c47f6d9806a78ac7a57fa3deb90191b5518aa522d9028456e65ad8e",
+      "frozen_plm_blocks.R": "60e556d53b2177b3b98afe7389b416b80c4a81561b8ffcbe9ec09bda8b406996",
+      "run_frozen_plm_block.R": "90c7fdb2c42a31c176b82d4e7d5e9cefa0787ded0db67de0e6d7c443f1474769"
+    },
+    "raw_source_gate": "after acquisition bind immutable perfilegzipSHA/CRC index, comparebackgroundsourceSHA beforetargets; no dataset substitutions"
+  },
+  "downstream_classifier": {
+    "schema": "braintrace.rawcel.fixed_nine_classifier_protocol.v1",
+    "classifier_code_version": "staticU16295-v2",
+    "n_records": 1083,
+    "n_donors": 132,
+    "n_genes": 16295,
+    "outer_folds": 5,
+    "programs": [
+      "RAW_FIXED",
+      "RANK_FIXED"
+    ],
+    "maximum_classifier_fits": 12,
+    "features": 200,
+    "C": 0.1,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "class_weight": "balanced",
+    "multi_class": "multinomial",
+    "fit_intercept": true,
+    "tol": 1e-06,
+    "max_iter": 5000,
+    "random_state": 0,
+    "threads": 2,
+    "sample_weight": "inverse_training_donor_sample_count_normalized_to_mean_one",
+    "fisher": "donor_weighted_between_class_variance_over_within_class_variance",
+    "scale": "donor_weighted_training_mean_population_standard_deviation",
+    "rank": "within_sample_average_ties_full_fixed_U_(rank-1)/(16295-1)",
+    "feature_ties": "stable_fixed_gene_axis_order",
+    "raw_rank_eligibility_intersection": false,
+    "hyperparameter_selection": false,
+    "bootstrap_n": 2000,
+    "bootstrap_seed": 20261026,
+    "model_schema": "braintrace.rawcel.frozen_plm9.linear_classifier.v1",
+    "execution_authorized": true,
+    "records_csv_sha256": "3575a0893ab16900d24453296c18f7ee6eabba80b9a3f3ccdadc1fb4a2089227",
+    "gene_ids_json_sha256": "6ba4d15e42f8874d835ec41eb47bec9169139f913e0cbd7b48a65facbd3b8052",
+    "code_sha256": {
+      "fit_frozen_cel_models.py": "66bdd00f16e076205a8cba485dd6f4557ed3bd20255bd1b9cef01a42adf1a8f6",
+      "adaptation_eval_frozen_cel.py": "ca7dbf6c2129d61c9a82527d1dbb45a04b2185f3d53677be5be89d4fdeaa1769",
+      "METRICS_CODE_BINDING.json": "30ea386bba828b91b6f9c27d42a5e2cdf20b70779084ca21cc4cc9b44372c06c"
+    }
+  },
+  "evaluation": {
+    "primary": "RAW_FIXED donor-equal overallTop1; macro and worst-region recall jointlyreported",
+    "secondary": "RANK_FIXED fixed no winnerselection",
+    "per_region": "precision/recall/counts/failures/confusion, donor andbank splits",
+    "uncertainty": "paired fixedOOF whole-donor2000bootstrap seed20261026; conditional oncurrentfit/history not complete trainingselection uncertainty",
+    "quality": "GSM/filename/header identity, duplicatebyte/expression and donor-region checks; observed scan metadata confounding diagnosis only, no fabricated technicalbatches",
+    "no_success_via": "Top3 or droppedclasses or dropped difficultsamples"
+  },
+  "acquisition": {
+    "authorized": true,
+    "plan_sha256": "ff4cbc2fa688087774a7f9c1a9c4eef7ae82b74cb03263d46ed62e0a2135667d",
+    "cache_root": "E:\\D\\BrainTrace_CEL_raw_20261026T095500Z",
+    "public_individual_CEL_only": true,
+    "expected_compressed_bytes": 23774814808,
+    "reuse_existing6pilot_gz": true,
+    "parallel_downloads": 2,
+    "stop_401_403_429_or_CAPTCHA_no_bypass": true,
+    "minimum_free_bytes_per_volume": 15000000000,
+    "reserved_future_probe_cache_bytes": 17285217168,
+    "new_workspace_ceiling_bytes": 50000000000,
+    "storage": "retain gz; one temporary owneduncompressedCEL at a time; onefoldnormscratch reusedbynewpaths, removeonlynewcompletedrecomputablescratchafterupstreamgene/referenceexportverified",
+    "no_old_data_deletion": true,
+    "download_code_sha256": "6fcbda6ec8a126261d43b51422de898fda9b3a4c81e6d8ee6250940800bdb53f"
+  },
+  "admission": {
+    "real6pilot_result_sha256": "e36593acdb4a3982771c33bc89e8a9ec336b662251032371615735d25e032416",
+    "synthetic_and_static_gate": "see bound code/testreceipts; no accuracy admittedyet",
+    "formal_group_reference_failure": "stop andpreserve; no groupfilter/epsilon fallback or methodswitch basedonresults",
+    "classifier_failure": "FAIL prediction andalldenominators retained; no changedparameterretry"
+  },
+  "supported_regions": {
+    "cerebellar cortex": "4696",
+    "frontal cortex": "4009",
+    "hippocampus": "4219",
+    "medulla": "9512",
+    "occipital cortex": "4180",
+    "putamen": "4275",
+    "substantia nigra": "9001",
+    "temporal cortex": "4132",
+    "thalamus": "4391"
+  },
+  "unsupported": [
+    "parietal4084",
+    "insula4268",
+    "pons9131"
+  ],
+  "anatomy_limit": "hippocampus narrower than source limbic; no other category expansion",
+  "external": {
+    "candidate": "Heinzen GSE30453/GSE30483, publicPLIER unusable",
+    "stage": "only afterallnewmodel/evaluation/state locked, adultnormal/donorindependence and rawinputadmission, one frozen frontal-only score; stop ifnewmethodchoice needed",
+    "not_fullnine_confirmation": true
+  },
+  "preserve": [
+    "formal12class/mainline",
+    "Allen-only",
+    "old77adaptation",
+    "alloldresults/manuscripts/Gitstates"
+  ],
+  "prohibited": [
+    "push/merge/publish/deploy",
+    "thirdpartycontact/controlledaccess",
+    "HPAmetadata route",
+    "cfRNA/arbitraryplatform readinessclaim"
+  ]
+}

@@ -4,6 +4,36 @@
 let language = 'en';
 try { language = localStorage.getItem('braintrace-language') === 'zh' ? 'zh' : 'en'; } catch {}
 const messages = {
+"刷新会话": "Refresh session",
+"不会自动重新提交任务。": "Tasks will not be resubmitted automatically.",
+"匿名会话已过期，请刷新页面。": "Your anonymous session expired. Refresh the page.",
+"匿名会话校验失败，请刷新页面。": "Session verification failed. Refresh the page.",
+"输入检查完成，已进入单机任务队列。": "Input accepted into the single-machine queue.",
+"正在独立进程中执行冻结推断。": "Running frozen inference in a separate process.",
+"真实推断完成。结果仅供当前匿名会话查看及下载。": "Inference completed. Only this session can view or download these results.",
+"推断达到时间上限，已终止该任务；可以重新提交。": "The inference time limit was reached. The task was stopped; you may submit again.",
+"排队超过时间上限，未启动推断；可以重新提交。": "The queue wait limit was reached without starting inference. You may submit again.",
+"当前匿名会话已有排队或运行任务，请等待完成。": "This session already has an active task. Wait for it to finish.",
+"当前网络的活动任务已达上限，请稍后重试。": "Your network has reached its active-task limit. Try again later.",
+"请求过于频繁，请稍后重试。": "Request limit reached. Try again later.",
+"文件不存在或已过期。": "The file is unavailable or has expired.",
+"任务不存在或已过期。": "The task is unavailable or has expired.",
+"任务队列已满，请稍后重试。": "The queue is full. Try again later.",
+"计算进程未正常完成，队列将继续处理下一任务。": "The compute process failed. The queue will continue with the next task.",
+"冻结推断未完成，请检查样本格式与运行环境。": "Inference did not finish. Check the sample format and runtime.",
+"任务已结束：会话过期或服务正在关闭。": "Task ended because the session expired or the service is closing.",
+"任务临时文件未能清理，服务暂停新的计算。": "Temporary-file cleanup failed. New computation is paused.",
+"无需登录": "No login",
+"· 匿名会话": "\u00b7 Anonymous session",
+"连接推断服务…": "Connecting to inference service\u2026",
+"正在连接推断服务…": "Connecting to inference service\u2026",
+"正在上传到推断服务…": "Uploading to the inference service\u2026",
+"正在提交任务": "Submitting task",
+"当前匿名会话最多保留两个待运行文件。": "This session can hold at most two pending input files.",
+"当前匿名会话的输入缓存已满，请移除旧文件或等待任务结束。": "Your input storage is full. Remove a pending file or wait for the active task.",
+"服务输入缓存已满，请稍后重试。": "Input storage is full. Try again later.",
+"服务结果缓存已满，请稍后重试。": "Result storage is full. Try again later.",
+"冻结运行环境或计算服务暂不可用。": "The frozen runtime or compute service is unavailable.",
   "转录组参考": "TRANSCRIPTOMIC REFERENCE",
   "冻结设计": "FROZEN BY DESIGN",
   "科研演示": "RESEARCH DEMO",
@@ -384,7 +414,7 @@ const bytesText = bytes => bytes >= 1024**2 ? `${(bytes / 1024**2).toFixed(2)} M
 
 async function api(path, options={}) {
   let response;
-  try { response = await fetch(path, {cache:'no-store', ...options, headers:{'X-BrainTrace-Token':state.bootstrap?.session_token || '', ...options.headers}}); }
+  try { response = await fetch(path, {cache:'no-store', credentials:'same-origin', ...options, headers:{'X-BrainTrace-Token':state.bootstrap?.session_token || '', ...options.headers}}); }
   catch { throw new Error('无法连接本地服务。请确认启动终端仍在运行，然后重试。'); }
   let payload;
   try { payload = await response.json(); } catch { throw new Error('本地服务返回了无法读取的响应。请检查启动终端。'); }
@@ -428,7 +458,25 @@ function resetContext({removeFile=true}={}) {
   clearTimeout(state.timer); clearResult(); show('#job-panel',false); show('#connection-banner',false);
 }
 
+function expiredSession(error) {
+  if(!['session_expired','session_rejected'].includes(error.code))return false;
+  clearTimeout(state.timer);state.xhr?.abort();state.xhr=null;
+  state.busy=false;state.submitting=false;state.uploading=false;
+  state.bootstrap=null;state.upload=null;state.file=null;state.retryRequest=null;state.job=null;
+  sessionStorage.removeItem('braintrace-job');$('#file-input').value='';$('#contract').checked=false;
+  show('#file-review',false);show('#job-panel',false);clearResult();renderControls();
+  banner(error.message,'刷新会话',()=>location.reload(),'不会自动重新提交任务。');
+  return true;
+}
+
 function renderControls() {
+  const limits=state.bootstrap?.limits;
+  if(limits){
+    $('#anonymous-notice').textContent=language==='zh'
+      ? `无需登录。每个浏览器会话最多 ${limits.active_jobs_per_session} 个排队或运行任务，每 30 分钟 ${limits.jobs_per_session_half_hour} 次；全站依次运行。结果仅供当前会话访问，完成后保留 ${Math.floor(limits.retention_seconds/60)} 分钟。清除 Cookie 会失去访问权限，请及时下载。`
+      : `No login. Each browser session can have ${limits.active_jobs_per_session} active task and submit ${limits.jobs_per_session_half_hour} tasks per 30 minutes. Tasks run one at a time. Results are private to this session for ${Math.floor(limits.retention_seconds/60)} minutes after completion. Clearing cookies removes access; download your results.`;
+  }
+
   document.body.classList.toggle('saved-mode',state.mode==='saved');
   const human = state.species==='human';
   $$('[data-species]').forEach(node=>{
@@ -456,7 +504,7 @@ function renderControls() {
     ? t("<div class=\"contract-platform\">Human Exon 1.0 ST<br>成人 bulk-tissue CEL</div><div class=\"contract-formats\"><span class=\"format-tag\">.CEL</span><span class=\"format-tag\">.CEL.gz</span><span class=\"format-tag\">≤ 80 MiB</span></div><ul class=\"contract-bullets\"><li>冻结 PLM 生成完整 16,295 基因轴，再应用保存的 200 特征模型。</li><li>文件名不能证明平台、成人资格或解剖身份。</li><li>不接收任意表达矩阵、TPM 或其他芯片平台。</li></ul>")
     : `<div class="contract-platform">Macaque · Network / Group / Exact</div><div class="contract-formats"><span class="format-tag">.NPZ</span><span class="format-tag">.CSV</span><span class="format-tag">.TSV</span><span class="format-tag">≤ 8 MiB</span></div><p>${t('三层输入需要完整 21,668 基因轴及版本信息。5,000 基因输入只运行 Network。')}</p><p>${t('PsychENCODE 可提交全部 26,514 行单样本原始计数；使用共同注释背景归一化，与原始完整测序文库不同。')}</p><p>${t('Group 与 Exact 在同一个 Top3 Network 候选全集中独立排名；第一层分数不乘入下层。')}</p>`;
   const ready=state.bootstrap?.runtime[state.species];
-  setText('#runtime-badge',!state.bootstrap?'连接本地服务…':ready?'●  冻结环境可用':'环境未就绪');
+  setText('#runtime-badge',!state.bootstrap?'连接推断服务…':ready?'●  冻结环境可用':'环境未就绪');
   $('#runtime-badge').className=`badge ${ready?'green':'neutral'}`;
   show('#live-controls',state.mode==='live');show('#saved-notice',state.mode==='saved');
   show('#example-card',state.source==='example');show('#upload-controls',state.source==='upload');
@@ -475,7 +523,7 @@ function updateRunButton() {
   const inputReady=state.source==='example'||(state.upload && $('#contract').checked && !state.uploading);
   $('#run-button').disabled=!ready||!inputReady||state.busy;
   $('#run-button').innerHTML=`${t(state.busy?'推断处理中':'运行冻结推断')} <span aria-hidden="true">${state.busy?'⋯':'→'}</span>`;
-  setText('#run-hint',state.busy?'输入与配置已锁定。完成后可切换或开始新任务。':!state.bootstrap?'正在连接本地服务…':!ready?'运行环境未就绪；可先查看保存示例。':state.source==='example'?'运行真实单样本，并自动对照原保存输出。':state.uploading?'文件正在上传与校验，请稍候。':!state.upload?'选择一个符合规范的文件，先完成结构检查。':!$('#contract').checked?'文件检查完成，请确认样本与预处理符合规范。':'输入已就绪。将使用当前预先选择的冻结配置。');
+  setText('#run-hint',state.busy?'输入与配置已锁定。完成后可切换或开始新任务。':!state.bootstrap?'正在连接推断服务…':!ready?'运行环境未就绪；可先查看保存示例。':state.source==='example'?'运行真实单样本，并自动对照原保存输出。':state.uploading?'文件正在上传与校验，请稍候。':!state.upload?'选择一个符合规范的文件，先完成结构检查。':!$('#contract').checked?'文件检查完成，请确认样本与预处理符合规范。':'输入已就绪。将使用当前预先选择的冻结配置。');
 }
 
 function switchSpecies(species) {
@@ -542,7 +590,7 @@ function validateFile() {
   const oldId=state.upload?.upload_id;if(oldId)api(`/api/uploads/${encodeURIComponent(oldId)}`,{method:'DELETE'}).catch(()=>{});
   state.xhr?.abort();state.epoch++;const epoch=state.epoch;state.upload=null;state.uploading=true;
   clearResult();show('#job-panel',false);state.retryRequest=null;sessionStorage.removeItem('braintrace-job');
-  uploadView={kind:'progress',progress:0,message:'正在上传到本地推断服务…'};renderUploadStatus();
+  uploadView={kind:'progress',progress:0,message:'正在上传到推断服务…'};renderUploadStatus();
   const xhr=new XMLHttpRequest();state.xhr=xhr;
   xhr.open('POST',`/api/uploads?${new URLSearchParams({species:state.species,sample_id:sampleId,filename:state.file.name})}`);
   xhr.setRequestHeader('X-BrainTrace-Token',state.bootstrap.session_token);xhr.setRequestHeader('Content-Type','application/octet-stream');xhr.timeout=90000;
@@ -556,6 +604,7 @@ function validateFile() {
     let payload;try{payload=JSON.parse(xhr.responseText);}catch{if(epoch===state.epoch)uploadError('本地校验响应无效，请重新选择文件。');return;}
     if(epoch!==state.epoch){if(payload.upload_id)api(`/api/uploads/${encodeURIComponent(payload.upload_id)}`,{method:'DELETE'}).catch(()=>{});return;}
     state.uploading=false;state.xhr=null;
+    if(expiredSession({code:payload.error?.code,message:payload.error?.message}))return;
     if(xhr.status<200||xhr.status>=300)return uploadError(payload.error?.message||'校验失败，请检查输入。',payload.error?.detail);
     state.upload=payload;uploadView={kind:'valid'};renderUploadStatus();
     updateRunButton();
@@ -571,13 +620,18 @@ async function startRun() {
     sample_id:state.source==='example'?exampleId():$('#sample-id').value,upload_id:state.upload?.upload_id,
     contract_confirmed:$('#contract').checked,request_key:crypto.randomUUID()};
   state.busy=true;state.submitting=true;state.job=null;clearResult();show('#connection-banner',false);renderControls();
-  show('#job-panel',true);setText('#job-heading','正在提交本机任务');setText('#job-detail','等待服务确认，尚未报告推断完成。');
+  show('#job-panel',true);setText('#job-heading','正在提交任务');setText('#job-detail','等待服务确认，尚未报告推断完成。');
   $('#job-spinner').className='spinner';$('#job-elapsed').textContent='00:00';$('#job-events').replaceChildren();show('#job-error',false);
   try {
     const job=await api('/api/jobs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     state.retryRequest=null;state.submitting=false;state.job=job;
+    if(payload.source==='upload'){
+      state.upload=null;state.file=null;uploadView=null;$('#file-input').value='';$('#contract').checked=false;
+      show('#file-review',false);
+    }
     sessionStorage.setItem('braintrace-job',job.id);renderJob(job);pollJob(job.id);
   } catch(error) {
+    if(expiredSession(error))return;
     state.busy=false;state.submitting=false;state.retryRequest=error.code?null:payload;
     $('#job-spinner').className='spinner failed';setText('#job-heading',error.code?'任务未提交':'任务提交状态未确认');
     setText('#job-detail',error.code?'没有启动新的推断。修正输入后可重试。':'重试时将使用同一个请求标识，避免重复推断。');
@@ -611,6 +665,7 @@ async function pollJob(id) {
     if(job.status==='queued'||job.status==='running')state.timer=setTimeout(()=>pollJob(id),900);
   } catch(error) {
     if(state.job?.id!==id)return;
+    if(expiredSession(error))return;
     if(error.code==='job_expired'){
       state.busy=false;state.job=null;renderControls();sessionStorage.removeItem('braintrace-job');
       $('#job-spinner').className='spinner failed';setText('#job-heading','任务已过期或服务已重启');
@@ -667,7 +722,10 @@ async function download(kind) {
   if(kind==='json'){text=JSON.stringify(result,null,2)+'\n';type='application/json';}
   else {
     const path=result.mode==='live_frozen_inference'?`/api/jobs/${encodeURIComponent(state.job.id)}/scores.csv`:`/api/examples?${new URLSearchParams({species:result.species,configurations:Object.keys(result.predictions).join(','),example_id:state.example,format:'csv'})}`;
-    try {const response=await fetch(path);if(!response.ok)throw new Error();text=await response.text();type='text/csv;charset=utf-8';}
+    try {const response=await fetch(path,{credentials:'same-origin',cache:'no-store'});if(!response.ok){
+      const payload=await response.json();if(expiredSession({code:payload.error?.code,message:payload.error?.message}))return;
+      banner(payload.error?.message||'下载未完成，请重试。');return;
+    }text=await response.text();type='text/csv;charset=utf-8';}
     catch {banner('下载未完成，请重试。');return;}
   }
   const url=URL.createObjectURL(new Blob([text],{type}));const anchor=document.createElement('a');

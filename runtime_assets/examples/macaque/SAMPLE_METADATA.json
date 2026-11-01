@@ -1,0 +1,11 @@
+{
+  "cohort": "GSE128537",
+  "sample_id": "10_10",
+  "allowed_networks": [
+    "Frontal (agranular frontal motor areas)"
+  ],
+  "endpoint": "primary_singleton",
+  "GSM": "GSM3679496",
+  "source": "science\\research\\runs\\macaque_external_preparation_20261031_01\\GSE128537\\SAMPLE_ADMISSION.json",
+  "provenance": "Frozen pre-prediction sample admission; not derived from EXPECTED scores or predictions"
+}

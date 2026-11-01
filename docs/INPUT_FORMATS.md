@@ -1,5 +1,7 @@
 # Single-sample input contract
 
+Upload resource bounds: gzip CEL expansion is limited to 256 MiB in the timed worker. Macaque NPZ accepts only documented single-sample fields/shapes, non-object dtypes, bounded headers and at most 16 MiB declared array payload; CSV/TSV accepts at most 26,514 records, 12 unique columns and 1,024 characters per field. These checks precede scientific parsing and do not change accepted numerical values.
+
 Human: adult bulk-tissue Human Exon 1.0 ST CEL or CEL.gz, nonempty, at most 80 MiB. The frozen PLM builds the full 16,295-coordinate axis, then the existing 200-feature RAW_FIXED / RANK_FIXED models. A filename cannot establish platform, adult eligibility or anatomy. Human inference and dependencies remain the existing frozen bundle.
 
 Macaque files are at most 8 MiB; compressed NPZ expands to at most 16 MiB. Load with allow_pickle=False. Values must be finite and nonnegative at observed coordinates, measured zeros remain observed. Input values are converted to the original float32 representation before scoring. The original two mappings below use a positive complete-library total before mapping or panel selection. PsychENCODE uses a separate common-annotation denominator and contract, described in [PSYCHENCODE_INPUT](PSYCHENCODE_INPUT.md).

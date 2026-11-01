@@ -1,0 +1,124 @@
+{
+  "schema": "braintrace.rawcel.frozen_plm9.prediction_bundle.v1",
+  "status": "LOCKED_RESEARCH_ONLY",
+  "synthetic_fixture": false,
+  "method": "frozenPLM9",
+  "primary_program": "RAW_FIXED",
+  "secondary_programs": [
+    "RANK_FIXED"
+  ],
+  "program_selection": "explicit_predeclared_no_score_selection",
+  "protocol_sha256": "d2e12948fdf66f31ce4946a93d59735c7e33cfa6ac0350cbcb3c17237410ec78",
+  "class_ids": [
+    "4009",
+    "4132",
+    "4180",
+    "4219",
+    "4275",
+    "4391",
+    "4696",
+    "9001",
+    "9512"
+  ],
+  "unsupported_ids": [
+    "4084",
+    "4268",
+    "9131"
+  ],
+  "dimensions": {
+    "genes": 16295,
+    "clusters": 19519,
+    "PM_probes": 997531
+  },
+  "kernel": {
+    "application": "one_sample_one_column_frozen_target_effects_scales",
+    "gene_aggregation": "arithmetic_mean_cluster_estimates",
+    "upstream_fit_allowed": false,
+    "threads": 1
+  },
+  "runtime": {
+    "python": {
+      "python": "3.11.9",
+      "python_implementation": "CPython",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "sklearn": "1.5.2"
+    },
+    "R": {
+      "version_string": "R version 4.6.1 (2026-06-24 ucrt)",
+      "packages": {
+        "preprocessCore": "1.74.0",
+        "affxparser": "1.84.0",
+        "digest": "0.6.39",
+        "jsonlite": "2.0.0"
+      }
+    }
+  },
+  "files": {
+    "reference": {
+      "path": "reference/FROZEN_REFERENCE.rds",
+      "bytes": 16276404,
+      "sha256": "c403c348911c3a0814ee811af155120a8a562d880dda59347beaacbd539baf48"
+    },
+    "annotation": {
+      "path": "reference/FIXED_ANNOTATION.rds",
+      "bytes": 8586025,
+      "sha256": "ea27c9ebb7b65e5cfd657113a3871d39311f7309363f1f9de55135e0178c5927"
+    },
+    "gene_ids": {
+      "path": "reference/GENE_IDS.json",
+      "bytes": 193825,
+      "sha256": "6ba4d15e42f8874d835ec41eb47bec9169139f913e0cbd7b48a65facbd3b8052"
+    },
+    "protocol": {
+      "path": "protocol/PROTOCOL.json",
+      "bytes": 9280,
+      "sha256": "d2e12948fdf66f31ce4946a93d59735c7e33cfa6ac0350cbcb3c17237410ec78"
+    },
+    "raw_model": {
+      "path": "models/final_RAW_FIXED.npz",
+      "bytes": 227656,
+      "sha256": "87afef7a982720cd4bfe3a35e55acc7f6c2edef87a306b68b0362ec0d8894405"
+    },
+    "rank_model": {
+      "path": "models/final_RANK_FIXED.npz",
+      "bytes": 227621,
+      "sha256": "989b0c9342e300f37e3a94434a2b16d6b3caf79222eb692a9a8d4199d3a750ee"
+    },
+    "upstream_state": {
+      "path": "reference/FROZEN_UPSTREAM_STATE_INDEX.json",
+      "bytes": 73200,
+      "sha256": "39d6c410502c34395bc0a49300204ccfea5a004952fba594bee7200b9265d95a"
+    },
+    "upstream_receipt": {
+      "path": "reference/UPSTREAM_GENE_EXPORT.json",
+      "bytes": 32817,
+      "sha256": "c54ca3e8e863d26d688c25617362e762f090725c3f2ccaf4fc6c6ed3418fa6e0"
+    },
+    "implementation": {
+      "path": "code/frozen_plm.R",
+      "bytes": 15551,
+      "sha256": "f7f95f4d5d971468b7609e9da73a9cfc823df7835f4d74d00892abc901ea6a72"
+    },
+    "classifier_helper": {
+      "path": "code/fit_frozen_cel_models.py",
+      "bytes": 37771,
+      "sha256": "66bdd00f16e076205a8cba485dd6f4557ed3bd20255bd1b9cef01a42adf1a8f6"
+    },
+    "gzip_helper": {
+      "path": "code/expand_cel_gzip.py",
+      "bytes": 3513,
+      "sha256": "7b5680ae1c47f6d9806a78ac7a57fa3deb90191b5518aa522d9028456e65ad8e"
+    },
+    "r_driver": {
+      "path": "code/predict_frozen_plm9.R",
+      "bytes": 10389,
+      "sha256": "ceabfc1e377c3a69bf53b582d73afcf6ff1e1a1f187045d15c5ee3cb703c8fcc"
+    },
+    "prediction_entry": {
+      "path": "code/predict_frozen_plm9.py",
+      "bytes": 25201,
+      "sha256": "ef1aa4d76c7b52175e4a1727c336b763e62a1f38a807642c85d34d97dbc0f829"
+    }
+  }
+}

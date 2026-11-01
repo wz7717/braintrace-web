@@ -1,0 +1,87 @@
+{
+  "two_cli_samples": [
+    {
+      "pass": true,
+      "absolute_tolerance": 1e-10,
+      "relative_tolerance": 0,
+      "configurations": {
+        "Network": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 2.0816681711721685e-17,
+          "max_decision_difference": null
+        },
+        "Group": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 0.0,
+          "max_decision_difference": null
+        },
+        "Exact": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 0.0,
+          "max_decision_difference": 0.0
+        }
+      },
+      "scope": "Two selected saved external examples only; no performance re-estimation."
+    },
+    {
+      "pass": true,
+      "absolute_tolerance": 1e-10,
+      "relative_tolerance": 0,
+      "configurations": {
+        "Network": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 3.7947076036992655e-19,
+          "max_decision_difference": null
+        },
+        "Group": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 0.0,
+          "max_decision_difference": null
+        },
+        "Exact": {
+          "pass": true,
+          "same_class_axis": true,
+          "same_ranking": true,
+          "same_members": true,
+          "max_score_difference": 0.0,
+          "max_decision_difference": 0.0
+        }
+      },
+      "scope": "Two selected saved external examples only; no performance re-estimation."
+    }
+  ],
+  "additional_live_web_upload": "Same GSE128537 sample treated as unknown; all three tier outputs equal CLI; no truth/comparison marker.",
+  "real_requests": 3,
+  "distinct_macaque_samples": 2,
+  "new_fits": 0,
+  "cohort_reruns": 0,
+  "performance_reestimation": false,
+  "web_download_csv_rows": 50,
+  "download_roundtrip_precision": "exact",
+  "existing_lower_function_bodies": "unchanged",
+  "private_machine_paths_excluded_from_portable_package": true,
+  "specific_gaps": [
+    "37 combinations only",
+    "Two existing full-axis mappings only",
+    "Human live on a new host requires four exact private-path-containing files omitted from ZIP plus pinned runtime",
+    "Cross-OS/public hosting/universal fine-region localization not validated",
+    "Redistribution permission unconfirmed"
+  ],
+  "original_demo_and_research_and_manuscripts": "Not modified",
+  "published": false
+}

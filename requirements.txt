@@ -1,6 +1,14 @@
+# Linux/Python 3.11 deployment closure audited on 2026-11-01.
+-c requirements-lock.txt
 numpy==1.26.4
 pandas==2.2.3
 scipy==1.13.1
 scikit-learn==1.5.2
 joblib==1.5.3
 threadpoolctl==3.6.0
+streamlit==1.66.1
+uv==0.13.4
+pyarrow==23.0.1
+pillow==13.0.0
+pip==26.2
+setuptools==84.1.0

@@ -16,6 +16,10 @@ class ThreeTierChecks(unittest.TestCase):
         cls.net=cls.actual['tiers']['Network']
         cls.server=web.PreviewServer(('127.0.0.1',0));cls.thread=threading.Thread(target=cls.server.serve_forever,daemon=True);cls.thread.start()
         cls.base='http://127.0.0.1:'+str(cls.server.server_port)
+        from http.cookiejar import CookieJar
+        from urllib.request import build_opener, HTTPCookieProcessor
+        cls.opener=build_opener(HTTPCookieProcessor(CookieJar()))
+        with cls.opener.open(cls.base+'/api/bootstrap') as response: cls.csrf=json.loads(response.read())['session_token']
     @classmethod
     def tearDownClass(cls):
         cls.server.shutdown();cls.server.server_close();cls.thread.join()
@@ -40,7 +44,7 @@ class ThreeTierChecks(unittest.TestCase):
         tiers,_=b.lower_tiers(missing,self.net)
         self.assertEqual(tiers['Exact']['ranking'],[])
     def test_partial_axis_rejected_not_imputed(self):
-        with self.assertRaisesRegex(ValueError,'21,668'):
+        with self.assertRaisesRegex(ValueError,'21,668|shape'):
             b.read_input(self.payload(genes=b.np.array(b.assets()[0][:-1])),'.npz','unknown')
     def test_mask_and_scale_not_silently_accepted(self):
         mask=self.prepared['observed'].copy();mask[0]=~mask[0]
@@ -84,8 +88,8 @@ class ThreeTierChecks(unittest.TestCase):
     def test_http_saved_upload_and_resources(self):
         saved=json.loads(self.get('/api/examples?species=macaque&configurations=floor_clip&example_id=GSE179328'))
         self.assertEqual(saved['sample_id'],'LID_100660')
-        req=Request(self.base+'/api/uploads?species=macaque&sample_id=unknown&filename=test.npz',data=self.data,headers={'X-BrainTrace-Token':self.server.token},method='POST')
-        with urlopen(req) as r:upload=json.loads(r.read())
+        req=Request(self.base+'/api/uploads?species=macaque&sample_id=unknown&filename=test.npz',data=self.data,headers={'X-BrainTrace-Token':self.csrf},method='POST')
+        with self.opener.open(req) as r:upload=json.loads(r.read())
         self.assertEqual(upload['summary']['lower_input_status'],'compatible')
         self.assertNotIn('reference_labels',upload)
         self.assertEqual(self.get('/api/files/macaque-example'),self.data)

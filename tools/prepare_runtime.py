@@ -23,8 +23,8 @@ def prepare(source, assets, output):
         for p in root.rglob('*'):
             if not p.is_file(): continue
             rel=p.relative_to(root)
-            if any(part in ('.git','__pycache__','.venv','venv','results','uploads','logs') for part in rel.parts):continue
-            if p.name in ('runtime.local.json','Caddyfile') or p.name.startswith('.env') or p.suffix=='.pyc':continue
+            if any(part in ('.git','__pycache__','.venv','venv','results','uploads','logs','job_work','runtime_assets','assembled_runtime') for part in rel.parts):continue
+            if p.name in ('runtime.local.json','queue.local.json','Caddyfile','secrets.toml') or p.name.startswith('.env') or p.suffix=='.pyc':continue
             if rel in plans: raise ValueError('Code/asset path collision: '+str(rel))
             plans[rel]=p
     if shutil.disk_usage(output.parent).free < sum(p.stat().st_size for p in plans.values())+10*1024**2:

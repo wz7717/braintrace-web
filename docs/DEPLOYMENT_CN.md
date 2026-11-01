@@ -1,12 +1,14 @@
 # 部署说明：源码与运行资产分开
 
+本次 Streamlit Community Cloud 入口、Linux 环境与匿名限额以 [STREAMLIT_CLOUD.md](STREAMLIT_CLOUD.md) 为准。下文保留原 Windows HTTP/CLI 服务步骤；不能将其 loopback 服务器入口直接填写为 Streamlit 应用入口。
+
 ## 1. 交付布局
 
 - github/：候选 GitHub 源码，前端、HTTP/CLI 后端、科学推断代码、配置模板和文档。
 - runtime_assets/：服务器资产，完整人类绑定文件、猕猴冻结模型、43 套下层参考、映射及示例。
 - assembled_runtime/：由复制工具新建的运行目录；不提交 GitHub。
 
-当前仓库仅同步原 github 目录的源码，初建为 wz7717/braintrace-web 私有仓库；服务器运行资产单独保留，未部署网页服务。
+现有 wz7717/braintrace-web 私有仓库保留上一版源码；本匿名队列版只在本地另存，尚未上传。运行资产复用既有独立目录，未部署服务。
 源目录单独启动时会说明缺少资产。资产不靠 Git LFS 隐式下载，也没有虚构公开下载地址。
 
 ## 2. 准备环境
@@ -44,29 +46,42 @@ rlib_site（可空）和已存在的 ASCII temp_root。配置必须留在服务�
 等价环境变量为 BRAINTRACE_PYTHON、BRAINTRACE_RSCRIPT、BRAINTRACE_RLIB、BRAINTRACE_RLIB_SITE、BRAINTRACE_TEMP_ROOT。
 
 保存示例只读取已保存输出；“实时推断”和 CLI 未带 --saved 的命令会运行模型。
-本次新增检查限两个 PsychENCODE 样本的输入适配和三层输出对照，其他已通过检查按未变范围复用，不重跑队列。
+本版检查范围见 ANONYMOUS_QUEUE.md 和 CODE_PROVENANCE.md；既有科学验证按未变范围复用，不重跑队列。
 
-## 5. 实际域名部署模板（本轮未执行）
+## 5. 免登录队列与将来部署（本轮不执行）
 
-后端继续监听 127.0.0.1；同一主机上的 HTTPS 代理转发所有路径至 127.0.0.1:8766。
-在运行目录启动 `python -X utf8 -B site_server.py --port 8766 --public-origin https://实际域名`。
-public-origin 必须为完整 HTTPS origin，不含路径或末尾斜杠。仅显式配置的 Host/Origin 获准；不采用任意转发头推断。
-URL 根路径部署，例如 https://demo.example.org/；当前前端用绝对路径，未实现 /braintrace/ 子路径部署。
+当前新版另存为 anonymous_queue_20261101，尚未同步到现有私有 GitHub 仓库。
+已具备独立匿名浏览器会话、按会话和 IP 限额、单进程 FIFO、超时回收及结果过期。
+具体默认值、会话边界和恢复行为见 [ANONYMOUS_QUEUE.md](ANONYMOUS_QUEUE.md)。
 
-deployment/Caddyfile.example 是待填写模板：把源码模板复制为服务器私有 Caddyfile，配置实际域名、用户名和 bcrypt 密码哈希。
-也可用模板中的 BRAINTRACE_DEMO_HOST、BRAINTRACE_DEMO_USER、BRAINTRACE_DEMO_PASSWORD_HASH 环境变量；
-使用 `caddy hash-password` 交互生成哈希。代理保留浏览器 Host 与 Origin，无需改写成 localhost。
-先运行 `caddy validate --config Caddyfile --adapter caddyfile`，再按实际服务器方式启动 Caddy。
-真实域名、DNS、TLS、凭据及进程管理均由部署者配置；本轮没有安装 Caddy 或执行这些步骤。
+本地启动示例（工作目录必须为专用私有目录；人类路线要求 ASCII 路径）：
 
-这是单进程、单推断工作线程、内存队列的研究 demo。上传和结果约 30 分钟清理，重启会丢失未下载结果。
-支持小范围受控访问；没有独立用户账号/任务隔离、持久化队列或多实例共享状态。勿以多 worker 分散内存任务。
-同一服务会话 token 用于请求来源检查，不是用户身份认证；模板在 HTTPS 代理层配置访问账号。
-后端端口不直接暴露公网，代理只转发 HTTP，不对运行目录启用静态文件服务。
-真正上线前需在目标机器确认域名访问与所需实时推断可用；这里没有把接口检查当作线上验收。
+```text
+python -X utf8 -B site_server.py --port 8766 --work-root C:/BrainTraceWork/anonymous_queue
+```
 
-参考：[Caddy reverse_proxy](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy)、
-[Caddy basic_auth](https://caddyserver.com/docs/caddyfile/directives/basic_auth)。
+需要自定义限额时，复制 queue.example.json 为私有 queue.local.json，再追加
+`--queue-config queue.local.json`。不需要账户数据库；同一浏览器共享匿名会话。
+
+以后部署时，Python 仍只监听 127.0.0.1，由同机 HTTPS 代理转发所有路径：
+
+```text
+python -X utf8 -B site_server.py --port 8766 --work-root C:/BrainTraceWork/anonymous_queue --public-origin https://实际域名 --trust-proxy-client-ip
+```
+
+public-origin 必须是不含路径或末尾斜杠的 HTTPS origin；按域名根路径部署。
+deployment/Caddyfile.example 为免登录模板，配置真实 BRAINTRACE_DEMO_HOST。
+代理保留 Host，强制用连接客户端地址覆盖 X-BrainTrace-Client-IP；应用仅在显式开启该选项、
+且 Host 是配置域名时信任此单 IP 头。不要将客户端提供的同名头直接转发。
+若代理前面另有 CDN，此模板只会识别 CDN 地址，需要先按实际可信链配置，不能盲目信任 X-Forwarded-For。
+
+部署者需在目标机器配置 DNS、TLS、服务账户、进程管理和目录权限；
+可以先运行 `caddy validate --config Caddyfile --adapter caddyfile` 检查模板替换后的语法。
+该模板没有 basic_auth，也没有将后端端口或运行目录静态公开；Cookie 在公共 HTTPS 下带 Secure/HttpOnly/SameSite。
+只启动一个应用实例，不增加 Web worker 数量。重启丢失内存任务和会话；先下载结果。
+域名访问、代理限额和运行环境仍需真实服务器验收。本轮没有部署、安装代理或公网测试。
+
+参考：[Caddy reverse_proxy](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy)。
 
 ## 6. 运行资产与下载链接
 
