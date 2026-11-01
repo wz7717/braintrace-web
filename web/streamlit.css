@@ -1,0 +1,26 @@
+<style>
+:root{--bt-teal:#087f82;--bt-ink:#172941;--bt-muted:#718092;--bt-line:#e4e9ee}
+[data-testid="stAppViewContainer"]{background:#f7f8fa;color:var(--bt-ink)}
+[data-testid="stMainBlockContainer"]{max-width:1370px;padding-top:3.8rem;padding-bottom:3rem}
+[data-testid="stSidebar"]{background:#fff;border-right:1px solid var(--bt-line)}
+[data-testid="stSidebarContent"]{padding-top:1rem}
+.bt-brand{font-size:25px;font-weight:720;letter-spacing:-.6px;color:var(--bt-teal);margin:5px 0 25px}
+.bt-brand small{display:block;font-size:9px;letter-spacing:1.6px;font-weight:500;color:var(--bt-muted);margin-top:6px}
+h1{font-size:2rem!important;letter-spacing:-.7px;font-weight:650!important;color:var(--bt-ink)}
+.bt-eyebrow{font-size:10px;letter-spacing:2px;color:var(--bt-teal);font-weight:700}
+.bt-steps{display:flex;gap:20px;margin:16px 0 22px;padding:16px 0;border-top:1px solid var(--bt-line);border-bottom:1px solid var(--bt-line)}
+.bt-steps>div{flex:1;font-size:13px;color:var(--bt-muted)}
+.bt-steps b{display:inline-grid;place-items:center;background:#eaf5f3;color:var(--bt-teal);width:30px;height:30px;border-radius:50%;font-size:11px;margin-right:10px}
+[data-testid="stVerticalBlockBorderWrapper"]>div{border-radius:14px!important}
+[data-testid="stVerticalBlockBorderWrapper"]{background:#fff;border-radius:14px}
+.st-key-startup_panel,.st-key-input_panel,.st-key-guide_panel,.st-key-job_panel,.st-key-results_panel,.st-key-resources_panel{background:#fff;border-radius:14px}
+.bt-section{display:flex;gap:11px;align-items:center;margin:4px 0 16px}
+.bt-section>span{color:var(--bt-teal);background:#eaf5f3;border-radius:6px;min-width:29px;height:27px;display:grid;place-items:center;font-size:11px}
+.bt-section h3{margin:0;padding:0;font-size:17px;font-weight:650;color:var(--bt-ink)}
+[data-testid="stFileUploaderDropzone"]{background:#f4faf8;border:1px dashed #b9d3d0;border-radius:10px}
+[data-testid="stBaseButton-primary"]{background:var(--bt-teal);border-color:var(--bt-teal);border-radius:8px}
+[data-testid="stCode"]{max-height:300px;overflow:auto;font-size:11px}
+[data-testid="stMetricValue"]{font-size:22px}
+[data-testid="stMarkdownContainer"] table{font-size:12px;width:100%}
+@media(max-width:700px){h1{font-size:1.55rem!important}.bt-steps{gap:6px}.bt-steps>div{font-size:11px}.bt-steps b{margin-right:5px;width:25px;height:25px}[data-testid="stMainBlockContainer"]{padding:1rem}}
+</style>

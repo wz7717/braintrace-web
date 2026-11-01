@@ -11,18 +11,33 @@ import threading
 
 _SERVICE = None
 _SERVICE_LOCK = threading.Lock()
+_STARTUP = None
+_STARTUP_LOCK = threading.Lock()
 
 
-def get_service(source):
+def get_service(source, report=None):
     # Streamlit's Clear Cache must not create a second worker or reset global quotas.
     global _SERVICE
     with _SERVICE_LOCK:
         if _SERVICE is None:
-            _SERVICE = bootstrap(source)
+            _SERVICE = bootstrap(source, report=report)
         return _SERVICE
 
 
-def bootstrap(source):
+def get_startup(source):
+    global _STARTUP
+    from startup_runtime import StartupManager
+    with _STARTUP_LOCK:
+        if _STARTUP is None:
+            _STARTUP = StartupManager(lambda report: get_service(source, report))
+        _STARTUP.start()
+        return _STARTUP
+
+
+def bootstrap(source, report=None):
+    from startup_runtime import run_logged
+    report = report or (lambda stage=None, line='': None)
+    report('cache', 'Checking the existing fixed environment; completed components will be reused.')
     source = Path(source).resolve()
     assets = Path(os.environ.get('BRAINTRACE_ASSETS_DIR', source/'runtime_assets')).resolve()
     if not assets.is_dir() and (source.parent/'runtime_assets').is_dir():
@@ -36,12 +51,11 @@ def bootstrap(source):
     rscript = prefix/'R/bin/Rscript'
     rlib = prefix/'rlib'
     if sys.platform.startswith('linux'):
-        if not worker.is_file() or not rscript.is_file():
-            with (runtime_home/'dependency-build.log').open('w', encoding='utf-8') as log:
-                completed = subprocess.run(['bash', str(source/'deployment/setup_linux.sh'), str(prefix)],
-                    stdout=log, stderr=subprocess.STDOUT, timeout=1800)
-            if completed.returncode:
-                raise RuntimeError('Fixed Linux dependency setup failed; see the server dependency-build.log.')
+        # Component probes also recover partial installations. The shell lock
+        # prevents another process from compiling into the same dependency cache.
+        run_logged(['bash', str(source/'deployment/setup_linux.sh'), str(prefix)],
+                   runtime_home/'dependency-build.log', report, timeout=1800)
+        report('verify', 'Verifying the pinned scientific Python and R package versions.')
         check = subprocess.run([str(worker), '-c',
             'import platform,numpy,scipy,sklearn; assert (platform.python_version(),numpy.__version__,scipy.__version__,sklearn.__version__)==("3.11.9","1.26.4","1.13.1","1.5.2")'], capture_output=True, timeout=30)
         if check.returncode:
@@ -56,12 +70,15 @@ def bootstrap(source):
     else:
         worker = Path(os.environ.get('BRAINTRACE_PYTHON', sys.executable))
     from tools.prepare_runtime import prepare
+    report('assets', 'Preparing the application with the existing frozen assets; no inference.')
     assembled = Path(tempfile.mkdtemp(prefix='braintrace_app_', dir=runtime_home))/'runtime'
     prepare(source, assets, assembled)
     sys.path.insert(0, str(assembled))
     work = assembled.parent/'jobs'; work.mkdir()
     os.environ['BRAINTRACE_TEMP_ROOT'] = str(work)
-    return CloudService(assembled, worker, work)
+    service = CloudService(assembled, worker, work)
+    report('ready', 'Both routes are ready. No samples were run during startup.')
+    return service
 
 
 class CloudService:

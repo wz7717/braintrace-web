@@ -8,7 +8,7 @@ This deployment edition separates application source from `runtime_assets/`. Bot
 
 Choose branch `main`, entry point `streamlit_app.py` and Python **3.11**. Dependencies are pinned in `requirements.txt` and its audited `requirements-lock.txt` constraints. System packages are in `packages.txt`.
 
-First startup builds a separate R 4.6.1 / CPython 3.11.9 scientific worker and may take several minutes. Actual Cloud startup, memory availability and viewer settings must be checked before sharing its assigned `*.streamlit.app` address. Read [deployment instructions](docs/STREAMLIT_CLOUD.md) and [security scope](SECURITY.md).
+Startup runs in the background and reuses each correctly installed R/Python component. The bilingual workbench shows the current stage, elapsed time and live installation/error logs, with an explicit cached retry after failure. An empty cloud container still needs to build R 4.6.1 / CPython 3.11.9 and may take several minutes; cache persistence across cloud rebuilds is not guaranteed. Actual Cloud startup, memory availability and viewer settings must be checked before sharing its assigned `*.streamlit.app` address. Read [deployment instructions](docs/STREAMLIT_CLOUD.md) and [security scope](SECURITY.md).
 
 After installing the system packages, local Linux startup is:
 

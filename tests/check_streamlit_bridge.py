@@ -58,11 +58,14 @@ class BridgeChecks(unittest.TestCase):
         st.cache_resource.clear()
         import cloud_service
         cloud_service._SERVICE=None
+        cloud_service._STARTUP=None
         with patch('cloud_service.bootstrap',return_value=self.svc) as build:
             first=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=20)
+            eventually(lambda:cloud_service._STARTUP.snapshot()['state']=='ready')
+            first.run()
             self.assertEqual(len(first.exception),0)
-            self.assertEqual(first.radio[0].value,'猕猴三层 / Macaque')
-            first.radio[0].set_value('人类 CEL / Human').run()
+            self.assertEqual(first.radio(key='route').value,'macaque')
+            first.radio(key='route').set_value('human').run()
             self.assertEqual(len(first.exception),0)
             self.assertEqual(first.multiselect[0].value,['RAW_FIXED','RANK_FIXED'])
             st.cache_resource.clear()
@@ -71,7 +74,103 @@ class BridgeChecks(unittest.TestCase):
             self.assertNotEqual(first.session_state['_anonymous_cookie'],second.session_state['_anonymous_cookie'])
             self.assertEqual(build.call_count,1)
         cloud_service._SERVICE=None
+        cloud_service._STARTUP=None
         st.cache_resource.clear()
+
+    def ready_manager(self):
+        from startup_runtime import StartupManager
+        manager=StartupManager(lambda report:self.svc)
+        manager.start(); eventually(lambda:manager.snapshot()['state']=='ready')
+        return manager
+
+    def test_language_switch_preserves_inputs_and_active_job(self):
+        from streamlit.testing.v1 import AppTest
+        with patch('cloud_service.get_startup',return_value=self.ready_manager()):
+            app=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=20)
+            cookie=app.session_state['_anonymous_cookie']
+            app.text_input(key='sample_id').set_value('retained_id').run()
+            app.radio(key='input_source').set_value('example').run()
+            app.selectbox(key='example_id').set_value('PsychENCODE_HIP').run()
+            app.button(key='run_inference').click().run()
+            job_id=app.session_state['_job']
+            eventually(lambda:len(self.runner.started)==1)
+            app.radio(key='ui_language').set_value('English').run()
+            self.assertEqual(len(app.exception),0)
+            self.assertEqual(app.session_state['_job'],job_id)
+            self.assertEqual(app.session_state['_anonymous_cookie'],cookie)
+            self.assertEqual(app.radio(key='input_source').value,'example')
+            self.assertEqual(app.selectbox(key='example_id').value,'PsychENCODE_HIP')
+            self.assertTrue(app.button(key='run_inference').disabled)
+            self.assertIn('expression',app.title[0].value)
+            self.assertEqual(len(self.runner.started),1)
+            app.radio(key='input_source').set_value('upload').run()
+            # Streamlit removes widgets not rendered; language switches alone retain them.
+            app.text_input(key='sample_id').set_value('language_kept').run()
+            app.radio(key='ui_language').set_value('中文').run()
+            self.assertEqual(app.text_input(key='sample_id').value,'language_kept')
+
+    def test_startup_is_nonblocking_and_language_does_not_restart_it(self):
+        import threading
+        from startup_runtime import StartupManager
+        from streamlit.testing.v1 import AppTest
+        gate=threading.Event(); calls=[]
+        def build(report):
+            calls.append(1); report('r','synthetic R build'); gate.wait(10); return self.svc
+        manager=StartupManager(build); manager.start()
+        try:
+            with patch('cloud_service.get_startup',return_value=manager):
+                app=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=5)
+                self.assertEqual(len(app.exception),0)
+                self.assertFalse(app.get('file_uploader'))
+                self.assertIn('synthetic R build',app.code[0].value)
+                app.radio(key='ui_language').set_value('English').run(timeout=5)
+                self.assertEqual(len(calls),1)
+                self.assertTrue(any('Prepare R' in x.value for x in app.markdown))
+                gate.set(); eventually(lambda:manager.snapshot()['state']=='ready')
+                app.run(); self.assertTrue(app.get('file_uploader'))
+        finally: gate.set()
+
+    def test_startup_error_and_retry_are_visible(self):
+        from startup_runtime import StartupManager
+        from streamlit.testing.v1 import AppTest
+        calls=[]
+        def build(report):
+            calls.append(1)
+            if len(calls)==1: raise ValueError('synthetic CRAN download failure')
+            return self.svc
+        manager=StartupManager(build,retry_delay=0)
+        manager.start(); eventually(lambda:manager.snapshot()['state']=='failed')
+        with patch('cloud_service.get_startup',return_value=manager):
+            app=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=10)
+            self.assertTrue(app.error)
+            self.assertIn('synthetic CRAN',app.code[0].value)
+            # Allow the monotonic cooldown boundary to pass, then request one retry.
+            manager.finished-=1
+            app.run(); app.button(key='retry_startup').click().run()
+            eventually(lambda:manager.snapshot()['state']=='ready')
+            app.run()
+            self.assertEqual(len(app.exception),0)
+            self.assertTrue(app.get('file_uploader'))
+            self.assertEqual(len(calls),2)
+
+    def test_completed_results_and_download_labels_in_both_languages(self):
+        from streamlit.testing.v1 import AppTest
+        self.runner.run=lambda spec,data,timeout,cancel: dict(sample_id='synthetic',species='macaque',mode='fixture',
+            tiers={name:dict(classes=['A','B','C'],ranking=['A','B','C'],scores=[.6,.3,.1],
+                **({'members':[['A'],['B'],['C']]} if name=='Group' else {})) for name in ('Network','Group','Exact')})
+        with patch('cloud_service.get_startup',return_value=self.ready_manager()), \
+             patch.object(self.svc.backend,'result_csv',return_value='synthetic,csv\n'):
+            app=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=20)
+            app.radio(key='input_source').set_value('example').run()
+            app.button(key='run_inference').click().run()
+            eventually(lambda:next(iter(self.svc.store.jobs.values()))['status']=='succeeded')
+            app.run()
+            self.assertFalse(app.exception)
+            self.assertTrue(any('排名' in x.value for x in app.markdown))
+            app.radio(key='ui_language').set_value('English').run()
+            self.assertFalse(app.exception)
+            self.assertTrue(any('Candidate' in x.value and '0.6' in x.value for x in app.markdown))
+            self.assertEqual(app.button(key='after_success').label,'Prepare next job')
 
 
 if __name__=='__main__': unittest.main(verbosity=2)
