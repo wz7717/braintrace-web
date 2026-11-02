@@ -1,6 +1,6 @@
 # Data, code and component licences
 
-The source repository and server assets are separate delivery units. Only source and documentation are uploaded to the initially private wz7717/braintrace-web repository; runtime assets are not uploaded or publicly redistributed.
+The application source, documentation and `runtime_assets/` are included in the authorized private-repository synchronization to `wz7717/braintrace-web`. The source and runtime assets remain separate components and are both required to run the application. Uploading them to this private repository does not make them publicly available or grant public redistribution rights.
 Existing research-code MIT text is retained at ../licenses/BrainTrace_existing_MIT.txt for its covered portions.
 The supplied files do not establish a new blanket licence for all integration code, model arrays, reference matrices or inputs.
 The author must state the intended licence scope of additions when publishing; this local preparation does not invent that grant.
