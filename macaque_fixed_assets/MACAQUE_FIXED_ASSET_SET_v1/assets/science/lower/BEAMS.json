@@ -1,0 +1,346 @@
+[
+  {
+    "id": "beam_001",
+    "networks": [
+      "Cingulate gyrus",
+      "Frontal (agranular frontal motor areas)",
+      "Lateral Prefrontal Cortex"
+    ]
+  },
+  {
+    "id": "beam_002",
+    "networks": [
+      "Cingulate gyrus",
+      "Frontal (agranular frontal motor areas)",
+      "Orbitomedial Prefrontal Cortex (OMPFC)"
+    ]
+  },
+  {
+    "id": "beam_003",
+    "networks": [
+      "Cingulate gyrus",
+      "Frontal (agranular frontal motor areas)",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_004",
+    "networks": [
+      "Cingulate gyrus",
+      "Hippocampal formation",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_005",
+    "networks": [
+      "Cingulate gyrus",
+      "Hippocampal formation",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_006",
+    "networks": [
+      "Cingulate gyrus",
+      "Lateral Prefrontal Cortex",
+      "Orbitomedial Prefrontal Cortex (OMPFC)"
+    ]
+  },
+  {
+    "id": "beam_007",
+    "networks": [
+      "Cingulate gyrus",
+      "Lateral Prefrontal Cortex",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_008",
+    "networks": [
+      "Cingulate gyrus",
+      "Lateral Prefrontal Cortex",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_009",
+    "networks": [
+      "Cingulate gyrus",
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_010",
+    "networks": [
+      "Cingulate gyrus",
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_011",
+    "networks": [
+      "Cingulate gyrus",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_012",
+    "networks": [
+      "Cingulate gyrus",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_013",
+    "networks": [
+      "Cingulate gyrus",
+      "Parietal, and Parieto-occipital region",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_014",
+    "networks": [
+      "Frontal (agranular frontal motor areas)",
+      "Lateral Prefrontal Cortex",
+      "Orbitomedial Prefrontal Cortex (OMPFC)"
+    ]
+  },
+  {
+    "id": "beam_015",
+    "networks": [
+      "Frontal (agranular frontal motor areas)",
+      "Lateral Prefrontal Cortex",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_016",
+    "networks": [
+      "Frontal (agranular frontal motor areas)",
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_017",
+    "networks": [
+      "Frontal (agranular frontal motor areas)",
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_018",
+    "networks": [
+      "Frontal (agranular frontal motor areas)",
+      "Parietal, and Parieto-occipital region",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_019",
+    "networks": [
+      "Hippocampal formation",
+      "Lateral Prefrontal Cortex",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_020",
+    "networks": [
+      "Hippocampal formation",
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_021",
+    "networks": [
+      "Hippocampal formation",
+      "Occipital/Temporal",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_022",
+    "networks": [
+      "Hippocampal formation",
+      "Operculum/Insula",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_023",
+    "networks": [
+      "Hippocampal formation",
+      "Parietal, and Parieto-occipital region",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_024",
+    "networks": [
+      "Hippocampal formation",
+      "Subcortical",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_025",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_026",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_027",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_028",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_029",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Parietal, and Parieto-occipital region",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_030",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Parietal, and Parieto-occipital region",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_031",
+    "networks": [
+      "Occipital/Temporal",
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region"
+    ]
+  },
+  {
+    "id": "beam_032",
+    "networks": [
+      "Occipital/Temporal",
+      "Operculum/Insula",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_033",
+    "networks": [
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_034",
+    "networks": [
+      "Occipital/Temporal",
+      "Parietal, and Parieto-occipital region",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_035",
+    "networks": [
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region",
+      "Subcortical"
+    ]
+  },
+  {
+    "id": "beam_036",
+    "networks": [
+      "Operculum/Insula",
+      "Parietal, and Parieto-occipital region",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_037",
+    "networks": [
+      "Parietal, and Parieto-occipital region",
+      "Subcortical",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_038",
+    "networks": [
+      "Cingulate gyrus",
+      "Hippocampal formation",
+      "Occipital/Temporal"
+    ]
+  },
+  {
+    "id": "beam_039",
+    "networks": [
+      "Cingulate gyrus",
+      "Occipital/Temporal",
+      "Orbitomedial Prefrontal Cortex (OMPFC)"
+    ]
+  },
+  {
+    "id": "beam_040",
+    "networks": [
+      "Lateral Prefrontal Cortex",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_041",
+    "networks": [
+      "Occipital/Temporal",
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_042",
+    "networks": [
+      "Occipital/Temporal",
+      "Subcortical",
+      "Temporal"
+    ]
+  },
+  {
+    "id": "beam_043",
+    "networks": [
+      "Orbitomedial Prefrontal Cortex (OMPFC)",
+      "Parietal, and Parieto-occipital region",
+      "Temporal"
+    ]
+  }
+]

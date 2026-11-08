@@ -1,0 +1,2712 @@
+{
+  "schema": "braintrace.macaque_fixed_assets.public_source_and_notice.v1",
+  "public_notice_date": "2026-11-09",
+  "set_id": "MACAQUE_FIXED_ASSET_SET_v1",
+  "fixed_original_file_count": 98,
+  "fixed_original_bytes": 13900180,
+  "scope": {
+    "core_files": 96,
+    "original_contract_files": 2
+  },
+  "asset_edition": "20261101_43_beams_psychencode_v1",
+  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
+  "identity_basis": "Paths, sizes and SHA256 are inherited from accepted frozen identity records, not newly calculated in this preparation",
+  "licence_scope": {
+    "project_contributions_only": "CC-BY-NC-4.0",
+    "scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+    "standard_text": "notices/CC-BY-NC-4.0.txt",
+    "all_mixed_file_bytes_uniformly_relicensed": false,
+    "third_party_or_actual_provider_conditions_waived": false,
+    "facts_public_domain_unprotected_values_or_legal_exceptions_newly_restricted": false,
+    "compliant_noncommercial_adaptation_and_resharing_permitted": true,
+    "downstream_per_transfer_approval_required": false,
+    "compliant_grant_retroactively_revocable": false
+  },
+  "attribution": {
+    "project_contribution_licensor": "王震, only for project contributions owned or licensable by that person",
+    "sole_creator_or_third_party_rights_holder_claimed": false,
+    "attribution_rule": "Retain BrainTrace asset-set identity, actual supplied creator/source provenance and applicable upstream attribution; link the licence and mark modifications"
+  },
+  "logical_source_families": {
+    "Network_and_lower_reference_derivation": "Bo2023 processed-source derivation; PRJNA905082 is original raw acquisition background, not a byte-identical replacement",
+    "mapping": "Recorded Ensembl Compara91 strict one-to-one relationships, XSAnno common IDs and saved collision exclusions",
+    "public_ID_universe": "Sousa2017/PsychENCODE 26514-row common-annotation background; original-source terms/version limitations retained",
+    "references": "37 original plus six previously completed source-only reference pairs; no external expression/truth reference training"
+  },
+  "entries": [
+    {
+      "asset_id": "C06-genes.json",
+      "component_id": "C06",
+      "file_group": "C06_PRIMARY_NETWORK",
+      "path": "assets/science/macaque/floor_clip/genes.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/macaque/floor_clip/genes.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 70076,
+      "sha256_inherited": "50ebfabe16dcf36c7bb82045b889b7195d48594f164dcbf9db0171b54302f5a8",
+      "beam_id": null,
+      "project_contribution_scope": "精确5000-feature事实ID轴；纯ID和固定顺序不创设专有权，项目说明/组织仅在有权利且有权许可时处理",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; three exact source files remain excluded"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C06-model.joblib",
+      "component_id": "C06",
+      "file_group": "C06_PRIMARY_NETWORK",
+      "path": "assets/science/macaque/floor_clip/model.joblib",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/macaque/floor_clip/model.joblib",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 402503,
+      "sha256_inherited": "b8afe70bfba61d0007b097742ae86a28437556fab99e517c102f8edf9c44f4cc",
+      "beam_id": null,
+      "project_contribution_scope": "项目有权许可的模型/尺度/状态表达或组织贡献；无排他权统计值不新设权利限制",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; three exact source files remain excluded"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C06-scaler.joblib",
+      "component_id": "C06",
+      "file_group": "C06_PRIMARY_NETWORK",
+      "path": "assets/science/macaque/floor_clip/scaler.joblib",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/macaque/floor_clip/scaler.joblib",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 120615,
+      "sha256_inherited": "430a944a81b0ab2fb9ee233e23ab375ab189757c90947974c8759895520e2e7d",
+      "beam_id": null,
+      "project_contribution_scope": "项目有权许可的模型/尺度/状态表达或组织贡献；无排他权统计值不新设权利限制",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; three exact source files remain excluded"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C06-state.npz",
+      "component_id": "C06",
+      "file_group": "C06_PRIMARY_NETWORK",
+      "path": "assets/science/macaque/floor_clip/state.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/macaque/floor_clip/state.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 295809,
+      "sha256_inherited": "b6d1d2515bbbd1fc700459b53e2edafd29f421c6d69fbfa1886c443bce2a03a1",
+      "beam_id": null,
+      "project_contribution_scope": "项目有权许可的模型/尺度/状态表达或组织贡献；无排他权统计值不新设权利限制",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; three exact source files remain excluded"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-SHARED-BEAMS.json",
+      "component_id": "C09",
+      "file_group": "C09_SHARED_SUPPORT",
+      "path": "assets/science/lower/BEAMS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/BEAMS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 6674,
+      "sha256_inherited": "eb1b3e75dfa88984d780ca3531ce99903f9c775cb26d310183d07bc83d3da946",
+      "beam_id": null,
+      "project_contribution_scope": "项目可许可的组合/region-parent索引组织；标签、事实及原来源条件分别保留",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo source/raw-lower derivation and existing provider/source terms"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-SHARED-REGION_PARENT.json",
+      "component_id": "C09",
+      "file_group": "C09_SHARED_SUPPORT",
+      "path": "assets/science/lower/REGION_PARENT.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/REGION_PARENT.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 3819,
+      "sha256_inherited": "f7382f02aea949346ff152784843b7b0fabde7f9be09960d389a45ce0a33cb9a",
+      "beam_id": null,
+      "project_contribution_scope": "项目可许可的组合/region-parent索引组织；标签、事实及原来源条件分别保留",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo source/raw-lower derivation and existing provider/source terms"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-SHARED-SOURCE_RAW_MEAN.npy",
+      "component_id": "C09",
+      "file_group": "C09_SHARED_SUPPORT",
+      "path": "assets/science/lower/SOURCE_RAW_MEAN.npy",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/SOURCE_RAW_MEAN.npy",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 86800,
+      "sha256_inherited": "c8e2844324d0f939983819cdc289eb42f276085c7232f82d20f1823e640c53d9",
+      "beam_id": null,
+      "project_contribution_scope": "all819未加权raw ln(1+CPM)均值的项目导出/组织贡献（如可许可）；无排他权均值不新设权利",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo source/raw-lower derivation and existing provider/source terms"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-SHARED-genes.json",
+      "component_id": "C09",
+      "file_group": "C09_SHARED_SUPPORT",
+      "path": "assets/science/lower/genes.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/genes.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 338314,
+      "sha256_inherited": "5c05a156cd6c50612d0b1f0987a4b18560ec4f1111a76d89758fc2138791d57f",
+      "beam_id": null,
+      "project_contribution_scope": "精确21668-feature纯事实ID轴；不为事实ID创设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo source/raw-lower derivation and existing provider/source terms"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_001-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_001/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_001/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 24437,
+      "sha256_inherited": "a8bcbefc3758ef2994e891e817b8a182b86c393b72187960e864a8d8cad1d253",
+      "beam_id": "beam_001",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_001-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_001/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_001/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19404,
+      "sha256_inherited": "8b9ee3beec606bcfa87e68a39a2601ce85a4829abca306da58ad37dcb8faf196",
+      "beam_id": "beam_001",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_002-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_002/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_002/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 24415,
+      "sha256_inherited": "c07cf7c37296c56c95a8cdec26e5e7f8bbce3dfd0940b115a5d5b675beb29cee",
+      "beam_id": "beam_002",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_002-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_002/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_002/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19545,
+      "sha256_inherited": "530b9a271db8168bd5a4beb678a82c89a31079584472cb8c35d79a307bfcde5d",
+      "beam_id": "beam_002",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_003-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_003/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_003/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 22391,
+      "sha256_inherited": "ef27e947dd16e641069e7644ae4f4b587be7e80e4bd0f7cde50ac3c4b7260ef4",
+      "beam_id": "beam_003",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_003-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_003/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_003/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 18162,
+      "sha256_inherited": "47e00d50a9787a4ab62380fe6538fe47481d170d2f7d74301df9de31816fabf6",
+      "beam_id": "beam_003",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_004-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_004/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_004/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17985,
+      "sha256_inherited": "39fa999dffc6c3eb1d81f55ca713713ad4ff17ec2b92fe5b775c84c58253e73b",
+      "beam_id": "beam_004",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_004-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_004/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_004/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 14302,
+      "sha256_inherited": "2162722ee506aaa7d417e9e9212a7e79db2faca32f15006e2c5fdfe0c873db9e",
+      "beam_id": "beam_004",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_005-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_005/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_005/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17171,
+      "sha256_inherited": "16c19c446c70c67ba7949ec6b35e8490d1da64dcbf3a0398f74d79642034d8b5",
+      "beam_id": "beam_005",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_005-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_005/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_005/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 11018,
+      "sha256_inherited": "a3eef1f5bc260240dee9b81d5450059ac172a2efa41105033ba061ae4395f62c",
+      "beam_id": "beam_005",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_006-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_006/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_006/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 28687,
+      "sha256_inherited": "43728be9dcd7d468dd4b3b3fbc2634bf92cad6214131388035214cc720b541d5",
+      "beam_id": "beam_006",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_006-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_006/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_006/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23940,
+      "sha256_inherited": "007e6926db431e2b706ca77b624c82323bc73e5982a5be213cfe322d12d5ef6f",
+      "beam_id": "beam_006",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_007-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_007/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_007/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 26598,
+      "sha256_inherited": "9915f3c2d669f52436d5986a2bbfc2a5a034d0191a8c81240139d4255427afdb",
+      "beam_id": "beam_007",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_007-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_007/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_007/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 22462,
+      "sha256_inherited": "28e68869443f3acdf70d86178d4c7c3e70e4f64d8e12353066481cd60bb9ef8d",
+      "beam_id": "beam_007",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_008-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_008/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_008/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25677,
+      "sha256_inherited": "cd914550e1ffb7a5c15d3f4325a2faae2196c19242f6d0f85145dd9a6fc260ae",
+      "beam_id": "beam_008",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_008-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_008/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_008/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19807,
+      "sha256_inherited": "1bda13a56725213babdc1bfc3f519ec493b3e3597120d5303a92bda2e4a561fe",
+      "beam_id": "beam_008",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_009-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_009/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_009/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23706,
+      "sha256_inherited": "632e62a484269c74ef69e5e490d94ac0de0d18dfb58ad4aa64dbf927950ca3af",
+      "beam_id": "beam_009",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_009-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_009/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_009/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19370,
+      "sha256_inherited": "f2866c831c8f7fec98cb980bab64afd930bb775699447766ad5e2cc6fb289cb4",
+      "beam_id": "beam_009",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_010-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_010/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_010/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25051,
+      "sha256_inherited": "62512df918eb42ebf3265820a693f698435405fa2626bcc970e350403e2eb7f8",
+      "beam_id": "beam_010",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_010-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_010/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_010/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 20191,
+      "sha256_inherited": "de91aa7f11277a4d30b9dc4303a4f4253dfd21ffb32302ed09481f3588a8d2a5",
+      "beam_id": "beam_010",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_011-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_011/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_011/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 26492,
+      "sha256_inherited": "d88f6ff85aa9ba5d1c14caa64463c407ce3e11a822bdbf9827ee6814c1bd7551",
+      "beam_id": "beam_011",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_011-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_011/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_011/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 21929,
+      "sha256_inherited": "c0b99ae429dcfa50b0a2bffcb6da8bf958fd7700fad2685b4c1c6343570cca2f",
+      "beam_id": "beam_011",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_012-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_012/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_012/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25638,
+      "sha256_inherited": "6582d3d9e8b41dfe0a15985b36eb874bed21e78c850b75ee2de0f24ffc62ba5c",
+      "beam_id": "beam_012",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_012-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_012/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_012/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 20118,
+      "sha256_inherited": "0a6b2e9915488710893bc678bd158321239c18019842b777d1807f8b57cd7e2c",
+      "beam_id": "beam_012",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_013-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_013/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_013/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23493,
+      "sha256_inherited": "34a4a5d57d468779b7900ea54318d8c944060947d56e752105647e7b2b70605b",
+      "beam_id": "beam_013",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_013-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_013/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_013/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17951,
+      "sha256_inherited": "161281eadf7e79fecc308eba86759349a011db0e67e0152abf8765a70234dc45",
+      "beam_id": "beam_013",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_014-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_014/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_014/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 26666,
+      "sha256_inherited": "c9328401611f50bc2e5d4ab20734c4fd0c26fa07683cd441a7ee16d1b8ccf331",
+      "beam_id": "beam_014",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_014-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_014/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_014/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23201,
+      "sha256_inherited": "94f475df55c541c2b373384a130368507358ceca44f486c4bdd22376a2a02256",
+      "beam_id": "beam_014",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_015-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_015/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_015/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 24511,
+      "sha256_inherited": "bf83e0cd97e8ea0f37ae607b89654ed9caa0da154d3dcbd9459b4e6d05d904de",
+      "beam_id": "beam_015",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_015-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_015/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_015/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 21310,
+      "sha256_inherited": "df3efcd1e402131795c9c52dea8ce5a004e03255effb9a684420d5baab3155a4",
+      "beam_id": "beam_015",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_016-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_016/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_016/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 21648,
+      "sha256_inherited": "a0c085ba158b5e908b41ab6c9b1d72106618582493ceda0206a135995bda8296",
+      "beam_id": "beam_016",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_016-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_016/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_016/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17500,
+      "sha256_inherited": "61105a5773f6806341e25b4ecba6d5a454d0f45637e5e973bc94d10327628ac3",
+      "beam_id": "beam_016",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_017-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_017/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_017/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23110,
+      "sha256_inherited": "a66290740ed5c608ae7d4bb2f44707984f9e5c26f5dbff807be3ed50dac5e23c",
+      "beam_id": "beam_017",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_017-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_017/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_017/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 18689,
+      "sha256_inherited": "9e439d452de7199bf532c8c87944768f266077096476fc1823b073a8f04cb3a4",
+      "beam_id": "beam_017",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_018-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_018/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_018/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 34681,
+      "sha256_inherited": "63481d11a17676bf3d4c913599f8b5c3e17c4989b5104dac0073d979496171df",
+      "beam_id": "beam_018",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_018-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_018/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_018/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 29412,
+      "sha256_inherited": "b3f48140cb33ec09485a9f35250bd2196e99bd4ab7c60d32ea11b4eab62da740",
+      "beam_id": "beam_018",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_019-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_019/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_019/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19459,
+      "sha256_inherited": "9dc81e2da5860f729874d6ed510988b0a12f44e6e16b7b7a4b18c4ef942813cf",
+      "beam_id": "beam_019",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_019-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_019/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_019/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 14284,
+      "sha256_inherited": "7b5d93ac4b9c7a4a589e4bcc2f1c7a36625a2ca611d3f795f063268be3834790",
+      "beam_id": "beam_019",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_020-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_020/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_020/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17255,
+      "sha256_inherited": "d5518902b468ad0283bd2734ae30fd79cd532085b4e284c698516229657dcf5d",
+      "beam_id": "beam_020",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_020-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_020/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_020/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 14428,
+      "sha256_inherited": "e3f963fe320da646ce403f852793c9dafc8336eecd4dab7f2cc62b4b862d9285",
+      "beam_id": "beam_020",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_021-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_021/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_021/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 16471,
+      "sha256_inherited": "de66092ff88e04065c6818300517db2bbf675bd0a36583326b945a914f4c538b",
+      "beam_id": "beam_021",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_021-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_021/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_021/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 10859,
+      "sha256_inherited": "4360ebec8729a95d0814924d7920f149bd5c503dc7d18c21d80749c17bd2d4b6",
+      "beam_id": "beam_021",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_022-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_022/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_022/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17965,
+      "sha256_inherited": "bd5c9707af3c9a4425224697e14653606179563fc35003a75beefe8a00c1a75e",
+      "beam_id": "beam_022",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_022-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_022/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_022/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 12261,
+      "sha256_inherited": "49ce5a209962d94ea77fc8b751398ef98ee568aca8dfa7b4d783fca3633184b7",
+      "beam_id": "beam_022",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_023-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_023/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_023/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17330,
+      "sha256_inherited": "01d6f0647e7d08f157461772fe72159bceb10df0395439c0ae8182b5377ed1b3",
+      "beam_id": "beam_023",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_023-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_023/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_023/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 12553,
+      "sha256_inherited": "8e0c3151e1a09b05e03a9743f0f1132561911ecd0c2e497b4f7d51b7739d6d0c",
+      "beam_id": "beam_023",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_024-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_024/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_024/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 29409,
+      "sha256_inherited": "d2d9d4fd3c54d194fefc766d421f53e54cda011c66caef7ec7ae2a49198c854d",
+      "beam_id": "beam_024",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_024-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_024/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_024/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 22159,
+      "sha256_inherited": "c02abb977ca1b76aa06f7f12dc6255fe33732f909badcf7f7c6f42fbd8484756",
+      "beam_id": "beam_024",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_025-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_025/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_025/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25907,
+      "sha256_inherited": "5025723bf0f27904d5b974f42e4813254621ff1b1b1fcf651ab4238bf2aa6444",
+      "beam_id": "beam_025",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_025-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_025/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_025/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 22861,
+      "sha256_inherited": "7dfb828529398eb117c93a88581eebf6f4c40018dd3d3024774d7d3d93d94a01",
+      "beam_id": "beam_025",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_026-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_026/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_026/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 27335,
+      "sha256_inherited": "3ee345aab230482fe57ff00c8c1fc29f7eac7fca10a7b55d67c48852a8dbe6b1",
+      "beam_id": "beam_026",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_026-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_026/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_026/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23535,
+      "sha256_inherited": "b21fb67b6c123b7a240e2c6b10a55f718182bccec59cf718f911fd038a2215d5",
+      "beam_id": "beam_026",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_027-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_027/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_027/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 28828,
+      "sha256_inherited": "3961184fb7d86ad62af11d98e02c863d09e368cce770cacfc0ffa9fc003632ac",
+      "beam_id": "beam_027",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_027-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_027/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_027/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25484,
+      "sha256_inherited": "826ff4564543cc1b196b0dc1dbc23258248d7fafe559dc1b2446a7aec761779b",
+      "beam_id": "beam_027",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_028-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_028/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_028/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 27995,
+      "sha256_inherited": "a59b010b7794e9cb381b09fcdccafef62975e1487c88c5b5f22f6b5c861cf88b",
+      "beam_id": "beam_028",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_028-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_028/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_028/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 23204,
+      "sha256_inherited": "da488e78f3df96bf4288730d28a9e6f1bfe59c254120c7623fa9c2ff1228e97e",
+      "beam_id": "beam_028",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_029-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_029/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_029/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25909,
+      "sha256_inherited": "953b01fdf3779b5e26756b06ce882f69ac98a33754d222a4464bfbee49944ace",
+      "beam_id": "beam_029",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_029-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_029/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_029/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 21299,
+      "sha256_inherited": "0972dafd9b65455b9c093eecc076c08d8b2dc16c365907f208ce2e8c0d59d0af",
+      "beam_id": "beam_029",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_030-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_030/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_030/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 38859,
+      "sha256_inherited": "f062a05ff625444125fd3d1aa29f98f33314c8e0cf136218656cbc1758ff36a5",
+      "beam_id": "beam_030",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_030-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_030/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_030/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 33343,
+      "sha256_inherited": "4b15e6ead622c21d9acbb4d8baa40d7750812b079c818987081f5c56bb72ebb5",
+      "beam_id": "beam_030",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_031-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_031/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_031/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 24464,
+      "sha256_inherited": "c531db8f8a0b21444c40f85ff2816f4117105d32e0a2e6ca939c835874f51b99",
+      "beam_id": "beam_031",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_031-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_031/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_031/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 21441,
+      "sha256_inherited": "0157b7a5a183720d53ec656c0d0a9fceff31445d2c224c3fa5dd9229c5939a87",
+      "beam_id": "beam_031",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_032-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_032/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_032/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 36576,
+      "sha256_inherited": "f8943c13086f31504eb046afc8d4c636c86267ee8ec6e088c006e86c57424837",
+      "beam_id": "beam_032",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_032-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_032/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_032/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 29352,
+      "sha256_inherited": "78ec687169c62bebad8b203998158e217c03fbff93b9f045233b09d1c8070593",
+      "beam_id": "beam_032",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_033-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_033/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_033/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 22981,
+      "sha256_inherited": "b4eda9fbca0237b8bc6b97152680aec955439aaf31bda1e3703c18ec544a195c",
+      "beam_id": "beam_033",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_033-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_033/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_033/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17996,
+      "sha256_inherited": "4aa344c8921409778d73c861221ed880acd18d770aefbb0edd97a01dbae0d3be",
+      "beam_id": "beam_033",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_034-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_034/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_034/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 35911,
+      "sha256_inherited": "3d3151d9f62afc4bc4491778fde100c58d8f0c9d274c4658b2e9fd6da4c8e0dd",
+      "beam_id": "beam_034",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_034-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_034/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_034/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 28799,
+      "sha256_inherited": "9fc7265b90979350bc465a6333e8af273a8f93c5209445c2d13d680b56634956",
+      "beam_id": "beam_034",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_035-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_035/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_035/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 24471,
+      "sha256_inherited": "f4e6a17dc9ef087589175de0630ff904a6e0ae1cb861db9474d7f07606076e56",
+      "beam_id": "beam_035",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_035-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_035/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_035/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 19457,
+      "sha256_inherited": "a1f086f9e1fd85562528f124a87e1d4d283ecdc5d68bb4125ce1881687d1a919",
+      "beam_id": "beam_035",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_036-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_036/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_036/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 37458,
+      "sha256_inherited": "d29cfc10c0c87a998bff1b09213a6a5f96f34ea61a8e9a8fe2a44f0560345a7d",
+      "beam_id": "beam_036",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_036-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_036/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_036/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 32453,
+      "sha256_inherited": "73b470d901ecd7a3544cb7418fd80022add9606050f6980fdb49362e85868512",
+      "beam_id": "beam_036",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_037-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_037/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_037/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 35926,
+      "sha256_inherited": "b31b797cd743f0b0e53bd0639826398db2c6fcd326dde503db28ec1f00160f80",
+      "beam_id": "beam_037",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_037-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_037/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_037/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 28821,
+      "sha256_inherited": "333f1609d147f90a093dd2fe2715fddb0a14d3446abee9fcd9ca9e874cc74898",
+      "beam_id": "beam_037",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_038-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_038/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_038/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 17171,
+      "sha256_inherited": "cc8a7237241675db391429b80f5610d449d814fde5c1f8518b504e94e7724049",
+      "beam_id": "beam_038",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_038-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_038/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_038/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 12723,
+      "sha256_inherited": "5c836f1ab2afc7613ef428a570f3f9683be5492efd707e126f9cc98890427424",
+      "beam_id": "beam_038",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_039-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_039/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_039/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 25691,
+      "sha256_inherited": "d1bfbb26d3364906421193f477ed957114ee73431778e72699cdf0db12db838b",
+      "beam_id": "beam_039",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_039-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_039/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_039/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 20843,
+      "sha256_inherited": "b84b115215be7524ca164b8115c2939900167795c8216422ec70e3468d12e238",
+      "beam_id": "beam_039",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_040-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_040/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_040/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 41027,
+      "sha256_inherited": "2802b5a5514653651024ff00c6b49eaaec53a0d248d19357339c9e10ffde62ed",
+      "beam_id": "beam_040",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_040-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_040/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_040/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 35660,
+      "sha256_inherited": "f5e55ebdbb7333bf5cf57b4ff299ca901c5f2ad485186a63351ae37b7ab10936",
+      "beam_id": "beam_040",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_041-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_041/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_041/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 37945,
+      "sha256_inherited": "1aafa8e0917b61af9480ddff4b20c65491cd74127c77856572b9a3397510e4f8",
+      "beam_id": "beam_041",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_041-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_041/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_041/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 31412,
+      "sha256_inherited": "0b14c6049004990061b7fe44cfc1e67648c37eea6c687bdfeac0e7dad00e7346",
+      "beam_id": "beam_041",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_042-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_042/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_042/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 35058,
+      "sha256_inherited": "1b0d554d5bb95b4b32bc6b5d3987bc2eb9dc0c9f5187177d28a69a59c8d51780",
+      "beam_id": "beam_042",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_042-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_042/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_042/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 26502,
+      "sha256_inherited": "6de53e6595a4cbfce704b88c7bf9765cba57900e7b7a05bf2493c8d8e56920d8",
+      "beam_id": "beam_042",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_043-INPUT.npz",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_043/INPUT.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_043/INPUT.npz",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 38779,
+      "sha256_inherited": "1b653a6c3449b769f009ca74ed9f7df03852bf7f6ce4812e60fcaf0f87a26281",
+      "beam_id": "beam_043",
+      "project_contribution_scope": "项目可许可的source-only参考导出/组织贡献；统计数值或受原提供条件约束的内容分别判断",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "C09-beam_043-RULES_AND_MEMBERS.json",
+      "component_id": "C09",
+      "file_group": "C09_REFERENCE_PAIR",
+      "path": "assets/science/lower/beams/beam_043/RULES_AND_MEMBERS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/beams/beam_043/RULES_AND_MEMBERS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 32854,
+      "sha256_inherited": "6f2364f95f921b75987a65c6df1005a71b0108c740ef426c3c1edf16f19b3491",
+      "beam_id": "beam_043",
+      "project_contribution_scope": "项目可许可的规则/组合/成员组织与说明；原region事实、训练行身份及无排他权统计值不增设专有权",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Bo processed-count derivation and existing provider/source terms; no PsychENCODE external expression/truth used to build these references"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": true,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "PSY-MAP-01",
+      "component_id": "C10",
+      "file_group": "PSYCHENCODE_FROZEN_MAPPING",
+      "path": "assets/science/lower/mappings/PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/lower/mappings/PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 9931393,
+      "sha256_inherited": "b049482c3e6c681894565bd5904fbf153b669393a75bbc44a455620319d3acea",
+      "beam_id": null,
+      "project_contribution_scope": "strict correspondence的项目选择/组合及collision-exclusion组织贡献；Ensembl/XSAnno原注释与事实ID不重许可",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Ensembl91 generated data positive terms with third-party exceptions",
+        "XSAnno software GPLv3 is a distinct object, not an automatic licence for this mapping",
+        "2014 article/data terms cover only the actual supplied material, not automatically 2017 common count/annotation",
+        "MF-L3 source/version-specific provenance limit retained"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "PSY-AXIS-02",
+      "component_id": "C10",
+      "file_group": "PSYCHENCODE_PUBLIC_ROW_AXIS",
+      "path": "assets/science/macaque/psychencode/PUBLIC_GENE_IDS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/macaque/psychencode/PUBLIC_GENE_IDS.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 556797,
+      "sha256_inherited": "e31c5be4b99cbed52bd4cff594515bda013b879612e399539e58e0a1a6b9b237",
+      "beam_id": null,
+      "project_contribution_scope": "精确26514-row事实ID轴和原顺序；纯事实不新增权利限制，项目表达/组织仅在存在可许可权利时处理",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Underlying common-annotation provenance/attribution and applicable original terms",
+        "MF-L3 does not force full source count delivery for prepared-compatible input"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "PSY-CONTRACT-META",
+      "component_id": "ASSOCIATED_CONTRACT_METADATA",
+      "file_group": "TWO_ATTACHED_ORIGINAL_CONTRACT_FILES",
+      "path": "assets/metadata/SCHEME.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "metadata/SCHEME.json",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 1430,
+      "sha256_inherited": "eae5e66b9cfabf5d67fa466000043c8c67fb0406eb31f42b8d49c6021d984285",
+      "beam_id": null,
+      "project_contribution_scope": "项目有权许可的文字和组织贡献；事实字段、第三方内容及引用对象不因随包而转成项目权利",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Original referenced data/source terms remain separate; references do not copy or license the referenced payloads/code"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "asset_id": "PSY-INPUT-DOC",
+      "component_id": "ASSOCIATED_CONTRACT_METADATA",
+      "file_group": "TWO_ATTACHED_ORIGINAL_CONTRACT_FILES",
+      "path": "assets/docs/PSYCHENCODE_INPUT.md",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "docs/PSYCHENCODE_INPUT.md",
+        "asset_edition": "20261101_43_beams_psychencode_v1"
+      },
+      "bytes_inherited": 4519,
+      "sha256_inherited": "0268da7d54895441fc96015b6983a4a75c8b33099fca6181443ced52246d6488",
+      "beam_id": null,
+      "project_contribution_scope": "项目有权许可的文字和组织贡献；事实字段、第三方内容及引用对象不因随包而转成项目权利",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "third_party_original_conditions_not_relicensed": [
+        "Original referenced data/source terms remain separate; references do not copy or license the referenced payloads/code"
+      ],
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "original_member_and_identity_metadata_preserved": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "third_party_notice": "notices/THIRD_PARTY_NOTICES.md"
+    }
+  ],
+  "beam43_pair_index": [
+    {
+      "beam_id": "beam_001",
+      "files": [
+        "assets/science/lower/beams/beam_001/INPUT.npz",
+        "assets/science/lower/beams/beam_001/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_002",
+      "files": [
+        "assets/science/lower/beams/beam_002/INPUT.npz",
+        "assets/science/lower/beams/beam_002/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_003",
+      "files": [
+        "assets/science/lower/beams/beam_003/INPUT.npz",
+        "assets/science/lower/beams/beam_003/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_004",
+      "files": [
+        "assets/science/lower/beams/beam_004/INPUT.npz",
+        "assets/science/lower/beams/beam_004/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_005",
+      "files": [
+        "assets/science/lower/beams/beam_005/INPUT.npz",
+        "assets/science/lower/beams/beam_005/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_006",
+      "files": [
+        "assets/science/lower/beams/beam_006/INPUT.npz",
+        "assets/science/lower/beams/beam_006/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_007",
+      "files": [
+        "assets/science/lower/beams/beam_007/INPUT.npz",
+        "assets/science/lower/beams/beam_007/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_008",
+      "files": [
+        "assets/science/lower/beams/beam_008/INPUT.npz",
+        "assets/science/lower/beams/beam_008/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_009",
+      "files": [
+        "assets/science/lower/beams/beam_009/INPUT.npz",
+        "assets/science/lower/beams/beam_009/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_010",
+      "files": [
+        "assets/science/lower/beams/beam_010/INPUT.npz",
+        "assets/science/lower/beams/beam_010/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_011",
+      "files": [
+        "assets/science/lower/beams/beam_011/INPUT.npz",
+        "assets/science/lower/beams/beam_011/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_012",
+      "files": [
+        "assets/science/lower/beams/beam_012/INPUT.npz",
+        "assets/science/lower/beams/beam_012/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_013",
+      "files": [
+        "assets/science/lower/beams/beam_013/INPUT.npz",
+        "assets/science/lower/beams/beam_013/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_014",
+      "files": [
+        "assets/science/lower/beams/beam_014/INPUT.npz",
+        "assets/science/lower/beams/beam_014/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_015",
+      "files": [
+        "assets/science/lower/beams/beam_015/INPUT.npz",
+        "assets/science/lower/beams/beam_015/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_016",
+      "files": [
+        "assets/science/lower/beams/beam_016/INPUT.npz",
+        "assets/science/lower/beams/beam_016/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_017",
+      "files": [
+        "assets/science/lower/beams/beam_017/INPUT.npz",
+        "assets/science/lower/beams/beam_017/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_018",
+      "files": [
+        "assets/science/lower/beams/beam_018/INPUT.npz",
+        "assets/science/lower/beams/beam_018/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_019",
+      "files": [
+        "assets/science/lower/beams/beam_019/INPUT.npz",
+        "assets/science/lower/beams/beam_019/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_020",
+      "files": [
+        "assets/science/lower/beams/beam_020/INPUT.npz",
+        "assets/science/lower/beams/beam_020/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_021",
+      "files": [
+        "assets/science/lower/beams/beam_021/INPUT.npz",
+        "assets/science/lower/beams/beam_021/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_022",
+      "files": [
+        "assets/science/lower/beams/beam_022/INPUT.npz",
+        "assets/science/lower/beams/beam_022/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_023",
+      "files": [
+        "assets/science/lower/beams/beam_023/INPUT.npz",
+        "assets/science/lower/beams/beam_023/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_024",
+      "files": [
+        "assets/science/lower/beams/beam_024/INPUT.npz",
+        "assets/science/lower/beams/beam_024/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_025",
+      "files": [
+        "assets/science/lower/beams/beam_025/INPUT.npz",
+        "assets/science/lower/beams/beam_025/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_026",
+      "files": [
+        "assets/science/lower/beams/beam_026/INPUT.npz",
+        "assets/science/lower/beams/beam_026/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_027",
+      "files": [
+        "assets/science/lower/beams/beam_027/INPUT.npz",
+        "assets/science/lower/beams/beam_027/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_028",
+      "files": [
+        "assets/science/lower/beams/beam_028/INPUT.npz",
+        "assets/science/lower/beams/beam_028/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_029",
+      "files": [
+        "assets/science/lower/beams/beam_029/INPUT.npz",
+        "assets/science/lower/beams/beam_029/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_030",
+      "files": [
+        "assets/science/lower/beams/beam_030/INPUT.npz",
+        "assets/science/lower/beams/beam_030/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_031",
+      "files": [
+        "assets/science/lower/beams/beam_031/INPUT.npz",
+        "assets/science/lower/beams/beam_031/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_032",
+      "files": [
+        "assets/science/lower/beams/beam_032/INPUT.npz",
+        "assets/science/lower/beams/beam_032/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_033",
+      "files": [
+        "assets/science/lower/beams/beam_033/INPUT.npz",
+        "assets/science/lower/beams/beam_033/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_034",
+      "files": [
+        "assets/science/lower/beams/beam_034/INPUT.npz",
+        "assets/science/lower/beams/beam_034/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_035",
+      "files": [
+        "assets/science/lower/beams/beam_035/INPUT.npz",
+        "assets/science/lower/beams/beam_035/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_036",
+      "files": [
+        "assets/science/lower/beams/beam_036/INPUT.npz",
+        "assets/science/lower/beams/beam_036/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_037",
+      "files": [
+        "assets/science/lower/beams/beam_037/INPUT.npz",
+        "assets/science/lower/beams/beam_037/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_038",
+      "files": [
+        "assets/science/lower/beams/beam_038/INPUT.npz",
+        "assets/science/lower/beams/beam_038/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_039",
+      "files": [
+        "assets/science/lower/beams/beam_039/INPUT.npz",
+        "assets/science/lower/beams/beam_039/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_040",
+      "files": [
+        "assets/science/lower/beams/beam_040/INPUT.npz",
+        "assets/science/lower/beams/beam_040/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_041",
+      "files": [
+        "assets/science/lower/beams/beam_041/INPUT.npz",
+        "assets/science/lower/beams/beam_041/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_042",
+      "files": [
+        "assets/science/lower/beams/beam_042/INPUT.npz",
+        "assets/science/lower/beams/beam_042/RULES_AND_MEMBERS.json"
+      ]
+    },
+    {
+      "beam_id": "beam_043",
+      "files": [
+        "assets/science/lower/beams/beam_043/INPUT.npz",
+        "assets/science/lower/beams/beam_043/RULES_AND_MEMBERS.json"
+      ]
+    }
+  ],
+  "notices": {
+    "project": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+    "CC": "notices/CC-BY-NC-4.0.txt",
+    "third_party": "notices/THIRD_PARTY_NOTICES.md",
+    "Bo_NCBI": "notices/BO_SOURCE_SCOPE_AND_NCBI_POLICY.md",
+    "Ensembl": "notices/ENSEMBL_DATA_TERMS_AND_ATTRIBUTION.md",
+    "XSAnno": "notices/XSANNO_SOURCE_AND_TERMS.md",
+    "PsychENCODE": "notices/PSYCHENCODE_SOURCE_LIMITS.md",
+    "standard_sources": "notices/STANDARD_LICENSE_SOURCES.json"
+  },
+  "original_member_identity_and_historical_metadata_preserved": true,
+  "excluded_original_Bo_processed_source_files": true,
+  "included_code_or_environment": false,
+  "standalone_runnable_environment": false,
+  "complete_paper_reproduction_package": false
+}

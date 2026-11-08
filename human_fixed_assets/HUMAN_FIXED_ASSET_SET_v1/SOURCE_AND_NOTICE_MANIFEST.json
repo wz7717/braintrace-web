@@ -1,0 +1,230 @@
+{
+  "schema": "braintrace.human_fixed_assets.public_source_and_notice.v1",
+  "public_notice_date": "2026-11-09",
+  "set_id": "HUMAN_FIXED_ASSET_SET_v1",
+  "fixed_original_file_count": 9,
+  "fixed_original_bytes": 25630479,
+  "scope": {
+    "non_code_assets": 8,
+    "original_binding_metadata": 1
+  },
+  "identity_basis": "Paths, sizes and SHA256 are inherited from accepted frozen identity records, not newly calculated in this preparation",
+  "licence_scope": {
+    "project_contributions_only": "CC-BY-NC-4.0",
+    "scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+    "standard_text": "notices/CC-BY-NC-4.0.txt",
+    "all_mixed_file_bytes_uniformly_relicensed": false,
+    "third_party_or_actual_provider_conditions_waived": false,
+    "facts_public_domain_unprotected_values_or_legal_exceptions_newly_restricted": false,
+    "compliant_noncommercial_adaptation_and_resharing_permitted": true,
+    "downstream_per_transfer_approval_required": false,
+    "compliant_grant_retroactively_revocable": false
+  },
+  "attribution": {
+    "project_contribution_licensor": "王震, only for project contributions owned or licensable by that person",
+    "sole_creator_or_third_party_rights_holder_claimed": false,
+    "attribution_rule": "Retain BrainTrace asset-set identity, actual supplied creator/source provenance and applicable upstream attribution; link the licence and mark modifications"
+  },
+  "logical_source_families": {
+    "UKBEC_GEO": [
+      "GSE46706",
+      "GSE60862"
+    ],
+    "annotation_pd": "pd.huex.1.0.st.v2 3.14.1 / Artistic-2.0",
+    "annotation_MPS": "GSE46706_Core_adapted_from_netaffyx31.txt.gz",
+    "annotation_GPL": "GPL5175 full table / NetAffx build32",
+    "annotation_AHBA": "Six Probes.csv static Entrez sources; original official-release authentication remains UNVERIFIED as disclosed, not a new permission prohibition"
+  },
+  "entries": [
+    {
+      "asset_id": "HUMAN-01",
+      "role": "raw_model",
+      "path": "assets/science/human/models/final_RAW_FIXED.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/models/final_RAW_FIXED.npz"
+      },
+      "bytes_inherited": 227656,
+      "sha256_inherited": "87afef7a982720cd4bfe3a35e55acc7f6c2edef87a306b68b0362ec0d8894405",
+      "project_contribution_scope": "项目自有可许可的固定分类器贡献；统计数值本身无权利时不创设权利",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/NCBI_GEO_SOURCE_POLICY.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-02",
+      "role": "rank_model",
+      "path": "assets/science/human/models/final_RANK_FIXED.npz",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/models/final_RANK_FIXED.npz"
+      },
+      "bytes_inherited": 227621,
+      "sha256_inherited": "989b0c9342e300f37e3a94434a2b16d6b3caf79222eb692a9a8d4199d3a750ee",
+      "project_contribution_scope": "项目自有可许可的固定分类器贡献；统计数值本身无权利时不创设权利",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/NCBI_GEO_SOURCE_POLICY.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-03",
+      "role": "reference",
+      "path": "assets/science/human/reference/FROZEN_REFERENCE.rds",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/reference/FROZEN_REFERENCE.rds"
+      },
+      "bytes_inherited": 16276404,
+      "sha256_inherited": "c403c348911c3a0814ee811af155120a8a562d880dda59347beaacbd539baf48",
+      "project_contribution_scope": "项目自有可许可的frozen PLM统计/表达贡献；上游内容不转许可",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/NCBI_GEO_SOURCE_POLICY.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-04",
+      "role": "annotation",
+      "path": "assets/science/human/reference/FIXED_ANNOTATION.rds",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/reference/FIXED_ANNOTATION.rds"
+      },
+      "bytes_inherited": 8586025,
+      "sha256_inherited": "ea27c9ebb7b65e5cfd657113a3871d39311f7309363f1f9de55135e0178c5927",
+      "project_contribution_scope": "项目可许可的组合/组织贡献；pd/GEO/Allen原内容单列原条款",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md",
+        "notices/Artistic-2.0.txt",
+        "notices/ALLEN_CITATION_AND_FREEDOM_TO_INNOVATE.md",
+        "notices/NCBI_GEO_SOURCE_POLICY.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-05",
+      "role": "gene_ids",
+      "path": "assets/science/human/reference/GENE_IDS.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/reference/GENE_IDS.json"
+      },
+      "bytes_inherited": 193825,
+      "sha256_inherited": "6ba4d15e42f8874d835ec41eb47bec9169139f913e0cbd7b48a65facbd3b8052",
+      "project_contribution_scope": "纯事实ID与字典序不增设专有权或额外使用限制；精确版本说明另保留",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md",
+        "notices/Artistic-2.0.txt",
+        "notices/ALLEN_CITATION_AND_FREEDOM_TO_INNOVATE.md",
+        "notices/NCBI_GEO_SOURCE_POLICY.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-06",
+      "role": "protocol",
+      "path": "assets/science/human/protocol/PROTOCOL.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/protocol/PROTOCOL.json"
+      },
+      "bytes_inherited": 9280,
+      "sha256_inherited": "d2e12948fdf66f31ce4946a93d59735c7e33cfa6ac0350cbcb3c17237410ec78",
+      "project_contribution_scope": "仅项目自有可许可的文字/组织贡献；事实、历史路径及第三方原权利不被据为专有",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-07",
+      "role": "upstream_state",
+      "path": "assets/science/human/reference/FROZEN_UPSTREAM_STATE_INDEX.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/reference/FROZEN_UPSTREAM_STATE_INDEX.json"
+      },
+      "bytes_inherited": 73200,
+      "sha256_inherited": "39d6c410502c34395bc0a49300204ccfea5a004952fba594bee7200b9265d95a",
+      "project_contribution_scope": "仅项目自有可许可的文字/组织贡献；事实、历史路径及第三方原权利不被据为专有",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-08",
+      "role": "upstream_receipt",
+      "path": "assets/science/human/reference/UPSTREAM_GENE_EXPORT.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/reference/UPSTREAM_GENE_EXPORT.json"
+      },
+      "bytes_inherited": 32817,
+      "sha256_inherited": "c54ca3e8e863d26d688c25617362e762f090725c3f2ccaf4fc6c6ed3418fa6e0",
+      "project_contribution_scope": "仅项目自有可许可的文字/组织贡献；事实、历史路径及第三方原权利不被据为专有",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "asset_id": "HUMAN-BINDING-09",
+      "role": "prediction_bundle_manifest",
+      "path": "assets/science/human/PREDICTION_BUNDLE.json",
+      "logical_origin": {
+        "recorded_bundle": "BrainTrace_Review_Delivery_20261102",
+        "runtime_relative_path": "science/human/PREDICTION_BUNDLE.json"
+      },
+      "bytes_inherited": 3651,
+      "sha256_inherited": "c5f040f3a78923a5c8ab60d331a262d60ecd472b52c0138d649554ac32e28b56",
+      "project_contribution_scope": "仅项目自有可许可的文字/组织贡献；事实、历史路径及第三方原权利不被据为专有",
+      "project_contribution_licence": "CC-BY-NC-4.0 only for project contributions the licensor owns or has authority to license",
+      "whole_mixed_file_uniformly_relicensed": false,
+      "pure_facts_or_unprotected_values_newly_restricted": false,
+      "project_scope_notice": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+      "applicable_source_notices": [
+        "notices/THIRD_PARTY_NOTICES.md"
+      ]
+    }
+  ],
+  "notices": {
+    "project": "notices/PROJECT_CONTRIBUTION_TERMS.txt",
+    "CC": "notices/CC-BY-NC-4.0.txt",
+    "Artistic": "notices/Artistic-2.0.txt",
+    "third_party": "notices/THIRD_PARTY_NOTICES.md",
+    "GEO": "notices/NCBI_GEO_SOURCE_POLICY.md",
+    "Allen": "notices/ALLEN_CITATION_AND_FREEDOM_TO_INNOVATE.md",
+    "standard_sources": "notices/STANDARD_LICENSE_SOURCES.json"
+  },
+  "original_internal_metadata_and_historical_paths_preserved": true,
+  "included_code_or_environment": false,
+  "standalone_runnable_environment": false,
+  "complete_paper_reproduction_package": false
+}
