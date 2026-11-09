@@ -1,0 +1,21 @@
+{
+  "source_accession": "GSM755211",
+  "platform": "GPL5175",
+  "parent_series": [
+    "GSE30453",
+    "GSE30483"
+  ],
+  "official_source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211",
+  "supplementary_file_name": "GSM755211.CEL.gz",
+  "future_runtime_assets_relative_placement": "runtime_assets/examples/human/GSM755211.CEL.gz",
+  "assembled_relative_placement": "examples/human/GSM755211.CEL.gz",
+  "prior_source_record": {
+    "file": "BrainTrace_R8_Batch10_Delivery_20261107/BrainTrace_Review_Delivery_20261102/MANIFEST.json",
+    "expected_bytes": 25670945,
+    "recorded_sha256": "de8bb50b6c59c1fcd05fa8771aead7a30bed43cde0a4a75105a0eee60ae8a153"
+  },
+  "recorded_ca445_git_blob_id": "3ea589a34fe6d1aa20b973e9181afb09c22207cd",
+  "bundled_in_this_candidate": false,
+  "retrieved_in_this_task": false,
+  "treatment": "Original GEO item. Obtain from its origin under applicable conditions and retain the exact filename and identity. It is a prerequisite for the human live example."
+}

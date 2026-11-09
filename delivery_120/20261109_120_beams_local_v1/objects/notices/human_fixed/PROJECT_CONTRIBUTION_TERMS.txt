@@ -1,0 +1,21 @@
+BrainTrace HUMAN_FIXED_ASSET_SET_v1 — project contribution terms
+Public scope notice prepared 2026-11-09.
+
+EXACT INITIAL SET
+The initial set consists of the nine files individually listed in ../SOURCE_AND_NOTICE_MANIFEST.json: two final classifiers, the frozen PLM reference, combined annotation, fixed gene axis, protocol, two provenance/export records, and the original prediction-bundle binding metadata. The final binding file does not include or license its referenced code roles.
+
+PROJECT CONTRIBUTION LICENCE
+Only copyrightable or otherwise licensable project contributions that 王震 owns or has authority to license are offered under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0):
+https://creativecommons.org/licenses/by-nc/4.0/
+The complete unchanged standard text is supplied as CC-BY-NC-4.0.txt. This scope notice does not amend that licence or relicense all bytes of a mixed file.
+
+ATTRIBUTION AND DOWNSTREAM RIGHTS
+Identify the relevant BrainTrace asset-set version and its project contributions, retain the creator and source attribution supplied in the manifest and original provenance, link CC BY-NC 4.0, and indicate modifications. The project licensor is not asserted to be the sole creator of all material or a holder of third-party rights. No endorsement by creators or upstream providers is implied.
+Under the standard terms, recipients may copy, adapt and share the licensed project contributions for noncommercial purposes. No additional designated-reviewer restriction, per-transfer approval, expiry deletion duty or retrospective revocation is imposed. Stopping future hosting does not revoke compliant CC rights already granted or upstream rights. Lawful adaptations need not keep the original filenames or format, but must not be represented as the unchanged frozen version.
+
+FACTS, EXCEPTIONS AND THIRD-PARTY CONTENT
+No new exclusive right or restriction is claimed over factual IDs, public-domain material, unprotected facts or statistical values, or uses allowed by legal exceptions. Third-party data, annotations, design information, software, trademarks and any actually applicable original provider conditions retain their separate scope. Read THIRD_PARTY_NOTICES.md and the source-specific notices. A project contribution licence does not replace those rights or invent absent upstream conditions.
+
+HUMAN SOURCE BOUNDARIES
+FIXED_ANNOTATION.rds is a combined export, not a standard pd.huex.1.0.st.v2 distribution. Covered pd portions retain applicable Artistic-2.0 conditions, and protected Allen-derived content retains Allen terms, citation and Freedom to Innovate conditions. The mixed RDS is not labelled wholly CC BY-NC.
+This set excludes raw CELs, training expression, full annotation-source packages, implementation code, libraries and environments. It is not a complete runnable human-inference environment or a complete paper-reproduction package. Other asset and code licences retain their own separate scope.

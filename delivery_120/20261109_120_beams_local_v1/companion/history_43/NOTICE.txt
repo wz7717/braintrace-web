@@ -1,0 +1,12 @@
+BrainTrace scoped web candidate. Licence and provenance notice
+
+Copyright (c) 2026 王震, for the applicable MIT-licensed project contributions.
+The exact path schedule and the prior source identities are in CANDIDATE_MANIFEST.json.
+
+The previously approved web software is supplied under its existing scoped MIT terms. The author confirmed MIT for their eligible project contributions in the 13 listed configuration and documentation objects. The author confirmed CC BY-NC 4.0 for their eligible project contributions in the seven listed mapping and example-derived objects. The respective full terms are in licenses/.
+
+The retained human and macaque fixed assets follow their prior specific sharing decisions and provenance terms. The PsychENCODE input guide derives from the previously approved same-object guide. Its wording has been adjusted for this candidate's example boundary. The original guide and applicable statements are retained under notices/macaque_fixed/.
+
+Original third-party notices, data-source attributions, and prior scoped licence texts accompany this candidate in notices/. The earlier web notices retain their historical version context. Source data, third-party rights, factual identifiers, public domain material and applicable exceptions retain their own status. The two GEO mappings and GEO prepared examples follow their respective Ensembl, EMBL-EBI, GEO and documented project sources. Keep the corresponding notice, attribution and applicable changes information with a distributed copy.
+
+The human original CEL follows the GEO-origin arrangement in GEO_CEL_SOURCE.json. The external acquisition register is maintained separately from this local candidate. The AMY and HIP built-in example inputs, prepared copies and saved results remain local to the original research/development materials. This candidate retains the PsychENCODE user-upload input contract and approved fixed mapping/ID axis.

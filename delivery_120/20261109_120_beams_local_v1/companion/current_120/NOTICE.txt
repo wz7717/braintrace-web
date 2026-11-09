@@ -1,0 +1,13 @@
+BrainTrace 120-reference increment
+
+Copyright (c) 2026 王震 for the applicable MIT-licensed project contributions.
+
+PATH_SCOPE_AND_PROVENANCE_20261109.json identifies the 164 payload files and the applicable terms for eligible project-owned contributions.
+
+Creative Commons Attribution-NonCommercial 4.0 International applies to the eligible project-owned contributions in the 155 listed reference and index files. MIT applies to the eligible new or revised project-owned contributions in the nine listed source, version-binding, and documentation files. The full license texts are in licenses/.
+
+The 77 added references were converted from historical frozen Bo2023-derived regional reference assets. Preserve the source attribution and applicable source terms. The frozen rules retain training row indices. The private training roster, per-specimen expression, full conversion sources, and the three author-supplied processed Bo originals are outside this candidate. Third-party material, factual identifiers, public-domain material, and applicable exceptions retain their existing status. The prior fixed-asset and example decisions retain their original file scopes.
+
+Preserved notices under preserved_notices/previous_local_candidate/ are exact copies with their original version context. The prior NOTICE refers to its original 43-reference baseline and its original manifest. This notice and the current path schedule bind the approved increment to 20261109_120_beams_local_v1. The conversion-stage statements within copied files retain their historical context.
+
+This candidate is prepared for local review. Provider publication and external acquisition of the exact 120-reference edition are tracked separately.

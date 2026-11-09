@@ -1,0 +1,18 @@
+[
+  {
+    "id": "GSE128537",
+    "sample_id": "10_10",
+    "mapping_version": "GSE128537_Ensembl91_existing_20261101",
+    "input": "examples/three_tier/GSE128537/SINGLE_SAMPLE.npz",
+    "saved_row": "examples/three_tier/GSE128537/SAVED_ROW.json",
+    "fine_endpoint": "secondary_ambiguous"
+  },
+  {
+    "id": "GSE179328",
+    "sample_id": "LID_100660",
+    "mapping_version": "GSE179328_Ensembl101_existing_20261101",
+    "input": "examples/three_tier/GSE179328/SINGLE_SAMPLE.npz",
+    "saved_row": "examples/three_tier/GSE179328/SAVED_ROW.json",
+    "fine_endpoint": "primary_unique"
+  }
+]

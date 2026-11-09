@@ -1,0 +1,1189 @@
+{
+  "scope": "Only the approved incremental payload. Full candidate identity and external delivery tracked separately.",
+  "asset_edition": "20261109_120_beams_local_v1",
+  "scientific_scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
+  "prior_fixed_asset_terms_and_third_party_rights_unchanged": true,
+  "project_contribution_counts": {
+    "CC BY-NC 4.0": 155,
+    "MIT": 9
+  },
+  "payload_files": [
+    {
+      "path": "README_CANDIDATE_CN.txt",
+      "group": "revised_document",
+      "bytes": 1699,
+      "sha256": "772f7278e7e0b72eb74c0a3f3e1664378662d3f87b395eac9580dc2343889d4a",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "demo_backend.py",
+      "group": "revised_source",
+      "bytes": 13128,
+      "sha256": "75eb010a6191ca6c4d5b70cea9cdddff3067f039058866a5958cdb61d1190619",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "group": "revised_document",
+      "bytes": 11337,
+      "sha256": "bad2c90fac177c686ec754c0c0437b146c380cf8b0038111277021f6b9fc01be",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "docs/DATA_AND_LICENSES.md",
+      "group": "revised_document",
+      "bytes": 2412,
+      "sha256": "6995ff28215f85f9025af424cf10701fbe7f4994cdd16547d743f3200e01d15f",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "docs/MODEL_CARD.md",
+      "group": "revised_document",
+      "bytes": 4590,
+      "sha256": "fbcfacd395177543315dcca5e3ffef08b8bd3bd759f4a7c3cc259c3c27256fce",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "metadata/SCHEME.json",
+      "group": "revised_binding",
+      "bytes": 1414,
+      "sha256": "1577b133a1f68899354c7de95fbd7f2e0a8306051f2180429dfb1cc145cee8f6",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "runtime_assets/ASSET_EDITION.json",
+      "group": "revised_binding",
+      "bytes": 2187,
+      "sha256": "f1b68b5a507ed78d8b7e42e56a0903aa53b9bac2cf0aba1bba76c6fae9622d0a",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "runtime_assets/science/lower/BEAMS.json",
+      "group": "new_reference_index",
+      "bytes": 19289,
+      "sha256": "5123f8f0cf5be5d007b099215e4ce4fdf42b9cf9be5b64500ef887788f57fbc5",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_044/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 15731,
+      "sha256": "3f6357de83844864b0f8a81195e7fda4a871849633010071caa7a6964d095c9c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_044/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 10876,
+      "sha256": "e3f0e7587a2bd667c35d9553ac197a82f4fabd680a4426939f643d56c4793c26",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_045/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 21495,
+      "sha256": "882324a45609d39503921e1a158c0cb6929097f079b65b65681939cd03ac99b1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_045/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 16444,
+      "sha256": "02b50b2a6aa7b2ac1485abb2f64db2a7b5a46438439771e8a6e4be2e912afe67",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_046/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 22864,
+      "sha256": "b10aa37f655c534d45fd35e369b05b75542a3de715c1d43332e3a25c7f504fdf",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_046/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 18103,
+      "sha256": "fd8f343d59e3a611c2d11158b76e89d40b65b7b31c319f0fcf7e7d15b866661a",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_047/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 21440,
+      "sha256": "573bafd034a3083f5d3570d6ea1be909043ac86bbaa45ef1d0da8cebcc8f922b",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_047/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 15923,
+      "sha256": "651a9bde7a49af8f1f5b80f4d28f2b2ec2541a6591473ceb50a8b6fd16366c57",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_048/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 34552,
+      "sha256": "fddc2d93246822026acdf44c4bb8c276333a0a1215a616ae5d864b32d4add16d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_048/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 28077,
+      "sha256": "79ffb04bd1a9eb13291a90c533ba3c6a838025189c7c50f9fa18162ce7d9ee96",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_049/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20108,
+      "sha256": "2f19f94d0a1f8615ab492c9c7e24da61035f5ccad3eeec77b0beba61aaa53c77",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_049/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 16011,
+      "sha256": "a96efeb1de860e85a554b0472d97aa45f7fd6178e481e9cd44d372cf3b3a0a62",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_050/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 18576,
+      "sha256": "6bab27a70af6413b2916dd6c18bac557eaeb9a6c63e8939d9bcfc60e0fcc6299",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_050/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 13530,
+      "sha256": "bcab5bc68c9ee73822df387f1e6af6352a572931bc3cc267824fb15e16d6bc9d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_051/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20054,
+      "sha256": "d8d6d28d051ebc59c1c94e6df3336b3eed0577c7bc5c3024c79bb0eeacbf48c9",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_051/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 16260,
+      "sha256": "ed02865d9931c689e147403bbee76f5f611a0334b8f4a37356471230e40ced5d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_052/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 30126,
+      "sha256": "b47d42b950d02b24180075b18bb28f65376b5805c92651007fea6cc9e26a6dae",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_052/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 23156,
+      "sha256": "d60f266e2e97b78766b803b376dfd509729d132cf3261efe62cc48d9dc6adfaf",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_053/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25753,
+      "sha256": "8522ce07828292773ab0c1de8b766c216d7de12c75726b9e91ca6c21cf20aaa2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_053/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21284,
+      "sha256": "f28fb53c6aec5cc84dc1db86b727ff22127ecbebd1645a846c7de70435b6f1e2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_054/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 27266,
+      "sha256": "d1062949adf4e7bb014f7d9a31f4f060fa373f0f809fa7bd5a3175261b0b278d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_054/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 22494,
+      "sha256": "b962a022965efccaac4a174355f8446baf887770db03798b18456e5fa64ca01c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_055/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 38752,
+      "sha256": "a2fdb354897c4036105810abc66d2a27d4189983181d447c856e55da40799e54",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_055/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 32583,
+      "sha256": "6edc069bbe6076fa10944301974290bf35d7a805bae5ec75f51c81926062657f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_056/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 24373,
+      "sha256": "44fd63e15a647405dee6c119d90eba84eefda5d6829c42b7fd9c541793321b05",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_056/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 19772,
+      "sha256": "e0991e1931be3c998b0b9cc8a1ee9f384aa9863ec5a3c40402fe7179b43e33ce",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_057/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 22782,
+      "sha256": "2dbb14aebdaba50b839a1a09b040abbb35761cf390189ea681a328ced2d520f3",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_057/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 16296,
+      "sha256": "29e80da1430ffecf69fee285dbdf8124baeac5cd5f9151520fd94ea22a996af9",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_058/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 35831,
+      "sha256": "a2ee760e2f0f300a8dd554e59ba9f0afd49c1a49f4a43677250d05a02a834bea",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_058/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 29144,
+      "sha256": "f9750368bd6fe9d361e7f31db373c72e62e4d310e32dea8c1f6f04c2a5c3fdfd",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_059/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 27249,
+      "sha256": "1370320627c680d2373503c91ee0175ed20f01f8e9418f5a39a6810609ec2ebc",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_059/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 23197,
+      "sha256": "517468ed81d8e776c1a641cab4ecc8751ed5237473b224b27a98801c65cafe2c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_060/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 24227,
+      "sha256": "282f80ac0efdfad7b30b8f1a36056190102309a9790196b877bd4c6c02b5949c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_060/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 18067,
+      "sha256": "e34f619d65f6c7cd7193892d1b63ca53f5468bcc8f47d7615ec6c4ebb85d9b04",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_061/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 37394,
+      "sha256": "f5afd6ef702c47f1c14bd24ded5d1b5b3f6ffd17abd004cb4cb26dfc44040ec4",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_061/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 30528,
+      "sha256": "dad87d12b10ad6c570a107fa44758a33f436f9eb3b566e57efab7598156bf39e",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_062/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 38757,
+      "sha256": "089fdd61d5b971135d68eae3b38d3905e8ebac616f652d0b75323cf31907d496",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_062/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 32739,
+      "sha256": "90cf71ac2d8be1514edb5f3aea4ea6f5bebbe46c84651109011cd7cebf8effb0",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_063/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 36653,
+      "sha256": "b3cc9f48f81455b641eb7329dae64e158f3d16823ec1a50f78d73592f9d583fc",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_063/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 30003,
+      "sha256": "dd8b3bc3d39af8dcb725dd68b049bd9e10b4d624887be2af2baf497b8b8daf56",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_064/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 35599,
+      "sha256": "f8a88c6fe6b68d943becd3fdc777f1b5ccf0e547d8032f95c086c99fcd4c3b3b",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_064/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 27525,
+      "sha256": "5d9f3a096b945eec49998de2c9db2b1a058a6a9535a22d1aaa567a1bdc8b957e",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_065/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 18026,
+      "sha256": "84b27d1cc38b6ac0c4e4d38fd531d7c29c7cce3286f6b8ec7ccf0bb0eb3c0bf0",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_065/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 14072,
+      "sha256": "c36f346b63d4e55fe6a6107dc5611f4a86f86aff19b4ab538902d994c17d06b9",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_066/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 15096,
+      "sha256": "bf47daabc26da83eaa4bd13397f31b7452aea27e4db00899386bac1a4ce9e226",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_066/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 10939,
+      "sha256": "e43b2f886f28f34db6408091936da56ff24311b556e22aa1001a3ddae1849446",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_067/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 16597,
+      "sha256": "6db267cdfa2f964d824ab7906aa108606b241ee3eb63b7aacab07ec3ba4cfbcf",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_067/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 11863,
+      "sha256": "862e7eac04de0c9ab6d023fd3eadf7021ba133e4e99c4d09053689a118e5f0df",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_068/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 18081,
+      "sha256": "6c09364fbde48fc3d73bfea861c338ece8fad33f0406e24a217be0af5c158786",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_068/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 14268,
+      "sha256": "9abd01a3b4307c65dd6b3d27cbf206ec55e6b51a2b95524293c54b622afbed8c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_069/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 15973,
+      "sha256": "4c58c865cf9beb0cef16d284106500a1ccdc9c697d84d36ebda0423b70432d77",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_069/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 12392,
+      "sha256": "fc1ee58c1b2bd485785956d834ddc709cd702c3e48d18c2c759f6aac98408ebb",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_070/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 15150,
+      "sha256": "46f8e807e7c11e5a480a81795705e206716ab417290804c80a58ee89c33dcfe2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_070/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 9868,
+      "sha256": "9023730d17d9357d1014701a3d101aef63abc4fad81b91ab6d08013723c8ce3f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_071/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 28141,
+      "sha256": "591d672456cfde16ddedf11c5db2d67e1f26da4bd91d2bf2337ffa6e317503e2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_071/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 22132,
+      "sha256": "5dafa2cbb8b8d43d64f97ae27558388a8e0cbee1325ce3b645c55a17de66561f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_072/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 23683,
+      "sha256": "f62f99ad900b4da2baf4103f7044e687d3930dbd615d564d3af0354850f31d4f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_072/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 20121,
+      "sha256": "2f4d502cc35d380c9fcd7cd5244f8f729d7c7e807c0390c2b7c7d374ca0833b6",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_073/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25217,
+      "sha256": "4811ea773a69c60afeb7c92b73d86c0628452be919d03f771f1e89fa09c18a46",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_073/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 20952,
+      "sha256": "9d530438899448358258dcffd2985f88ceb9e7e29e71e73e74726735bbaa5173",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_074/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 23774,
+      "sha256": "fa0aff01870002027d320cadc7af443eeecc6235564044291336c77c15dea0af",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_074/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 18604,
+      "sha256": "1fff4eba9f1bd8012d468a378e5789ec2e0502cb35a7afac25aa90da81f5a7d1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_075/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 36808,
+      "sha256": "e792423b2d518a731508f79f8647e28fb8bfd243c446d385ac7043e0df2b4ef2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_075/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 31199,
+      "sha256": "b0574d71c1559e8a0aa5c1224924398d700f928e1e318f1223945d2e92a88258",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_076/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 22260,
+      "sha256": "d7e3f9056c35778ac6edf33088244d02e3377c241b3d3be1f80186ed8b7ebde1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_076/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 18609,
+      "sha256": "d8dcc3d0d9696d32a6f3dcecba0b58e2a64bea4a6c6e3f96ace936dbf6894ea6",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_077/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 23676,
+      "sha256": "d31c85f988594b1c6fbca025be183ebe58da6c2e78bf8fd70b8401ea66aa4e6f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_077/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 19315,
+      "sha256": "701cd6c3570b23041fb341e78c41370babd0659205ffe7f858586f0429a1042f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_078/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20843,
+      "sha256": "1b2403af2fee5074138bbca4977784bb35819d5c99497e57217899b4b342ef92",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_078/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 15174,
+      "sha256": "a17ffbb3982c1ee0423638b17bb7cd60ff1ba953850103c0974012444673aed1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_079/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 33777,
+      "sha256": "132e3d1b28e27fcf1b18b303bf633e3a501511cf326c15a21c3587cfa6e51153",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_079/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 27212,
+      "sha256": "c6d37c21034e87ff841bf2e173c55bd0380dd4e040ec2e2d2efc9d9070196465",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_080/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25207,
+      "sha256": "167488dd47e8d77c9f67a79d0d85ad5221e1218927ee4ca5789af377a222db98",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_080/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21727,
+      "sha256": "7294a87678adca7d6a46312fc2804f85ac79fa918b149e8c1038a473cc105190",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_081/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 22317,
+      "sha256": "c887906ebadba1aa5f68f89e23700bedc3ef71d5af777d3dba96340ab210cf97",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_081/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17007,
+      "sha256": "6e5676a3751cfd11e5176464eea2d76f7eaa020a5c1279f9706d66ae2ec322ec",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_082/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 35354,
+      "sha256": "db085e59694fabde4c9202b0abc40a2517570dc49e72837b918cce1f2e28790f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_082/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 29673,
+      "sha256": "b9b41ea631b0501468ef30c51addcc7c7b35b5e17de380199d644ca3c0c6f5fe",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_083/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 24539,
+      "sha256": "ab9335482823a200a5483fd561a89bf4491aa695834428718a1bc894f14e63cf",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_083/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21244,
+      "sha256": "7163fb44006003790db1f6edaba77dc29bfcce837f7559aa297f26e977ca9f51",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_084/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 23775,
+      "sha256": "f32821b4edec323497ed442b57e89a65275b1c27ca43d44f0545f81a15ae354b",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_084/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 19047,
+      "sha256": "0c047ccc348df3ac71d314fdf2c04b0f9cd6e7f774e7aa1fc25f151ee531525b",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_085/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 36754,
+      "sha256": "afea51f4a727e5ba3751906ed066948322ddd49522449c1c0f105af728a6b62d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_085/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 30524,
+      "sha256": "c56c0ff03f82b41c479a93ab105ec64b5fff4b514f42d14b5524cb37eb1ee72a",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_086/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 21669,
+      "sha256": "64eaeadfd1ec4ceb8f96f82d82435fbf75a261be4d2ecb52ca219876a6de80f3",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_086/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17131,
+      "sha256": "ff0cab2b13109fe09001eefa70aabca7ef3e783a430e3cde1068ef5a8228d725",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_087/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 33687,
+      "sha256": "7ef31f07ca8bf53fdf0d94613c4cbfc57ed8ae94406dab51d9620a84cc46eb81",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_087/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 26582,
+      "sha256": "4637c8faf4f1d52bd2c0c21d1aa2730a4739955d67347dfaad2094f6cac1ebf1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_088/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 19473,
+      "sha256": "62994464f78d686febc47d97f59cff4c65f1a1e85cb4a0d5bbf2c5c606065c93",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_088/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 15886,
+      "sha256": "530261710e6ac701178738fc013b73228f0792c8b6ea33b098ebd7d86063b373",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_089/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20883,
+      "sha256": "51cacdf029284df31be180fa9f1d48012620423b35df79e9c3a80250669f4848",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_089/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17032,
+      "sha256": "4f64aa991f0c161a5a77ae127b95aee604b30ed057dc6a1a8d096c48f80c4faf",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_090/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 22350,
+      "sha256": "11315473f4fde59d46d8dfdfe60a3d2dc361f1cbeb97c8850e1ba5e003f8318d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_090/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 19364,
+      "sha256": "07907b6f78310a76dea53e10d658e1fd0fe261feb28adb439a6fa12fc1a3d6b4",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_091/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20252,
+      "sha256": "55f464c5b0ef6b0e0500a343a7aabd84cb2f8c9860cf963e9ef234568a99da45",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_091/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17481,
+      "sha256": "2ef0d9db9882470e3dd395033b29a897fb2ddd4e084452281fa01bf9e7fb47eb",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_092/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 32337,
+      "sha256": "8ed5ae2c7419b6e371c6e79ad78dc65303295d0fd05914bdd19db349e1ba5a6e",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_092/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 27156,
+      "sha256": "552c07b12586cf4eecf8831501a926aebb1c897de05c746a003ddd2ab26921b0",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_093/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 17959,
+      "sha256": "e8b6d7b4036f8a45ef6cea8b4c6f21fca09d7b0a4a57bfd0b755a1749965165a",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_093/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 13812,
+      "sha256": "3bb21a4154c2b16e0c2c464370ba784fc6d2ff8f74576e60a9353d1413a3210a",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_094/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 19405,
+      "sha256": "18ac73c68411dbe6c93e2f85c4172be566f4dd86db15ac082acfb97ad473bf96",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_094/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 15255,
+      "sha256": "c72326778bcc1b3219d62289cad75960e6700c07bba5fc22d5d181729d257179",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_095/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 29412,
+      "sha256": "a7bc2a3c5ea24f8df8979cecfc8564fa3d6e5890f3bd17fd5c8cd97e12a88345",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_095/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 23115,
+      "sha256": "864d3067ae72c92586af15eb5fe8262e26d5bbee147adbdcb7a3725bd00d0ff8",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_096/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20938,
+      "sha256": "b499a22d1a1b788134f70a4f97349e6854d637440d2c9f9742e5e90cfa0b3c80",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_096/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17466,
+      "sha256": "646c44944b4082aadd7b8fc866f9e36dde2c38e133dfd290fdc3e1fe7e2e04b2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_097/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 18853,
+      "sha256": "b3cf6b72b1243f59bf506f14d8029edaf18424f9402ba92503a21bfb6883f1f1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_097/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 14378,
+      "sha256": "6b18c3c107ecf80b91fd48b929902cee695b0721f775bfc2ceb7915da9fa4e43",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_098/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 30982,
+      "sha256": "a32a95f9cf22b92a1fba66125790a3ebdcb91a337bdb97757694d562a35dfc76",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_098/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 25302,
+      "sha256": "2a7c7a2af0f1f4e87d460ee8b903c94ccb79eb33c68e77def6d3143e0f776c52",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_099/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 20250,
+      "sha256": "8a1349e1f82df819567a45504a1ede0b11d4b38ba71bb1d6165bd915450bec05",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_099/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 16563,
+      "sha256": "9e65b9673e96dcf543bbb8b151d1d9a271e6954f0a17f88388cbc4191a12f6f1",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_100/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 19475,
+      "sha256": "d14f340bde3c4d952359541935f161cee1e3cfd64acdeb531bb73daa55ceb047",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_100/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 14695,
+      "sha256": "2db5d6a8e7b886630e9f55d059a83c7c6e9522dd5a1cb57a25e32d5297fc5132",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_101/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 32444,
+      "sha256": "a61d541304eee732b2e7b0f786508a372c11dd52964e01ff0e2f56e6f9cb3622",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_101/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 27178,
+      "sha256": "94ef6cd4a74aeae6fb8f11652963a6a199a223486e5ba4d21d11dc537b6de087",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_102/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 30246,
+      "sha256": "bc6f9a4a413ac106cdfe705a4a0d84193f0be34e486be8bf14de335ae92393ca",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_102/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 24257,
+      "sha256": "e750d07f25789f85f4b20cfc198d654c6376b5fd0a8775587117f33bbf75967a",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_103/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 26537,
+      "sha256": "2a556e0f3e968e5ede6d0decadae78ea08564fff1e7665d26ccf2a5f1da8873d",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_103/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 22426,
+      "sha256": "c2b6081f44f7598264d4d4704234b92e7f398118b5fe9557df585a3348ac0059",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_104/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 27908,
+      "sha256": "42d9e82681ec18d81fff5a9d59c42b718be638fb2465f5155a3eeb8d98027a22",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_104/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 23895,
+      "sha256": "b9df787797a844aece34dd3f816f333ee6aa720e0df26f4f339a792c6bf90d45",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_105/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25111,
+      "sha256": "3b8cf4b89b8cf7c22fc9b54499198fbada660adbc2cbd193fcaad3beee317887",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_105/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 19401,
+      "sha256": "c2104041835f55f24e10012b5819c34bbd83362d585cc03ba4068f4a171ce1db",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_106/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 38009,
+      "sha256": "4713e2b8c3ede591f2f2c8bb8a7520f5f0e06050430ad20799185cea06b41f82",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_106/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 31798,
+      "sha256": "ca375f3476d5e5d1f9831013bf18667b493c580d8fe7db9c01fff89eb3b86f1f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_107/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 29435,
+      "sha256": "099a08d79ac09729467a0e1e314080b292ed3a17849df001f4fd45f893b899a6",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_107/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 25355,
+      "sha256": "b8fde7c32f22dc76bd90e6a814c95b15624ae07e69dae4ed99e16d2c036dd6c7",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_108/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 26611,
+      "sha256": "84718e9c26e7a30d24f2b9ae13e466caf816d98524c3bb8acaca0519914e7fbd",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_108/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21176,
+      "sha256": "f0348f8ca6acd26e1b9534bc6fc91aee1a70715e8dbbd1316fd61f5960e8f51f",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_109/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 39578,
+      "sha256": "8ffcabb68b5864d204c2009e71f4b9295d2fbe417769d6a8f0131ec7dadeedec",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_109/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 35148,
+      "sha256": "e2b7457dccd19c84ae7847ceecad2c428a49d5726f04aaf7ac98b826cd6238b3",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_110/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 37995,
+      "sha256": "dfad07bbeae7e177a2ecd764ddd04f074166ffee9dd732a8ba69fcd3376a73de",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_110/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 30447,
+      "sha256": "84d8d5f1107fda3a6ab41e734b246e75f7bc6ca1ba3cc6efe631db7313e7a2a4",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_111/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 26521,
+      "sha256": "46aee6a99fae4c128a9eb1ebe0e83c86a8d4f54a2d0c91ff9a2c787b21e340ad",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_111/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 22898,
+      "sha256": "f9e12e6b354a31ac39f5b90c5267144e7ca2b46a44a960e4f69228bec67bc3c8",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_112/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 23680,
+      "sha256": "ff9085fc949875e8ef1ef362da8b8937fa11591d361bfc468a8ee1ac5df2df15",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_112/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 17506,
+      "sha256": "6962dfc962865c73c963df732b111dff997eb2b65e5924e6e22d89eda6c43832",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_113/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25843,
+      "sha256": "99d17402df344a32cd550cfe9ae836586b796398a8e73e98c824080e7f901c48",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_113/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21340,
+      "sha256": "decf3427b4361e6da682f12f2fcb330c7af7f2a141298186e911c4f34ebc77d9",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_114/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25096,
+      "sha256": "f123a7ef720ae7e1a0ef32a138997cf4b3c8df1480a257f9a0597c78800b9b94",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_114/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 20086,
+      "sha256": "f3dbcc26d8a0fe8175f79b66b5d17b6acb8e8aa3c15b8a03b9226c0d708afe49",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_115/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 27304,
+      "sha256": "93db8c0c16af7b9cff10d6b2c87264131f73061ab448a1dd8d84bacdf4860ff2",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_115/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 23004,
+      "sha256": "3a21cb5b4a5fa2b084495a0f174585278914510892171be17a46538491c413b7",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_116/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 26569,
+      "sha256": "79d0739fcda4bf24a9b4f82ef81029f9cc85f3f59b34b07aba2295bd3c28c0b0",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_116/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21366,
+      "sha256": "68c8dc334ce1d8ea94b6ffe14c6a101f2be538671d1915dd669770df24e35666",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_117/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 39542,
+      "sha256": "bb33487f461c28c3a9758d0d07d836a9c4babc844a2eabb0fc5241f6c2f7687c",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_117/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 33352,
+      "sha256": "05583c150f0ccb76bc28b94fdfc5662ade42ad197616520d155851f37bac4794",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_118/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 36579,
+      "sha256": "c3a28d4025b1fbe9d53234ee7caf7f84368e0e1a81abb3b48dcee889aac74866",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_118/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 28735,
+      "sha256": "8c93996ac5faec9e6f2b6e3a1259f480041da6a8b91d843308d6018482a551ea",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_119/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 25880,
+      "sha256": "7760d45c7b61b54c521ae8fce0a224bbbca9cac07a72aa3045fdc73e682fb8cc",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_119/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 21300,
+      "sha256": "d8608636d8a714b0dd431544bd3286e4a639827e7dc89585c553f395a9b97265",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_120/INPUT.npz",
+      "group": "new_lower_reference",
+      "bytes": 37996,
+      "sha256": "4e142929650b96e88f38c6bb1d97f0ca2363c3d3fe321833fdf283eedcd1fb9b",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "runtime_assets/science/lower/beams/beam_120/RULES_AND_MEMBERS.json",
+      "group": "new_lower_reference",
+      "bytes": 30824,
+      "sha256": "b9c946f91a76d03b57e2758b71c82c24a51b2c39ce7019db9de81964d2877ab6",
+      "licence_for_eligible_project_contributions": "CC BY-NC 4.0"
+    },
+    {
+      "path": "streamlit_app.py",
+      "group": "revised_source",
+      "bytes": 19168,
+      "sha256": "d57e72b6003fbbc7570dee6c7302f855f7f788afd8b7c75e5eb1a6d2e6c54beb",
+      "licence_for_eligible_project_contributions": "MIT"
+    },
+    {
+      "path": "three_tier_backend.py",
+      "group": "revised_source",
+      "bytes": 20086,
+      "sha256": "6b8086d25ee3e4d8c859eaaba7854e708ba7ef525d5b694e5e51e73295d93943",
+      "licence_for_eligible_project_contributions": "MIT"
+    }
+  ],
+  "license_texts": [
+    "licenses/CC-BY-NC-4.0.txt",
+    "licenses/MIT.txt"
+  ],
+  "retained_prior_notice_root": "preserved_notices/previous_local_candidate",
+  "retained_prior_notice_paths": [
+    "NOTICE.txt",
+    "notices/WEB_EXAMPLE_AND_MAPPING_SOURCES_CN.txt",
+    "notices/human_fixed/ALLEN_CITATION_AND_FREEDOM_TO_INNOVATE.md",
+    "notices/human_fixed/Artistic-2.0.txt",
+    "notices/human_fixed/CC-BY-NC-4.0.txt",
+    "notices/human_fixed/NCBI_GEO_SOURCE_POLICY.md",
+    "notices/human_fixed/PROJECT_CONTRIBUTION_TERMS.txt",
+    "notices/human_fixed/STANDARD_LICENSE_SOURCES.json",
+    "notices/human_fixed/THIRD_PARTY_NOTICES.md",
+    "notices/macaque_fixed/BO_SOURCE_SCOPE_AND_NCBI_POLICY.md",
+    "notices/macaque_fixed/CC-BY-NC-4.0.txt",
+    "notices/macaque_fixed/ENSEMBL_DATA_TERMS_AND_ATTRIBUTION.md",
+    "notices/macaque_fixed/PROJECT_CONTRIBUTION_TERMS.txt",
+    "notices/macaque_fixed/PSYCHENCODE_INPUT_original.md",
+    "notices/macaque_fixed/PSYCHENCODE_SOURCE_LIMITS.md",
+    "notices/macaque_fixed/STANDARD_LICENSE_SOURCES.json",
+    "notices/macaque_fixed/THIRD_PARTY_NOTICES.md",
+    "notices/macaque_fixed/XSANNO_SOURCE_AND_TERMS.md",
+    "notices/web_historical/NOTICE.txt",
+    "notices/web_historical/docs/CODE_PROVENANCE.md",
+    "notices/web_historical/docs/DATA_AND_LICENSES.md",
+    "notices/web_historical/licenses/BrainTrace_existing_MIT.txt"
+  ]
+}
