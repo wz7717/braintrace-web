@@ -1,0 +1,27 @@
+网页映射及示例的来源与署名
+
+本候选的固定源提交为 wz7717/braintrace-web 的 ca445528eb396c2ebe8ce0951099b82d579e0e74。七件映射和示例派生物采用该版本的原文件。BrainTrace / 王震的可授权项目贡献沿 CC BY-NC 4.0。数据来源、原条件及事实字段按各自范围保留。
+
+GSE128537
+
+示例为 10_10 / GSM3679496。GEO 原始来源为 GSE128537 及 GSE128537_Rhesus_RNA_gene_count.txt.gz。冻结映射使用 Ensembl 91 的 Mmul_8.0.1 注释及同版 Compara。项目使用原完整计数背景与冻结映射准备输入。来源与原成员、真值和保存结果保持对应。
+
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE128537
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM3679496
+
+GSE179328
+
+示例为 LID_100660 / GSM5414855。GEO 原始来源为 GSE179328 及 GSE179328_est_counts.txt.gz。冻结映射使用 Ensembl 101 的 Mmul_10 注释及同版反向 Compara 导出。项目使用原完整计数背景与冻结映射准备输入。
+
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE179328
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5414855
+
+人类示例
+
+GSM755211 来源于 GSE30453 / GSE30483，平台为 GPL5175。原始 CEL 按 GEO_CEL_SOURCE.json 从 GEO 原站取得。候选包含同固定输入的原保存对照。该对照中可授权的项目贡献适用本组范围。
+
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211
+
+适用的上游声明
+
+Ensembl 及 EMBL-EBI 的自产数据与第三方条款沿各自来源，见 macaque_fixed/ENSEMBL_DATA_TERMS_AND_ATTRIBUTION.md。GEO 仓库政策及提交者权利边界见 human_fixed/NCBI_GEO_SOURCE_POLICY.md。原网页声明和对应历史版本见 web_historical/。PsychENCODE 原始计数及共同注释来源保留原出处，见 macaque_fixed/PSYCHENCODE_SOURCE_LIMITS.md 与 XSANNO_SOURCE_AND_TERMS.md。现行候选提供的上传合同与两条本地示例各自按明确范围使用。

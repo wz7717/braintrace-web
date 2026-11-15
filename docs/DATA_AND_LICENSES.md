@@ -1,31 +1,32 @@
 # Data, code and component licences
 
-The application source, documentation and `runtime_assets/` are included in the authorized private-repository synchronization to `wz7717/braintrace-web`. The source and runtime assets remain separate components and are both required to run the application. Uploading them to this private repository does not make them publicly available or grant public redistribution rights.
-Existing research-code MIT text is retained at ../licenses/BrainTrace_existing_MIT.txt for its covered portions.
-The supplied files do not establish a new blanket licence for all integration code, model arrays, reference matrices or inputs.
-The author must state the intended licence scope of additions when publishing; this local preparation does not invent that grant.
+This candidate is the Streamlit application with separately assembled runtime assets.
+The accompanying notices identify the MIT scope for project code and support files and
+the CC BY-NC 4.0 scope for eligible project contributions in the specified fixed and
+derived assets. Earlier notices and applicable source terms accompany their respective components.
 
-Human frozen PLM references and models depend on their original source/annotation terms and contain bound provenance.
-The exact four restored files are supplied to the server assets unchanged. They are not publicly downloadable from this resource page.
-Macaque models and 43 reference combinations are derived from the author's processed Bo2023 source data.
-PRJNA905082 public reads do not by themselves supply the processed matrices or confer a new licence on their derived references.
-The three author-provided source count/VSD/metadata files are not included in this application delivery.
+The human fixed model and PLM bundle retains its frozen annotation, upstream provenance
+and source conditions. The macaque model and the original 43 frozen reference combinations derive
+from the Bo2023 processed reference. PRJNA905082 supplies raw reads. The three
+author-provided Bo processed count, VSD and specimen metadata files stay outside this delivery.
+The local edition adds 77 pairs converted from historical frozen lower assets. The accompanying prior notices retain their original scope. The local conversion records add no publication or sharing decision.
 
-Public input records include human GSM755211 in GSE30453/GSE30483 and macaque GSE128537/GSM3679496,
-GSE179328/GSM5414855. Prepared samples and saved outputs are in the local server assets. Public availability does not
-automatically settle redistribution of a combined package. Existing notices in licenses/ remain applicable to their own components.
-The resource page exposes these sample/mapping downloads in the assembled local app; decide their external distribution scope
-before enabling access beyond the intended audience. Models and full reference bundles have no download route.
+The two runnable macaque examples are GSE128537/10_10 (GSM3679496) and
+GSE179328/LID_100660 (GSM5414855), with the supplied prepared files and stored results.
+Obtain the original Human Exon 1.0 ST example from the [GEO GSM755211 record](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211).
+Place the GEO original named GSM755211.CEL.gz at
+runtime_assets/examples/human/GSM755211.CEL.gz before assembly. The human saved
+expectation accompanies this candidate. The original CEL follows its upstream terms.
 
-The original two web mappings use complete library count backgrounds:
-GSE128537: GSE128537_Rhesus_RNA_gene_count.txt.gz, 30,807 rows / 408 columns;
-GSE179328: original count background 22,515 rows / 527 columns. Full cohorts are not part of the demo.
-tools/extract_prepared_sample.py only extracts from an already prepared compatible INPUT.npz; it does not build such a file.
-The separate complete reproducibility delivery contains the analysis procedures; this source repository is not that archive.
+The original two web mappings use complete library count backgrounds.
+GSE128537 uses GSE128537_Rhesus_RNA_gene_count.txt.gz (30,807 rows and 408 columns).
+GSE179328 uses its original count background (22,515 rows and 527 columns).
+Full cohorts are separate from these single-sample examples.
 
-PsychENCODE references were built from source data, not from external expression or truth. Their six saved numerical assets
-are reused; the adult public-input adapter uses its own web contract and background label. No new legal or scientific conclusion follows from copying them.
-
-The two added inputs, RMB160L.AMY and RMB160L.HIP, are single adult rhesus columns from the previously acquired Sousa2017/PsychENCODE `simFiltered.HPR.compGene.count.txt` matrix (26,514 rows and 247 cross-species columns). The saved strict one-to-one EnsemblCompara91/XSAnno correspondence is reused without a new mapping release. The application includes these two columns, their saved prepared inputs/results and the frozen row-ID universe; it excludes the full matrix and the 77-profile cohort outputs. Public access does not by itself grant a new combined-package licence.
-
-Current PsychENCODE interface: see PSYCHENCODE_INPUT.md. Two example paths cover old/new reference lookup; no full-cohort rerun, model fitting or performance estimation.
+The PsychENCODE adapter supports user-supplied inputs from the adult rhesus
+common-annotation matrix, with the frozen strict Ensembl Compara91/XSAnno
+correspondence and 26,514-row ID axis. The retained original 43 pairs include the six source-only combinations previously built for the adult analysis. The AMY and
+HIP demonstration counts, prepared inputs and saved results are retained locally.
+See [PsychENCODE input](PSYCHENCODE_INPUT.md) for the upload contract and normalization.
+The complete matrix and the 77-profile analysis outputs remain in their separate source
+and study records. The application is a fixed inference delivery.

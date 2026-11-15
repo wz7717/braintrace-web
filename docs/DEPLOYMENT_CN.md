@@ -4,11 +4,11 @@
 
 ## 1. 交付布局
 
-- github/：候选 GitHub 源码，前端、HTTP/CLI 后端、科学推断代码、配置模板和文档。
-- runtime_assets/：服务器资产，完整人类绑定文件、猕猴冻结模型、43 套下层参考、映射及示例。
+- 根目录：前端、HTTP/CLI 后端、科学推断代码、配置模板和文档。
+- runtime_assets/：服务器资产，完整人类绑定文件、猕猴冻结模型、120 套下层参考、映射及示例。
 - assembled_runtime/：由复制工具新建的运行目录；不提交 GitHub。
 
-现有 wz7717/braintrace-web 私有仓库保留上一版源码；本匿名队列版只在本地另存，尚未上传。运行资产复用既有独立目录，未部署服务。
+本地网页包从 wz7717/braintrace-web 的 main（ca445528）组装。页面以同版 runtime_assets/ 运行。
 源目录单独启动时会说明缺少资产。资产不靠 Git LFS 隐式下载，也没有虚构公开下载地址。
 
 ## 2. 准备环境
@@ -24,13 +24,13 @@ scikit-learn1.5.2、joblib1.5.3、threadpoolctl3.6.0。版本见 requirements.tx
 在仓库根目录打开终端，使用固定 Python（将单独取得的 runtime_assets 放在仓库旁边，或在 --assets 中填写其实际位置）：
 
 ```text
-python -X utf8 -B tools/prepare_runtime.py --assets ../runtime_assets --out ../assembled_runtime
+python -X utf8 -B tools/prepare_runtime.py --assets runtime_assets --out ../assembled_runtime
 ```
 
 输出父目录须存在，输出目录须不存在，并位于源码/资产目录之外。程序检查版本标识及路径冲突后复制文件。
 它不建立符号链接，不安装环境，不训练、推断、重建参考或重算性能。已有输出会被拒绝，不覆盖旧目录。
 代码在 github/science，数值资产在 runtime_assets/science；组装后恢复原科学实现期望的相对路径。
-runtime_assets/ASSET_EDITION.json 与 github/metadata/SCHEME.json 标识 `20261101_43_beams_psychencode_v1`。
+runtime_assets/ASSET_EDITION.json 与 metadata/SCHEME.json 标识 `20261109_120_beams_local_v1`。
 
 ## 4. 本机启动
 
@@ -50,7 +50,7 @@ rlib_site（可空）和已存在的 ASCII temp_root。配置必须留在服务�
 
 ## 5. 免登录队列与将来部署（本轮不执行）
 
-当前新版另存为 anonymous_queue_20261101，尚未同步到现有私有 GitHub 仓库。
+原 HTTP 服务继续使用匿名队列。
 已具备独立匿名浏览器会话、按会话和 IP 限额、单进程 FIFO、超时回收及结果过期。
 具体默认值、会话边界和恢复行为见 [ANONYMOUS_QUEUE.md](ANONYMOUS_QUEUE.md)。
 
@@ -85,11 +85,10 @@ deployment/Caddyfile.example 为免登录模板，配置真实 BRAINTRACE_DEMO_H
 
 ## 6. 运行资产与下载链接
 
-43 套参考是原 37 套加成年分析已完成的 6 套原文件，未重建。旧模型、原参考和评分函数不改。
-新增组合被选中时可找到对应参考；尚未覆盖的组合仍返回 reference_unavailable，不寻找近似参考。
+120 套参考由 43 套原版与 77 套同版冻结转换件组成。下层按无序 Top3 精确匹配。
 PsychENCODE 公共 common-annotation 背景和映射不同，现已接入独立契约；不能伪造原两种 mapping_version。输入步骤见 PSYCHENCODE_INPUT.md。
 
-resources/FILES.json 只允许运行目录内文件。资源页链接到文档、基因轴、三种映射和示例；
+resources/FILES.json 只允许运行目录内文件。资源页链接到文档、基因轴、三种映射和两份猕猴 GEO 示例。人源 CEL 从 GEO 原来源取得，见 ../GEO_CEL_SOURCE.json。
 所有包外 ../ 路径、完整 ZIP、旧稿件下载入口均移除。完整复现包和最新版稿件由作者另行提供。
 如以后有真实外部下载地址，应显式更新资源页，不能把本机路径写成公共 URL。
 

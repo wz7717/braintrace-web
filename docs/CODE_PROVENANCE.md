@@ -1,5 +1,13 @@
 # Upload audit edition, 2026-11-01
 
+## 120-reference web edition
+
+The web entry point, presentation and base tree come from main at ca445528. The current source and asset edition is recorded in ../resources/VERSION.json. The 120-key runtime follows the fixed edition 20261109_120_beams_local_v1. The original 43 pairs were retained and 77 pairs were converted from previously frozen assets. Read COVERAGE.md for the active inventory and DATA_AND_LICENSES.md for component notices.
+
+## Earlier web versions and their checks
+
+The records below describe earlier layouts, fixtures and targeted checks. Use the current asset edition and two GEO example inputs for this edition.
+
 The upload candidate adds bounded untrusted-container checks around both Python backends and the Linux human adapter. It rejects excessive gzip expansion, malformed/oversized NPY declarations and excessive text records before scientific parsing. No `science/` code, model, reference, mapping or example asset was changed. All 147 runtime assets match the preceding candidate byte for byte.
 
 The UI/install dependencies were updated to close current advisories, including Streamlit 1.66.1, Pillow 13.0.0, PyArrow 23.0.1, uv 0.13.4, pip 26.2 and setuptools 84.1.0. The tested Linux/Python 3.11 closure is constrained in `requirements-lock.txt`. pip-audit found no known advisories in that closure or in the unchanged scientific worker's Python packages. Static analysis reported no high-severity finding; two medium test-only URL findings and low-severity findings were reviewed in context. See `SECURITY.md` for scope and remaining hosting boundaries.

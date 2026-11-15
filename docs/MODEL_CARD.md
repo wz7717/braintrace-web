@@ -5,7 +5,7 @@ Manuscript edition: psychencode_adult_revision_20261101. Final source-only model
 
 Network Top3 screens candidates. Group uses original Top200 regional Pearson scores and ranks each saved group by its highest-scoring member. Exact independently ranks the same complete Network candidate set using 0.25*z(corr50)+0.75*z(corr100). Group never gates Exact; Network scores are not multiplied into the lower scores. Exact reverse numpy argsort and Group stable descending member-score ordering are unchanged.
 
-43 saved Top3 combinations are present, not a complete 120-combination deployment bundle. Candidate sets are matched exactly, unordered; no nearest combination, reselection, online fitting or fallback model is permitted. Group IDs and members depend on the beam and are not a mutually exclusive global dictionary. Every result includes reference_id to preserve that context.
+This local edition holds all 120 unordered Top3 reference keys, with 43 retained and 77 converted frozen pairs. The complete inventory covers lookup for a valid Top3. Compatible input and evaluable signal are required for lower output. Candidate sets are matched exactly, unordered; no nearest combination, reselection, online fitting or fallback model is permitted. Group IDs and members depend on the beam and are not a mutually exclusive global dictionary. Every result includes reference_id to preserve that context.
 
 Network scores are model scores within supported classes, not calibrated probabilities of correct anatomy. Group scores are Pearson coefficients; Exact scores are fused z scores and can be negative. They do not share a probability scale.
 
@@ -31,4 +31,4 @@ output availability for all 77 is not accuracy for all 77. These three labels do
 The source-only six missing combinations were built previously and are reused here. The PsychENCODE common-annotation
 input adapter now uses its own contract on this webpage. Targeted checks do not recalculate cohort performance.
 
-Current PsychENCODE interface: see PSYCHENCODE_INPUT.md. Two example paths cover old/new reference lookup; no full-cohort rerun, model fitting or performance estimation.
+The AMY and HIP integration examples are retained in the local records. Their prior checks cover original and added reference lookup. For this delivery, submit your own compatible PsychENCODE input using the frozen contract in PSYCHENCODE_INPUT.md.

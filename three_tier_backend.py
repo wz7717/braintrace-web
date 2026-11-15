@@ -56,7 +56,8 @@ def read_input(data, suffix, sample_id):
                 raise ValueError('Prepared NPZ exceeds the single-sample size limit.')
         with np.load(io.BytesIO(data), allow_pickle=False) as z:
             if 'x' not in z.files:
-                x, observed, head_genes, library = legacy.read_macaque_input(data,suffix,sample_id)
+                x, observed, _, library = legacy.read_macaque_input(
+                    data, suffix, sample_id, expected_genes=[genes[i] for i in head_rows])
                 return dict(head_x=x, head_observed=observed, library=library, input_type='network_panel_5000', lower_status='input_insufficient', missing_fields=['full_21668_gene_axis','raw_full_library_logcpm','full_axis_observed_mask','mapping_version','contract_version'])
             required={'x','observed','genes','samples','full_library_counts'}
             if not required.issubset(z.files): raise ValueError('Full-axis NPZ needs x, observed, genes, samples and full_library_counts.')
@@ -70,7 +71,8 @@ def read_input(data, suffix, sample_id):
     elif suffix.lower()=='.csv':
         rows=list(csv.DictReader(io.StringIO(data.decode('utf-8-sig'))))
         if len(rows)==5000:
-            x, observed, _, library=legacy.read_macaque_input(data,suffix,sample_id)
+            x, observed, _, library = legacy.read_macaque_input(
+                data, suffix, sample_id, expected_genes=[genes[i] for i in head_rows])
             return dict(head_x=x,head_observed=observed,library=library,input_type='network_panel_5000',lower_status='input_insufficient',missing_fields=['full_21668_gene_axis','raw_full_library_logcpm','full_axis_observed_mask','mapping_version','contract_version'])
         if len(rows)!=21668 or not {'gene_id','ln1p_cpm','observed','full_library_counts'}.issubset(rows[0]):
             raise ValueError('CSV needs exactly 5,000 Network rows or all 21,668 three-tier rows with gene_id, ln1p_cpm, observed and full_library_counts.')
@@ -198,7 +200,7 @@ def run_macaque(data,suffix,sample_id,routes):
             'tiers':{'Network':dict(network,status='succeeded',reason=None,score_type='model_score'),**lower},
             'warnings':['Scores are candidate rankings, not calibrated anatomical correctness probabilities.',
                         'Group and Exact rank independently within the same Network Top3; Group does not gate Exact.',
-                        '43 exact Network combinations have lower references; unsupported combinations remain unavailable.']}
+                        'All 120 unordered Network Top3 combinations have frozen references. Lower output still requires compatible input and evaluable signal.']}
     if p.get('metadata',{}).get('mapping_version')==adult.MAPPING:
         result['warnings'].append('Normalization uses all 26514 public common-annotation rows, not the original unfiltered sequencing library; exploratory input adaptation.')
     result.update({k:pval for k,pval in input_summary(p).items() if k in ('observed_features','missing_features','full_library_counts')})
@@ -224,7 +226,7 @@ def saved_example(species,configurations,example_id='GSE128537'):
             'tiers':{'Network':dict(network,status='succeeded',reason=None,score_type='model_score'),**tiers_from_row(row,beam_id)}}
     result['warnings']=['Scores are candidate rankings, not calibrated anatomical correctness probabilities.',
                         'Group and Exact rank independently within the same Network Top3; Group does not gate Exact.',
-                        '43 exact Network combinations have lower references; unsupported combinations remain unavailable.']
+                        'All 120 unordered Network Top3 combinations have frozen references. Lower output still requires compatible input and evaluable signal.']
     result.update({k:v for k,v in input_summary(p).items() if k in ('observed_features','missing_features','full_library_counts')})
     if p.get('metadata',{}).get('mapping_version')==adult.MAPPING:
         result['warnings'].append('Normalization uses all 26514 public common-annotation rows, not the original unfiltered sequencing library; exploratory input adaptation.')

@@ -32,15 +32,11 @@ ROOT = backend.ROOT
 MAX_UPLOADS_BYTES = 160 * 1024**2
 RETENTION_SECONDS = 30 * 60
 FILES = {
-    'psychencode-amy': ROOT / 'examples/three_tier/PsychENCODE_AMY/COMMON_COUNTS.tsv',
-    'psychencode-hip': ROOT / 'examples/three_tier/PsychENCODE_HIP/COMMON_COUNTS.tsv',
     'human-example': ROOT / 'examples/human/GSM755211.CEL.gz',
     'macaque-example': ROOT / 'examples/three_tier/GSE128537/SINGLE_SAMPLE.npz',
-    'macaque-network-example': ROOT / 'examples/macaque/OBSERVED_ONE_SAMPLE.npz',
     'macaque-second-example': ROOT / 'examples/three_tier/GSE179328/SINGLE_SAMPLE.npz',
     'full-genes': ROOT / 'science/lower/genes.json',
-    'macaque-csv': ROOT / 'examples/macaque/PREPARED_INPUT_EXAMPLE.csv',
-    'macaque-genes': ROOT / 'science/macaque/baseline/genes.json',
+    'macaque-genes': ROOT / 'science/macaque/floor_clip/genes.json',
 }
 
 
@@ -277,6 +273,7 @@ class Handler(BaseHTTPRequestHandler):
                     human_path = getattr(self.server.store.runner, 'work_root', Path('local'))
                     self.respond({'api_version':3, 'scheme':backend.SCHEME,
                         'examples':backend.read_json(ROOT/'examples/three_tier/EXAMPLES.json'), 'session_token':csrf,
+                        'human_example_available':FILES['human-example'].is_file(),
                         'anonymous_session':True, 'limits':self.server.policy.public(), 'usage':self.server.store.usage(owner),
                         'runtime':{'human':ready and backend.human_ready() and str(human_path).isascii(), 'macaque':ready},
                         'human_labels':backend.read_json(ROOT/'metadata/human_labels.json'),

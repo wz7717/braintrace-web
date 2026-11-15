@@ -46,6 +46,8 @@ If a full axis is structurally readable but required contract metadata is absent
 The two included SINGLE_SAMPLE.npz files are direct column extractions from the existing prepared INPUT.npz files, with explicit metadata added; expression and masks were not recomputed.
 For an already available compatible full prepared file, use:
 
+The following extraction command applies to the separate local tools edition.
+
 ```text
 python -X utf8 -B tools/extract_prepared_sample.py --input INPUT.npz --sample-id YOUR_SAMPLE --mapping GSE128537_Ensembl91_existing_20261101 --output new_sample.npz
 ```
@@ -56,4 +58,4 @@ This only extracts and validates a column. It does not map genes, normalize coun
 
 Upload one complete 26,514-row count column as TSV/CSV, or use prepared NPZ/CSV carrying `braintrace.psychencode_common_annotation_input.v1` and `public_common_annotation_ln1p_CPM`. The adapter uses the saved Ensembl91-to-XSAnno correspondence and the sum of all public common-annotation rows. This is not the original unfiltered sequencing library and cannot be relabeled as either original mapping. Prepared inputs also require `public_common_annotation_counts_total`; the legacy `full_library_counts` field must equal it.
 
-The [adult input guide](PSYCHENCODE_INPUT.md) provides the exact fields and one-column extraction command. The two adult examples cover original and added reference lookup; their integration checks do not re-estimate cohort performance.
+The [adult input guide](PSYCHENCODE_INPUT.md) gives the exact upload fields and explains how to select one input column. The AMY and HIP integration examples are retained in the local records. Their prior checks cover original and added reference lookup. For this delivery, submit your own compatible PsychENCODE input using the frozen contract in PSYCHENCODE_INPUT.md.

@@ -14,27 +14,5 @@
     "input": "examples/three_tier/GSE179328/SINGLE_SAMPLE.npz",
     "saved_row": "examples/three_tier/GSE179328/SAVED_ROW.json",
     "fine_endpoint": "primary_unique"
-  },
-  {
-    "id": "PsychENCODE_AMY",
-    "sample_id": "RMB160L.AMY",
-    "mapping_version": "PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101",
-    "input": "examples/three_tier/PsychENCODE_AMY/COMMON_COUNTS.tsv",
-    "prepared_input": "examples/three_tier/PsychENCODE_AMY/PREPARED_SINGLE_SAMPLE.npz",
-    "saved_row": "examples/three_tier/PsychENCODE_AMY/SAVED_ROW.json",
-    "fine_endpoint": "unique_operational",
-    "download_key": "psychencode-amy",
-    "normalization": "public_common_annotation_ln1p_CPM"
-  },
-  {
-    "id": "PsychENCODE_HIP",
-    "sample_id": "RMB160L.HIP",
-    "mapping_version": "PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101",
-    "input": "examples/three_tier/PsychENCODE_HIP/COMMON_COUNTS.tsv",
-    "prepared_input": "examples/three_tier/PsychENCODE_HIP/PREPARED_SINGLE_SAMPLE.npz",
-    "saved_row": "examples/three_tier/PsychENCODE_HIP/SAVED_ROW.json",
-    "fine_endpoint": "parent_compatible",
-    "download_key": "psychencode-hip",
-    "normalization": "public_common_annotation_ln1p_CPM"
   }
 ]

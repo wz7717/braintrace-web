@@ -1,6 +1,6 @@
 # Streamlit Community Cloud edition
 
-This entry point preserves live human CEL inference and macaque Network/Group/Exact inference, including the PsychENCODE common-annotation adapter and 43 existing lower references. No models, reference values, mappings, training identities or scientific kernels are changed.
+This entry point runs fixed human CEL inference and macaque Network/Group/Exact inference with 120 frozen reference combinations. The PsychENCODE common-annotation adapter accepts matching user-supplied input.
 
 ## Repository layout
 
@@ -14,7 +14,7 @@ The source `.gitignore` excludes runtime assets to prevent accidental publicatio
 2. Keep the GitHub repository private if appropriate for the assets. Configure the app's viewer setting to **public** for anonymous visitors. Repository access and app viewer access are separate choices.
 3. Community Cloud installs Python packages from `requirements.txt`, constrained by the audited Linux/Python 3.11 `requirements-lock.txt`, and Debian system libraries from `packages.txt`. The UI uses Streamlit 1.66.1, Pillow 13.0.0 and PyArrow 23.0.1; these do not change the isolated scientific worker.
 4. First startup builds a private R 4.6.1 and installs an isolated CPython 3.11.9 worker **in a shared background startup task**. The page remains responsive, including its language switch. It shows the current stage, elapsed time, age of the latest output and the last 160 installation-log lines; full installation output also reaches the cloud console. The main Streamlit Python patch version is not substituted for the scientific worker. Exact NumPy/SciPy/scikit-learn and R package versions remain enforced.
-5. After successful cloud startup, check one human CEL example and one macaque example through the deployed UI, verify the original saved-example comparison, and confirm that their CSV download links save usable files in the target browser. The local browser automation verified the embedded CSV payload but did not confirm the browser's download completion. This is a cloud deployment check, not a cohort rerun. Only then share the assigned `https://<name>.streamlit.app` address.
+5. After startup, verify the human CEL and the two macaque GEO cases on the deployed app and check their CSV exports. Obtain GSM755211.CEL.gz from [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211), using the identity in ../GEO_CEL_SOURCE.json. A local run and a deployed run are recorded separately.
 
 Local Linux preparation (no training or predictions):
 
@@ -53,7 +53,7 @@ R packages: preprocessCore 1.74.0, affxparser 1.84.0, digest 0.6.39, jsonlite 2.
 
 ## Targeted checks
 
-`tests/check_streamlit_bridge.py`: synthetic queue ownership, expiry, download isolation and native Streamlit route/session checks. `tests/check_anonymous_queue.py ProcessChecks`: Linux process timeout/descendant termination/recovery. `tests/check_linux_portability.py`: one existing human GSM755211 CEL (both frozen programs, all 16,295 features) and one adult PsychENCODE HIP sample against saved outputs, with absolute tolerance 1e-10 and unchanged rankings. These checks do not re-estimate cohort performance.
+For this edition, use GSM755211 (both frozen programs), GSE128537/10_10 and GSE179328/LID_100660 against their saved outputs. Check ordered class axes, rankings, scores and CSV export. Files under tests/ are inherited historical checks from ca445528. The fixture-based 43-reference and built-in PsychENCODE tests require their corresponding historical asset edition.
 
 The original Windows HTTP/CLI entry points remain in the source for their existing use. The Streamlit/Linux entry point is `streamlit_app.py`; the old loopback HTTP server is not the Community Cloud application entry.
 

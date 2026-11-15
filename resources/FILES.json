@@ -17,10 +17,8 @@
   "psychencode-input": "docs/PSYCHENCODE_INPUT.md",
   "psychencode-mapping": "science/lower/mappings/PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101.json",
   "psychencode-ids": "science/macaque/psychencode/PUBLIC_GENE_IDS.json",
-  "psychencode-amy-prepared": "examples/three_tier/PsychENCODE_AMY/PREPARED_SINGLE_SAMPLE.npz",
-  "psychencode-amy-saved": "examples/three_tier/PsychENCODE_AMY/SAVED_ROW.json",
-  "psychencode-hip-prepared": "examples/three_tier/PsychENCODE_HIP/PREPARED_SINGLE_SAMPLE.npz",
-  "psychencode-hip-saved": "examples/three_tier/PsychENCODE_HIP/SAVED_ROW.json",
   "anonymous-queue": "docs/ANONYMOUS_QUEUE.md",
-  "streamlit-deployment": "docs/STREAMLIT_CLOUD.md"
+  "streamlit-deployment": "docs/STREAMLIT_CLOUD.md",
+  "lower-reference-index": "science/lower/BEAMS.json",
+  "geo-cel-source": "GEO_CEL_SOURCE.json"
 }

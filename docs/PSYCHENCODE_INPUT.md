@@ -5,9 +5,9 @@ rebuild lower references, discover homologs, rescue gene symbols or estimate coh
 
 ## Web input
 
-Choose Macaque. The two PsychENCODE examples provide counts for RMB160L.AMY (original reference branch) and
-RMB160L.HIP (added beam_038). Saved mode reads pre-existing scores; live mode adapts that one raw-count profile
-and uses the same frozen Network/Group/Exact scoring. The example selection does not choose a better model.
+Choose Macaque and Upload sample. The application adapts your own compatible raw-count profile
+and applies the frozen Network, Group and Exact scorers under the original reference and input contracts.
+The RMB160L.AMY and RMB160L.HIP demonstration files stay with the local application records.
 
 For an upload, supply a UTF-8 TSV or CSV with exactly two columns: `ID` and an `RMB...` sample name,
 or `gene_id` and `count`. Include every one of the 26,514 frozen common-annotation IDs exactly once.
@@ -17,19 +17,13 @@ Partial panels, changed gene universes, duplicate IDs, TPM, log2 values and mult
 Only adult rhesus profiles from the documented common-annotation matrix are in scope. IDs and numeric
 validation cannot establish specimen age/species/provenance; the user must confirm the source.
 
-## Extract from the existing public matrix
+## Prepare one profile
 
-Run in an assembled runtime with the supplied mapping assets:
-
-```text
-python -X utf8 -B tools/prepare_psychencode_sample.py --matrix PATH_TO/simFiltered.HPR.compGene.count.txt --sample-id RMB160L.HIP --out NEW_SAMPLE_DIRECTORY
-```
-
-This reads one selected RMB column and preserves all original row count strings. It writes COMMON_COUNTS.tsv
-for direct web upload and PREPARED_SINGLE_SAMPLE.npz for the shared web/CLI contract. It does not download,
-train or infer; the output directory must be new. Do not upload the complete 247-column cross-species matrix.
-For CLI inference, pass the resulting TSV/NPZ using braintrace_cli.py --input; for saved display use
-`--example PsychENCODE_HIP --saved`. An ordinary upload never inherits example truth from its filename or sample ID.
+From the documented common-annotation matrix that you have obtained under its applicable terms, select
+the ID column and one compatible adult rhesus RMB column. Keep all 26,514 rows and the original count
+strings. Save the two columns as UTF-8 TSV or CSV and upload that file. Keep the complete 247-column
+matrix in the source records. A compatible prepared NPZ or CSV may also be submitted under the contract
+below. An ordinary upload never inherits example truth from its filename or sample ID.
 
 ## Frozen rules and metadata
 
@@ -55,8 +49,16 @@ JSON and exported score CSV identify normalization_background and public_common_
 
 ## Evidence and access
 
-The input code is separated from the server mapping, row-ID universe and example assets. The full cohort matrix,
-source training data, environment and 77-profile analysis outputs are not copied into this demo.
-Existing manuscript results are preserved; two targeted integration examples are not a new estimate of accuracy.
-The HIP example is parent-structure compatibility, not a claim of hippocampal subfield localization.
-Source disclosure and component redistribution terms continue to apply. This private source repository does not publish runtime assets or deploy a web service.
+The source-only references and frozen mapping are reused for user uploads. The historical AMY example
+covered the original reference branch, and the HIP example covered beam_038. These local integration
+examples remain separate from the full cohort analysis. The HIP result supports parent-structure
+compatibility and leaves hippocampal subfield localization unresolved.
+
+## Attribution
+
+Adapted for the outward Streamlit example scope from BrainTrace, *PsychENCODE / Sousa2017 adult rhesus input*,
+at commit ca445528eb396c2ebe8ce0951099b82d579e0e74. The original is also in the published
+MACAQUE_FIXED_ASSET_SET_v1. This version revises the web example and input-preparation instructions.
+The frozen upload contract and source attribution are retained. The eligible project contributions
+use [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Applicable source conditions
+and third-party notices retain their original scope.

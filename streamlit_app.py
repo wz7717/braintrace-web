@@ -14,7 +14,7 @@ st.set_page_config(page_title='BrainTrace', page_icon='🧠', layout='wide', ini
 st.markdown((ROOT/'web/streamlit.css').read_text(encoding='utf-8'), unsafe_allow_html=True)
 with st.sidebar:
     st.markdown('<div class="bt-brand">◈ BrainTrace<small>TRANSCRIPTOMIC WORKBENCH</small></div>', unsafe_allow_html=True)
-    language = st.radio('Language / 语言', ['中文','English'], horizontal=True, key='ui_language')
+    language = st.radio('Language / 语言', ['中文','English'], index=1, horizontal=True, key='ui_language')
 
 def tr(zh, en):
     return en if language == 'English' else zh
@@ -123,6 +123,8 @@ active = False
 if st.session_state.get('_job'):
     try: active = svc.result(owner, st.session_state['_job'])['status'] in ('queued','running')
     except Exception: pass
+choices=svc.backend.read_json(svc.backend.ROOT/'examples/three_tier/EXAMPLES.json')
+human_cel_ready = (svc.backend.ROOT/'examples/human/GSM755211.CEL.gz').is_file()
 left,right = st.columns([2.2,1],gap='large')
 with left, st.container(border=True, key='input_panel'):
     heading('01', '输入与运行', 'Input and run')
@@ -137,11 +139,17 @@ with left, st.container(border=True, key='input_panel'):
         contract = st.checkbox(tr('我已确认平台、基因标识和归一化符合输入规范。','I confirm the platform, gene identifiers and normalization meet the input contract.'), key='contract_'+species)
     else:
         sample='example'
-        example='GSM755211' if species=='human' else st.selectbox(tr('选择示例','Choose an example'),['GSE128537','GSE179328','PsychENCODE_AMY','PsychENCODE_HIP'],key='example_id')
-        if species=='human': st.info('GSM755211 · Human Exon 1.0 ST CEL')
-        st.caption(tr('此操作会实际运行一个样本；示例真值仅用于结果说明。','This runs one real sample. Example truth labels are used only for interpretation.'))
+        example='GSM755211' if species=='human' else st.selectbox(tr('选择示例','Choose an example'),[x['id'] for x in choices],key='example_id')
+        if species=='human':
+            st.info('GSM755211 · Human Exon 1.0 ST CEL')
+            if not human_cel_ready:
+                st.markdown(tr('从 [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211) 下载 CEL 后，切换到上传样本。',
+                    'Download the CEL from [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211), then select Upload sample.'))
+        if species!='human' or human_cel_ready:
+            st.caption(tr('此操作会实际运行一个样本；示例真值仅用于结果说明。','This runs one real sample. Example truth labels are used only for interpretation.'))
     st.divider()
-    if st.button(tr('提交真实推断 →','Run inference →'), type='primary', disabled=active or not configs, key='run_inference', use_container_width=True):
+    missing_example = source=='example' and species=='human' and not human_cel_ready
+    if st.button(tr('提交真实推断 →','Run inference →'), type='primary', disabled=active or not configs or missing_example, key='run_inference', use_container_width=True):
         try:
             key=secrets.token_urlsafe(20)
             if source=='upload':
@@ -237,9 +245,8 @@ result_panel()
 
 with st.container(border=True, key='resources_panel'):
     heading('04', '示例与资源', 'Examples and resources')
-    st.caption(tr('43 种已有候选组合。缺少组合或输入不兼容时，下层会明确标注不可用。',
-        '43 existing candidate combinations. Missing combinations or incompatible inputs are explicitly marked unavailable.'))
-    choices=svc.backend.read_json(svc.backend.ROOT/'examples/three_tier/EXAMPLES.json')
+    st.caption(tr('120 种 Network Top3 组合均有冻结参考。下层结果仍要求输入兼容且信号可评估。',
+        'All 120 Network Top3 combinations have frozen references. Lower output still requires compatible input and evaluable signal.'))
     c1,c2=st.columns(2,gap='large')
     with c1:
         eid=st.selectbox(tr('下载猕猴输入示例','Download macaque input example'),[x['id'] for x in choices],key='download_example')

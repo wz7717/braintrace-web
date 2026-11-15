@@ -1,21 +1,15 @@
 {
-  "application_edition": "streamlit_cloud_20261101",
-  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
-  "asset_edition": "20261101_43_beams_psychencode_v1",
-  "reference_combinations": 43,
-  "input_mapping_count": 3,
-  "manuscript_edition": "psychencode_adult_revision_20261101",
-  "published": false,
-  "psychencode_input_adapter_in_web": true,
-  "cohort_inference_in_this_task": false,
-  "targeted_sample_count": 2,
+  "application_edition": "braintrace_web_120_integrated_20261115",
   "source_repository": "https://github.com/wz7717/braintrace-web",
-  "source_visibility_at_creation": "private",
-  "runtime_assets_in_repository": false,
-  "hosted_service_deployed": false,
-  "anonymous_sessions": true,
-  "single_process_job_queue": true,
-  "source_revision_uploaded": false,
-  "linux_human_adapter": "braintrace.linux.r461.v1",
-  "streamlit_entry": "streamlit_app.py"
+  "source_base_commit": "ca445528eb396c2ebe8ce0951099b82d579e0e74",
+  "streamlit_entry": "streamlit_app.py",
+  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
+  "asset_edition": "20261109_120_beams_local_v1",
+  "reference_combinations": 120,
+  "input_mapping_count": 3,
+  "macaque_examples": [
+    "GSE128537",
+    "GSE179328"
+  ],
+  "human_cel_acquisition": "GEO_CEL_SOURCE.json"
 }

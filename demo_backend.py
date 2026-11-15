@@ -79,10 +79,10 @@ def result_item(classes, scores, decision=None):
     return result
 
 
-def read_macaque_input(data: bytes, suffix: str, sample_id: str):
+def read_macaque_input(data: bytes, suffix: str, sample_id: str, *, expected_genes=None):
     """Require one full, named panel; observed zero and missing are distinct."""
     validate_id(sample_id)
-    genes = read_json(ROOT / 'science/macaque/baseline/genes.json')
+    genes = read_json(ROOT / 'science/macaque/baseline/genes.json') if expected_genes is None else expected_genes
     if len(data) > 8 * 1024**2:
         raise ValueError('Prepared macaque input must be at most 8 MiB.')
     check_macaque_container(data, suffix)

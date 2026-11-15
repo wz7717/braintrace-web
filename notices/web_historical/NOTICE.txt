@@ -1,0 +1,4 @@
+BrainTrace web source repository, 2026-11-01. Existing component notices are in licenses/.
+Only the prepared application source is synchronized to this initially private repository. Runtime assets remain separate.
+No new blanket licence, public release, model redistribution permission or scientific validation is asserted.
+See docs/DATA_AND_LICENSES.md and docs/DEPLOYMENT_CN.md.

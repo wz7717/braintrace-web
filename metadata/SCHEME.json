@@ -4,7 +4,7 @@
   "manuscript_version": "psychencode_adult_revision_20261101",
   "network": "floor_clip; 5000 genes; final L2 multinomial C=0.1",
   "lower": "Original Top200 Pearson group max; independent Top50/100 z fusion 0.25/0.75",
-  "coverage": "43 exact Top3 combinations: original 37 plus 6 reused source-only references; not all 120 combinations",
+  "coverage": "120 exact unordered Network Top3 reference keys: 43 retained pairs and 77 converted frozen pairs",
   "models": "science/macaque/floor_clip",
   "lower_reference": "science/lower",
   "input_contract": "braintrace.three_tier_input.v1",
@@ -13,7 +13,7 @@
     "GSE179328_Ensembl101_existing_20261101",
     "PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101"
   ],
-  "deployment_asset_version": "20261101_43_beams_psychencode_v1",
+  "deployment_asset_version": "20261109_120_beams_local_v1",
   "input_scope_note": "Two original full-library mappings plus the frozen PsychENCODE common-annotation mapping; background definitions remain distinct.",
   "psychencode_contract": {
     "contract_version": "braintrace.psychencode_common_annotation_input.v1",

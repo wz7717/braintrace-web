@@ -14,8 +14,8 @@ Use Python3.11.9 and requirements.txt. Human live processing additionally needs 
 preprocessCore1.74.0, affxparser1.84.0, digest0.6.39, jsonlite2.0.0, as specified in the original PREDICTION_BUNDLE.json.
 Copy runtime.example.json to runtime.local.json in the assembled directory, then set python, rscript, rlib,
 optional rlib_site and an existing ASCII temp_root on the deployment host. This personal configuration is not source code.
-The package does not install Python/R, claim Linux compatibility or rerun CEL processing.
+These commands configure the Windows route. On Linux use the separate adapter and pinned environment in STREAMLIT_CLOUD.md.
 
 Local completeness and public redistribution permission are separate; see DATA_AND_LICENSES.md.
 
-Current PsychENCODE interface: see PSYCHENCODE_INPUT.md. Two example paths cover old/new reference lookup; no full-cohort rerun, model fitting or performance estimation.
+For the live human example, obtain GSM755211.CEL.gz from GEO and match the identity in ../GEO_CEL_SOURCE.json. Place the file in runtime_assets/examples/human/ before assembly, or submit it as a CEL upload.
