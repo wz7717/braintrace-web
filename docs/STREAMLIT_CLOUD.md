@@ -6,29 +6,36 @@ This entry point runs fixed human CEL inference and macaque Network/Group/Exact 
 
 The GitHub source directory is the repository root. Entry point: `streamlit_app.py`. Keep `requirements.txt`, `packages.txt` and `.streamlit/config.toml` at that root. Add the separately supplied `runtime_assets/` directory at the root on the deployment branch, or set the administrator-controlled `BRAINTRACE_ASSETS_DIR` to an existing assets directory. Source and assets must retain their current relative paths and edition identity.
 
-The source `.gitignore` excludes runtime assets to prevent accidental publication. This authorized private-deployment synchronization explicitly includes the supplied `runtime_assets/` subdirectory; future source-only checkouts still need those assets. Do not upload the full research reproduction package to run this app. Do not include private editing materials, PROJECT_MEMORY.md, AGENTS.md, runtime.local.json, user uploads, results, local logs, WSL disks or compiled local environments.
+The application deployment ZIP supplies the matching `runtime_assets/` directory. A source-only checkout requires the asset bundle for the same edition. Instance settings such as `runtime.local.json`, visitor uploads, results and build logs belong to the individual deployment.
 
 ## Hosting configuration
 
 1. Select the intended GitHub repository and deployment branch in Streamlit Community Cloud. Use `streamlit_app.py`, Python **3.11**, and an available app subdomain.
 2. Keep the GitHub repository private if appropriate for the assets. Configure the app's viewer setting to **public** for anonymous visitors. Repository access and app viewer access are separate choices.
-3. Community Cloud installs Python packages from `requirements.txt`, constrained by the audited Linux/Python 3.11 `requirements-lock.txt`, and Debian system libraries from `packages.txt`. The UI uses Streamlit 1.66.1, Pillow 13.0.0 and PyArrow 23.0.1; these do not change the isolated scientific worker.
+3. Community Cloud reads `requirements.txt` and `packages.txt`. For Linux x86-64 on Python 3.11, the requirements include the [fixed app wheels](../deployment/linux-app-requirements.txt) with SHA-256 URL fragments. The managed host supplies its Python interpreter and system packages. The UI uses Streamlit 1.66.1, Pillow 13.0.0 and PyArrow 23.0.1.
 4. First startup builds a private R 4.6.1 and installs an isolated CPython 3.11.9 worker **in a shared background startup task**. The page remains responsive, including its language switch. It shows the current stage, elapsed time, age of the latest output and the last 160 installation-log lines; full installation output also reaches the cloud console. The main Streamlit Python patch version is not substituted for the scientific worker. Exact NumPy/SciPy/scikit-learn and R package versions remain enforced.
 5. After startup, verify the human CEL and the two macaque GEO cases on the deployed app and check their CSV exports. Obtain GSM755211.CEL.gz from [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211), using the identity in ../GEO_CEL_SOURCE.json. A local run and a deployed run are recorded separately.
 
-Local Linux preparation (no training or predictions):
+## Pinned local Linux installation
 
-```bash
-python -m pip install -r requirements.txt
-bash deployment/setup_linux.sh "$HOME/.cache/braintrace-streamlit-r461/dependencies"
-streamlit run streamlit_app.py
-```
+Use the Linux x86-64 glibc runtime on a host with the prerequisites in [packages.txt](../packages.txt). The [Debian 12.15 package table](../deployment/debian-12.15-amd64-packages.tsv) identifies the 106 audited additions to the base system, with their versions, URLs and SHA-256 values. The application installer uses the operating system supplied by the host.
 
-The required system packages are listed in `packages.txt`. Install them into an isolated host/container before the manual setup command. The setup script needs network access to official CRAN, Bioconductor, Python/uv and Python-package sources. It does not download model assets. `BRAINTRACE_CLOUD_HOME` may select another private writable cache directory. It must be an ASCII absolute path. Do not change the original frozen bundle to make a platform check pass.
+From the application directory, select a private ASCII absolute path for the runtime. `--with-app` prepares the Streamlit app environment in addition to R and the scientific worker.
+
+~~~bash
+export BRAINTRACE_CLOUD_HOME="$HOME/.cache/braintrace-streamlit-r461"
+bash deployment/setup_linux.sh "$BRAINTRACE_CLOUD_HOME/dependencies" --with-app
+"$BRAINTRACE_CLOUD_HOME/dependencies/app/bin/streamlit" run streamlit_app.py
+~~~
+
+The [Linux artifact table](../deployment/linux-artifacts.tsv) lists the R source, four R package sources, one CPython 3.11.9 archive and 42 wheels. Each entry gives the fixed URL, byte count and SHA-256. The installer checks cached files before reuse and checks a replacement download before placing it in the cache. Python packages install from the checked wheels using hash-required, index-free installation. The default installer invocation sets up the scientific worker and its R environment for the Streamlit startup path.
+
+Keep matching `runtime_assets/` beside the source or set `BRAINTRACE_ASSETS_DIR`. Both the separately sourced CEL and the fixed research assets retain their published identities.
+
 
 ## Startup cache and recovery
 
-- Keep the same `BRAINTRACE_CLOUD_HOME` (default `~/.cache/braintrace-streamlit-r461`). R, each of the four R packages, and the six-package scientific Python environment are checked separately. Correct installed components skip download, compilation and installation. Completed archives and the R build tree are reused after interruptions; `make` resumes its existing build. This does not change numerical kernels, versions or model assets.
+- Keep the same `BRAINTRACE_CLOUD_HOME` (default `~/.cache/braintrace-streamlit-r461`). Each archive needed for this invocation is checked even when its installed component is available. A mismatched cache file is reacquired from its fixed URL. Components built or installed from the locked artifacts carry their source identity alongside the version check. The R build tree is kept under its source digest so interrupted builds can resume from the same archive.
 - Only one startup task runs per application process. A filesystem lock also serializes dependency installers sharing this cache. Additional visitors, UI reruns and language switches observe the current startup rather than starting another build. Clearing Streamlit's resource cache does not reset the queue or initializer.
 - A failed initialization stays failed until the explicit **Retry with cached components** button is used. A shared 60-second cooldown prevents repeated visitor retries. The installer has a 30-minute wall-clock limit; timed-out Linux process groups, including compiler descendants, are stopped. Previously completed components are retained. Retry is for a resolved/transient installation failure, not a substitute for reading the error.
 - Progress represents stages, not an estimated percentage of compilation or time remaining. Compiler/download output can pause temporarily. Installation logs are plain text, bounded in the UI and credential/home-path redacted; they do not contain inference jobs, uploaded files or visitor results. The private `dependency-build.log` also retains installation output. Original technical errors and English technical guides remain available even when Chinese is selected.
@@ -50,6 +57,20 @@ R packages: preprocessCore 1.74.0, affxparser 1.84.0, digest 0.6.39, jsonlite 2.
 - Results expire after 30 minutes; sessions after 30 idle minutes or 2 hours total. Refresh/disconnect/restart may lose access. There is no automatic replay of uploads or jobs.
 - CSV downloads are embedded only in the owning session as client-side data, without a shared server result URL. No arbitrary uploaded file is used as code, a model, or a filesystem path. Gzip CEL expansion is capped at 256 MiB inside the timed worker; NPZ header/array declarations and CSV/TSV row/column/field bounds are checked before numerical parsing. See `../SECURITY.md`.
 - This free single-instance app has limited memory and compute. Queueing bounds computation, but does not provide high availability, strong anti-abuse identity, persistent jobs, or unlimited concurrent uploads. Cloud sleep/restart/OOM can interrupt work. Do not submit confidential or personally identifying data to this public research demonstration.
+
+## Local Linux acceptance on 17 November 2026
+
+The test used Debian 12.15 x86-64 under WSL2 with glibc 2.36 and the recorded 194 system packages. R, its four packages, CPython and the two application environments were installed in a fresh directory. The installer checked 46 previously obtained archives and two fresh PyPI downloads. It also detected a deliberately modified cached wheel and reacquired the matching bytes.
+
+Streamlit 1.66.1 served its landing page and health endpoint on local HTTP. Streamlit AppTest exercised the application startup and example buttons through the same inference queue. The absolute score tolerance was 1e-10.
+
+| Example | Result against the frozen reference |
+| --- | --- |
+| Human GSM755211 | RAW_FIXED and RANK_FIXED class axes and rankings matched. Top1 was 4132 for both. Maximum score differences were 2.22e-16 and 0, respectively. |
+| Macaque GSE128537 / 10_10 | Reference beam_015, all three ranks and Group members matched. The maximum Network score difference was 2.08e-17. Group and Exact scores and the three correlation vectors matched exactly. |
+
+The result applies to the installed Linux environment and these two single-sample routes. Managed Community Cloud installation, wider platform compatibility and cohort performance each have separate acceptance evidence.
+
 
 ## Targeted checks
 

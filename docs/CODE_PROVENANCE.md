@@ -1,5 +1,7 @@
 # Upload audit edition, 2026-11-01
 
+The November 20 source refit, mapping versions and current results are documented in the [Ensembl 97 analysis](https://github.com/wz7717/braintrace-analysis/tree/main/analysis/research/macaque_ensembl97). The earlier software and asset history follows.
+
 ## 120-reference web edition
 
 The web entry point, presentation and base tree come from main at ca445528. The current source and asset edition is recorded in ../resources/VERSION.json. The 120-key runtime follows the fixed edition 20261109_120_beams_local_v1. The original 43 pairs were retained and 77 pairs were converted from previously frozen assets. Read COVERAGE.md for the active inventory and DATA_AND_LICENSES.md for component notices.

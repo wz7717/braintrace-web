@@ -32,14 +32,16 @@ CSV supports the same complete gene set in any order: `gene_id,ln1p_cpm,observed
 
 Supported mappings (engineering names for the existing correspondence files, not new biological mapping releases):
 
-- `GSE128537_Ensembl91_existing_20261101`: complete 30,807-row rhesus count universe, original strict Ensembl 91 one-to-one mapping; full-axis 17,743 observed / 3,925 absent; Network 4,379 / 621.
-- `GSE179328_Ensembl101_existing_20261101`: complete 22,515-row rhesus count universe, original strict Ensembl 101 one-to-one mapping; full-axis 16,019 observed / 5,649 absent; Network 4,377 / 623.
+- `GSE128537_Ensembl91_source97_20261120`: complete 30,807-row rhesus count universe, original strict Ensembl 91 one-to-one mapping; full-axis 17,734 observed / 3,934 absent; Network 4,379 / 621.
+- `GSE179328_Ensembl101_source97_20261120`: complete 22,515-row rhesus count universe, original strict Ensembl 101 one-to-one mapping; full-axis 16,019 observed / 5,649 absent; Network 4,378 / 622.
 
 The package includes the full gene axis and both existing GENE_CORRESPONDENCE files, including source IDs, target IDs, covered flags and exclusion reasons. Exact axis, declared mapping and its observed mask are checked. A new assay with a different gene universe/mask or homology map is not established compatible by this demo. The declaration and numerical checks cannot prove the raw-data origin; the user must confirm it. Do not fill unsubmitted genes with zeros and label them absent to bypass this contract.
 
 The first layer uses its saved training means, explicit standardized zero for missing coordinates, and the unchanged floor_clip transformation. The original lower tiers separately fill only contracted absent coordinates with the saved unweighted all819 raw logCPM mean, without first-layer standardization/floor/clip. Observed zero is never replaced by a missing-value mean.
 
-If a full axis is structurally readable but required contract metadata is absent or incompatible, Network can run while Group/Exact return `input_incompatible` and explicit missing requirements. A partial full axis, duplicate gene IDs or malformed numeric data are rejected at upload. Unknown candidate combinations return `reference_unavailable`; numerical/signal failures remain distinct.
+An explicit normalization declaration applies to all three tiers. The GEO full-library inputs use `full_library_ln1p_CPM`. The PsychENCODE input uses `public_common_annotation_ln1p_CPM`. An unsupported scale, conflicting declarations within a specimen, or a declared scale that conflicts with its known mapping or contract stops the upload before scoring. The 5,000-gene legacy panel accepts the full-library scale.
+
+Files without a normalization declaration retain the existing Network-only path under the documented assumption that the supplied values already use natural ln(1 + CPM). Structurally valid full-axis inputs with missing lower-tier requirements or an incompatible lower-tier mapping return `input_incompatible` for Group and Exact. The software cannot infer the logarithm or denominator from expression values alone.
 
 ## Preparing another existing sample
 
@@ -49,13 +51,15 @@ For an already available compatible full prepared file, use:
 The following extraction command applies to the separate local tools edition.
 
 ```text
-python -X utf8 -B tools/extract_prepared_sample.py --input INPUT.npz --sample-id YOUR_SAMPLE --mapping GSE128537_Ensembl91_existing_20261101 --output new_sample.npz
+python -X utf8 -B tools/extract_prepared_sample.py --input INPUT.npz --sample-id YOUR_SAMPLE --mapping GSE128537_Ensembl91_source97_20261120 --output new_sample.npz
 ```
 
-This only extracts and validates a column. It does not map genes, normalize counts, guess homologs or construct new scientific inputs. Complete cohort matrices are deliberately not included. Their source and original preparation steps are in DATA_AND_LICENSES.md.
+The extractor copies one prepared column. When source normalization, mapping, contract or row-count metadata is present, it must agree with the selected GEO preparation. For older matrices without those fields, the selected mapping declares the original GEO preparation. Verify the original scale before extracting a legacy matrix. Complete cohort matrices and their original preparation are described in DATA_AND_LICENSES.md.
 
 ## PsychENCODE adult common-annotation input
 
 Upload one complete 26,514-row count column as TSV/CSV, or use prepared NPZ/CSV carrying `braintrace.psychencode_common_annotation_input.v1` and `public_common_annotation_ln1p_CPM`. The adapter uses the saved Ensembl91-to-XSAnno correspondence and the sum of all public common-annotation rows. This is not the original unfiltered sequencing library and cannot be relabeled as either original mapping. Prepared inputs also require `public_common_annotation_counts_total`; the legacy `full_library_counts` field must equal it.
 
 The [adult input guide](PSYCHENCODE_INPUT.md) gives the exact upload fields and explains how to select one input column. The AMY and HIP integration examples are retained in the local records. Their prior checks cover original and added reference lookup. For this delivery, submit your own compatible PsychENCODE input using the frozen contract in PSYCHENCODE_INPUT.md.
+
+[Ensembl 97 mapping coverage](https://github.com/wz7717/braintrace-analysis/blob/main/analysis/research/macaque_ensembl97/aggregates/coverage.csv) · [Donor-equal and pooled endpoints](https://github.com/wz7717/braintrace-analysis/blob/main/analysis/research/macaque_ensembl97/aggregates/FROZEN_ENDPOINTS.csv)

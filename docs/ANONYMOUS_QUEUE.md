@@ -1,6 +1,13 @@
-# Anonymous single-machine queue / 免登录单机队列
+# Anonymous queue for the legacy HTTP service / 旧版 HTTP 服务的免登录队列
 
-This edition is prepared locally; it has not been pushed to GitHub or deployed.
+**Applies to the legacy HTTP service (`site_server.py`).** For Streamlit, see [deployment and queue limits](STREAMLIT_CLOUD.md#anonymous-queue-and-privacy).
+
+**适用于旧版 HTTP 服务（`site_server.py`）。** Streamlit 的部署和队列限制见[现行说明](STREAMLIT_CLOUD.md#anonymous-queue-and-privacy)。
+
+Original delivery note / 原交付记录
+
+> This edition is prepared locally; it has not been pushed to GitHub or deployed.
+
 No login is required. Every browser receives an independent, random HttpOnly session cookie.
 The server holds its verifier and a separate CSRF token in memory. Upload, task, JSON and CSV access
 are checked against that session. Knowing a task or upload ID is insufficient to access it from another session.

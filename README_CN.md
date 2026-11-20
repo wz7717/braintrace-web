@@ -2,13 +2,13 @@
 
 入口为 `streamlit_app.py`，保留人类 CEL 的 RAW_FIXED/RANK_FIXED 实时推断，以及含成年 PsychENCODE 适配的猕猴 Network/Group/Exact 三层推断。
 
-本地网页包以 wz7717/braintrace-web 的 main（ca445528）为底本。源码和同版 runtime_assets/ 一起使用。猕猴冻结模型、原 43 套参考和 77 套历史冻结参考转换件的版本见 resources/VERSION.json。
+2026 年 11 月 20 日版包含 Ensembl 97 猕猴 Network 模型、120 套源队列重建的下层参考、三份映射和两个可运行的 GEO 示例。源码与同版 `runtime_assets/` 配套使用。[训练代码和本版复算结果](https://github.com/wz7717/braintrace-analysis/tree/main/analysis/research/macaque_ensembl97)
 
 在 Streamlit Community Cloud 选择本仓库、`main` 分支、`streamlit_app.py` 和 Python **3.11**。依赖由 `requirements.txt`、`requirements-lock.txt`、`packages.txt` 指定。首次启动会构建独立 R 4.6.1 与 Python 3.11.9 科学工作进程；主界面的 Python 不替换冻结计算环境。具体步骤和实际云端验收见 [部署说明](docs/STREAMLIT_CLOUD.md)。
 
 匿名页面采用单机 FIFO 队列、每会话及全站限额、任务/结果归属校验和超时进程树回收。人类上传上限 80 MiB，gzip 展开上限 256 MiB；猕猴上传上限 8 MiB，并在解析前限制 NPZ 声明大小及 CSV/TSV 记录数。匿名会话不等于真实身份，免费单实例也不能承受无限并发上传；详见 [安全范围](SECURITY.md)。
 
-冻结科学规则、模型参数和原有科学结果未改。已有验证继续复用，本次只做输入边界、匿名队列、界面和依赖的针对性检查，不重训或重跑完整队列。历史验证与本轮检查在 [代码来源](docs/CODE_PROVENANCE.md) 中分开记录。
+猕猴源队列的基因表达预筛逐折仅使用训练供体，最终部署模型在九名源供体上重拟合。人源 CEL 的固定资产沿用既有发布。
 
 随包提供 GSE128537（10_10）和 GSE179328（LID_100660）的已准备输入。GSM755211.CEL.gz 请从 [GEO 原记录](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211) 获取，并按 [GEO_CEL_SOURCE.json](GEO_CEL_SOURCE.json) 核对 SHA-256。启动后可选人源路线上传。若要从页面直接运行人源示例，请在启动前把 CEL 放入 runtime_assets/examples/human/，如已启动则重启。
 

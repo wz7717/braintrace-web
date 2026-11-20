@@ -1,6 +1,10 @@
 # Data, code and component licences
 
-This candidate is the Streamlit application with separately assembled runtime assets.
+The 20 November 2026 macaque edition uses a gene map reconstructed from Ensembl release 97. The Network model and all 120 lower-tier references were refitted from the Bo et al. source cohort. GSE128537 and GSE179328 use their respective frozen orthology rules. Adult PsychENCODE uses the Sousa et al. common-annotation count background and the saved XSAnno correspondence. The notices and hash manifests for previous releases describe the files from those releases. Source data and annotations retain the terms of their respective providers. [Sources and evaluation](https://github.com/wz7717/braintrace-analysis/tree/main/analysis/research/macaque_ensembl97)
+
+## Previous release inventories
+
+The historical candidate is the Streamlit application with separately assembled runtime assets.
 The accompanying notices identify the MIT scope for project code and support files and
 the CC BY-NC 4.0 scope for eligible project contributions in the specified fixed and
 derived assets. Earlier notices and applicable source terms accompany their respective components.

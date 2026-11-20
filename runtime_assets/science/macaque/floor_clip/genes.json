@@ -4501,7 +4501,6 @@
   "ITM2C",
   "COG2",
   "GRM4",
-  "RF00096",
   "SND1",
   "MRAS",
   "CD151",
@@ -4998,5 +4997,6 @@
   "DNM1",
   "RASGEF1B",
   "OLFML1",
-  "FGF1"
+  "FGF1",
+  "ZNF174"
 ]

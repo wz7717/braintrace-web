@@ -25,9 +25,22 @@ strings. Save the two columns as UTF-8 TSV or CSV and upload that file. Keep the
 matrix in the source records. A compatible prepared NPZ or CSV may also be submitted under the contract
 below. An ordinary upload never inherits example truth from its filename or sample ID.
 
+## Command line
+
+From the assembled runtime, run `python braintrace_cli.py --help` to list installed examples.
+The public edition includes the GSE128537 and GSE179328 macaque examples. To score an adult
+rhesus count column that you have prepared as above, give its file and sample ID directly.
+
+```text
+python braintrace_cli.py --species macaque --input adult_counts.tsv --sample-id RMB160L.A1C --out adult_result
+```
+
+Choose a new output directory. The two locally retained AMY and HIP examples appear under
+`--example` only in an edition that includes them in its example manifest.
+
 ## Frozen rules and metadata
 
-Mapping: `PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101`.
+Mapping: `PsychENCODE_Sousa2017_Ensembl91_XSAnno_source97_20261120`.
 Contract: `braintrace.psychencode_common_annotation_input.v1`.
 Normalization: `public_common_annotation_ln1p_CPM`; full_count_rows: 26514.
 
@@ -35,7 +48,7 @@ Source stable IDs use the previously resolved strict Ensembl Compara91 one-to-on
 common IDs. All source components are required; the saved within/between-feature collision exclusions remain.
 For each covered feature, sum its mapped counts, divide by the total of ALL 26,514 public matrix rows,
 multiply by 1e6, take natural log1p and cast to float32, in the original numerical order.
-The model axis has 21,668 entries, 14,382 observed; the fixed 5,000-feature Network panel has 4,064 observed.
+The model axis has 21,668 entries, 14,375 observed; the fixed 5,000-feature Network panel has 4,065 observed.
 Missing Network values use the frozen training means; missing lower values use the original unweighted source raw mean.
 Observed zero is not a missing value. Model parameters, reference arrays, scoring and tie rules are unchanged.
 
@@ -44,15 +57,14 @@ exploratory and cannot be relabeled as either original full-library mapping.
 Prepared NPZ: original x/genes/observed/samples fields, the distinct contract/mapping/normalization/count-row scalars,
 and `public_common_annotation_counts_total` as a one-element array. `full_library_counts` is retained only as a
 legacy numeric alias for backend compatibility and must equal that common-annotation total; it does NOT assert full raw-library coverage.
-Prepared 21,668-row CSV can use the same metadata repeated on each row, including the explicit common-annotation total.
-JSON and exported score CSV identify normalization_background and public_common_annotation_counts_total.
+For a prepared 21,668-row CSV, repeat the metadata and both count totals on each gene row.
+The reader checks the declared common-annotation total before ranking. A missing or invalid total, or a
+disagreement with its alias, stops inference for the specimen. For a valid input, JSON and the score CSV
+report the validated `public_common_annotation_counts_total` and its normalization background.
 
 ## Evidence and access
 
-The source-only references and frozen mapping are reused for user uploads. The historical AMY example
-covered the original reference branch, and the HIP example covered beam_038. These local integration
-examples remain separate from the full cohort analysis. The HIP result supports parent-structure
-compatibility and leaves hippocampal subfield localization unresolved.
+The adult evaluation used 77 profiles from five donors, including 34 primary Network profiles and 15 unique fine-region profiles. Use the current endpoint table below for accuracy by evaluation set.
 
 ## Attribution
 
@@ -62,3 +74,5 @@ MACAQUE_FIXED_ASSET_SET_v1. This version revises the web example and input-prepa
 The frozen upload contract and source attribution are retained. The eligible project contributions
 use [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Applicable source conditions
 and third-party notices retain their original scope.
+
+[Ensembl 97 mapping coverage](https://github.com/wz7717/braintrace-analysis/blob/main/analysis/research/macaque_ensembl97/aggregates/coverage.csv) · [Donor-equal and pooled endpoints](https://github.com/wz7717/braintrace-analysis/blob/main/analysis/research/macaque_ensembl97/aggregates/FROZEN_ENDPOINTS.csv)

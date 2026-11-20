@@ -5,17 +5,27 @@ import three_tier_backend as backend
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--species',choices=['macaque','human'],default='macaque')
+    parser.add_argument('--species', choices=['macaque', 'human'],
+                        help='Must match the selected example. Defaults to its species with --example, or to macaque with --input.')
     source=parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--input',type=Path)
-    source.add_argument('--example',choices=['GSE128537','GSE179328','PsychENCODE_AMY','PsychENCODE_HIP','human'])
+    example_species = {example['id']: 'macaque' for example in backend.example_catalog()}
+    example_species['human'] = 'human'
+    source.add_argument('--example', choices=example_species,
+                        help='Select an installed macaque example or the human example. Human live inference requires the GSM755211 CEL; --saved reads its packaged result.')
     parser.add_argument('--sample-id',default='query_001')
     parser.add_argument('--program',choices=['RAW_FIXED','RANK_FIXED','BOTH'],default='RAW_FIXED')
     parser.add_argument('--saved',action='store_true',help='View saved output, without inference; requires --example.')
     parser.add_argument('--out',type=Path,required=True,help='New output directory; an existing directory is never overwritten.')
     args=parser.parse_args()
     if args.saved and not args.example:parser.error('--saved requires --example')
-    species=('human' if args.example=='human' else 'macaque') if args.example else args.species
+    if args.example is None:
+        species = args.species or 'macaque'
+    else:
+        species = example_species[args.example]
+        if args.species is not None and args.species != species:
+            parser.error(f'--species {args.species} conflicts with --example {args.example}. '
+                         f'Use --species {species} or omit --species.')
     configs=(['RAW_FIXED','RANK_FIXED'] if args.program=='BOTH' else [args.program]) if species=='human' else ['floor_clip']
     args.out.mkdir(parents=True,exist_ok=False)
     try:

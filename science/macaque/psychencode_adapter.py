@@ -11,7 +11,7 @@ import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
 CONTRACT='braintrace.psychencode_common_annotation_input.v1'
-MAPPING='PsychENCODE_Sousa2017_Ensembl91_XSAnno_existing_20261101'
+MAPPING='PsychENCODE_Sousa2017_Ensembl91_XSAnno_source97_20261120'
 NORMALIZATION='public_common_annotation_ln1p_CPM'
 COUNT_ROWS=26514
 

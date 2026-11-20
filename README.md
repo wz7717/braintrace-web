@@ -2,7 +2,7 @@
 
 The Streamlit entry point is `streamlit_app.py`. It supports live human Human Exon 1.0 ST CEL inference (RAW_FIXED/RANK_FIXED) and macaque Network/Group/Exact inference, including the adult PsychENCODE common-annotation adapter.
 
-This local web package starts from wz7717/braintrace-web main at ca445528. Keep the source tree and its matching runtime_assets/ directory together. The fixed macaque model and the original 43 reference pairs are retained alongside 77 converted frozen pairs. The version record is in resources/VERSION.json.
+The 20 November 2026 edition contains the Ensembl 97 macaque Network model, 120 source-fitted lower references, three mappings and two runnable GEO examples. Keep the code and its matching `runtime_assets/` together. [Source refit and numerical results](https://github.com/wz7717/braintrace-analysis/tree/main/analysis/research/macaque_ensembl97)
 
 ## Streamlit Community Cloud
 

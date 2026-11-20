@@ -26,6 +26,16 @@ ROOT = Path(__file__).resolve().parent
 ROUTES = ('baseline', 'floor_clip', 'floor_only', 'clip_only')
 HUMAN_PROGRAMS = ('RAW_FIXED', 'RANK_FIXED', 'BOTH')
 ATOL = 1e-10
+FULL_LIBRARY_SCALE = 'full_library_ln1p_CPM'
+
+
+def check_normalization(values, allowed=(FULL_LIBRARY_SCALE,)):
+    """Validate an optional scale declaration before interpreting expression values."""
+    declared = {v for v in values if v is not None and v != ''}
+    if len(declared) > 1:
+        raise ValueError('Conflicting normalization declarations in one specimen.')
+    if declared and not declared.issubset(allowed):
+        raise ValueError(f'Unsupported macaque normalization {next(iter(declared))!r} for this input.')
 
 
 def read_json(path):
@@ -91,6 +101,8 @@ def read_macaque_input(data: bytes, suffix: str, sample_id: str, *, expected_gen
             if len(archive.infolist()) > 8 or sum(x.file_size for x in archive.infolist()) > 16 * 1024**2:
                 raise ValueError('Prepared NPZ exceeds the single-sample size limit.')
         with np.load(io.BytesIO(data), allow_pickle=False) as payload:
+            if 'normalization' in payload:
+                check_normalization((payload['normalization'].item(),))
             required = {'observed_logcpm', 'observed', 'genes', 'samples', 'full_library_counts'}
             if not required.issubset(payload.files):
                 raise ValueError('NPZ needs observed_logcpm, observed, genes, samples and full_library_counts.')
@@ -104,6 +116,7 @@ def read_macaque_input(data: bytes, suffix: str, sample_id: str, *, expected_gen
             library = payload['full_library_counts'].copy()
     elif suffix.lower() == '.csv':
         rows = list(csv.DictReader(io.StringIO(data.decode('utf-8-sig'))))
+        check_normalization(r.get('normalization') for r in rows)
         if len(rows) != 5000 or not {'gene_id', 'ln1p_cpm', 'observed', 'full_library_counts'}.issubset(rows[0]):
             raise ValueError('CSV needs 5,000 rows and gene_id, ln1p_cpm, observed, full_library_counts columns.')
         by_gene = {r['gene_id']: r for r in rows}

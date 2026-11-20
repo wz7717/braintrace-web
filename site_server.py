@@ -272,7 +272,7 @@ class Handler(BaseHTTPRequestHandler):
                     ready = scientific_runtime_ready() and self.server.store.runner.healthy
                     human_path = getattr(self.server.store.runner, 'work_root', Path('local'))
                     self.respond({'api_version':3, 'scheme':backend.SCHEME,
-                        'examples':backend.read_json(ROOT/'examples/three_tier/EXAMPLES.json'), 'session_token':csrf,
+                        'examples':backend.example_catalog(), 'session_token':csrf,
                         'human_example_available':FILES['human-example'].is_file(),
                         'anonymous_session':True, 'limits':self.server.policy.public(), 'usage':self.server.store.usage(owner),
                         'runtime':{'human':ready and backend.human_ready() and str(human_path).isascii(), 'macaque':ready},

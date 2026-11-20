@@ -68,6 +68,9 @@ def read_input(data, suffix, sample_id):
             x=z['x'].copy(); observed=z['observed'].copy(); library=z['full_library_counts'].copy()
             common_total=z['public_common_annotation_counts_total'].copy() if 'public_common_annotation_counts_total' in z.files else None
             meta={k:_scalar(z,k) for k in ('contract_version','mapping_version','normalization','full_count_rows')}
+            if meta['normalization'] == '':
+                meta['normalization'] = None
+            declared_scales = (meta['normalization'],)
     elif suffix.lower()=='.csv':
         rows=list(csv.DictReader(io.StringIO(data.decode('utf-8-sig'))))
         if len(rows)==5000:
@@ -93,46 +96,59 @@ def read_input(data, suffix, sample_id):
         for k in ('contract_version','mapping_version','normalization','full_count_rows'):
             vals={r.get(k,'') for r in rows}
             meta[k]=next(iter(vals)) if len(vals)==1 and '' not in vals else None
+        declared_scales = {r.get('normalization') for r in rows}
         if meta['full_count_rows'] is not None:
             try:meta['full_count_rows']=int(meta['full_count_rows'])
             except ValueError:meta['full_count_rows']=None
     else:
         raise ValueError('Use a prepared NPZ or CSV file.')
+    allowed_scales = {legacy.FULL_LIBRARY_SCALE, adult.NORMALIZATION}
+    if meta['mapping_version'] in SCHEME['mapping_versions']:
+        allowed_scales &= {adult.NORMALIZATION if meta['mapping_version'] == adult.MAPPING else legacy.FULL_LIBRARY_SCALE}
+    if meta['contract_version'] in (CONTRACT, adult.CONTRACT):
+        allowed_scales &= {adult.NORMALIZATION if meta['contract_version'] == adult.CONTRACT else legacy.FULL_LIBRARY_SCALE}
+    legacy.check_normalization(declared_scales, allowed_scales)
     if x.shape!=(21668,1) or x.dtype.kind!='f' or observed.shape!=(21668,) or observed.dtype!=bool:
         raise ValueError('Require x as floating-point 21668×1 and observed as a Boolean 21668-element mask.')
     if library.shape!=(1,) or not np.isfinite(library).all() or library[0]<=0:
         raise ValueError('A positive full-library count total is required.')
+    is_adult_mapping = meta['mapping_version'] == adult.MAPPING
+    public_total = None
+    if is_adult_mapping or meta['contract_version'] == adult.CONTRACT or adult.NORMALIZATION in declared_scales:
+        if (common_total is None or common_total.shape != (1,) or common_total.dtype.kind not in 'iuf'
+                or not np.isfinite(common_total[0]) or common_total[0] <= 0):
+            raise ValueError('PsychENCODE requires one finite positive public_common_annotation_counts_total.')
+        if common_total.item() != library.item():
+            raise ValueError(f'PsychENCODE count totals disagree: public_common_annotation_counts_total={common_total.item()}, '
+                             f'full_library_counts={library.item()}.')
+        public_total = common_total.item() if common_total.dtype.kind in 'iu' else float(common_total[0])
     x=x.astype(np.float32)
     if not np.isfinite(x[observed]).all() or (x[observed]<0).any():
         raise ValueError('Observed values must be finite nonnegative natural ln(1+CPM).')
     missing=[k for k,v in meta.items() if v is None]
     reason='input_incompatible' if missing else 'compatible'
     if not missing:
-        is_adult=meta['mapping_version']==adult.MAPPING
-        expected_contract=adult.CONTRACT if is_adult else CONTRACT
-        expected_normalization=adult.NORMALIZATION if is_adult else 'full_library_ln1p_CPM'
+        expected_contract=adult.CONTRACT if is_adult_mapping else CONTRACT
         if meta['contract_version']!=expected_contract:missing.append('supported_contract_version')
-        if meta['normalization']!=expected_normalization:missing.append(expected_normalization)
-        if is_adult and (common_total is None or common_total.shape!=(1,) or not np.array_equal(common_total,library)):
-            missing.append('matching_public_common_annotation_counts_total')
         if meta['mapping_version'] not in SCHEME['mapping_versions']:
             missing.append('supported_mapping_version')
         else:
             mapping=read_json(ROOT/'science/lower/mappings'/(meta['mapping_version']+'.json'))
             expected=np.array([r['covered'] for r in mapping])
             if not np.array_equal(observed,expected):missing.append('observed_mask_matching_declared_mapping')
-            expected_rows=26514 if is_adult else (30807 if meta['mapping_version'].startswith('GSE128537_') else 22515)
+            expected_rows=26514 if is_adult_mapping else (30807 if meta['mapping_version'].startswith('GSE128537_') else 22515)
             if meta['full_count_rows']!=expected_rows:missing.append('full_count_rows_matching_declared_mapping')
         if missing:reason='input_incompatible'
     head=x[head_rows,0].reshape(1,-1).copy();head[:,~observed[head_rows]]=0
     return dict(head_x=head,head_observed=observed[head_rows],library=float(library[0]),x=x[:,0],observed=observed,
-                input_type='full_axis_21668',metadata=meta,lower_status=reason,missing_fields=missing)
+                input_type='full_axis_21668',metadata=meta,lower_status=reason,missing_fields=missing,
+                public_common_annotation_counts_total=public_total)
 
 def input_summary(prepared):
     o=prepared['head_observed']
-    is_adult=prepared.get('metadata',{}).get('mapping_version')==adult.MAPPING
-    return {'normalization_background':'public_common_annotation_26514' if is_adult else 'full_library',
-            'public_common_annotation_counts_total':prepared['library'] if is_adult else None,
+    public_total = prepared.get('public_common_annotation_counts_total')
+    return {'normalization_background':'public_common_annotation_26514' if public_total is not None else 'full_library',
+            'public_common_annotation_counts_total':public_total,
             'input_type':prepared['input_type'],'observed_features':int(o.sum()),'missing_features':int((~o).sum()),
             'full_library_counts':prepared['library'],'lower_input_status':prepared['lower_status'],
             'lower_missing_fields':prepared['missing_fields'],
@@ -207,8 +223,16 @@ def run_macaque(data,suffix,sample_id,routes):
     json.dumps(result,allow_nan=False)
     return result
 
+def example_catalog():
+    for assets in (ROOT, ROOT / 'runtime_assets'):
+        manifest = assets / 'examples/three_tier/EXAMPLES.json'
+        if manifest.is_file():
+            return read_json(manifest)
+    return []
+
+
 def example_info(example_id='GSE128537'):
-    for info in read_json(ROOT/'examples/three_tier/EXAMPLES.json'):
+    for info in example_catalog():
         if info['id']==example_id:return info
     raise ValueError('Unknown saved example.')
 

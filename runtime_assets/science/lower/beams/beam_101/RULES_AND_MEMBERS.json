@@ -1,8 +1,8 @@
 {
   "beam": [
-    "Hippocampal formation",
-    "Orbitomedial Prefrontal Cortex (OMPFC)",
-    "Temporal"
+    "Occipital/Temporal",
+    "Operculum/Insula",
+    "Orbitomedial Prefrontal Cortex (OMPFC)"
   ],
   "candidates": [
     "10m",
@@ -18,48 +18,36 @@
     "14r",
     "25",
     "32",
-    "36c",
-    "A1",
-    "AL",
-    "CL",
-    "CM",
-    "HC",
-    "IPa",
-    "ML",
-    "PGa",
-    "R",
-    "RM",
-    "RT",
-    "RTL",
-    "RTM",
-    "STG",
-    "TAa",
-    "TEO",
-    "TEa",
-    "TEad",
-    "TEav",
-    "TEm",
-    "TEpd",
-    "TEpv",
-    "TF",
-    "TFO",
-    "TG",
-    "TPO",
-    "Tpt"
+    "FST",
+    "G",
+    "Ia",
+    "Ial",
+    "Iapl",
+    "Iapm",
+    "Id",
+    "Ig",
+    "MST",
+    "MT",
+    "Pi",
+    "PrCo",
+    "Ri",
+    "SII",
+    "V1",
+    "V2",
+    "V3d",
+    "V3v",
+    "V4",
+    "V4v"
   ],
   "annotations": {
     "10m": {
       "region_id": "10m",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 13b + 14r",
       "group_members": [
         "10m",
-        "11l",
-        "11m",
-        "12m",
-        "12o",
-        "13l",
-        "13m"
+        "13b",
+        "14r"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -67,18 +55,16 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 12,
-      "nearest_centroid_corr": 0.9979287436524027
+      "nearest_centroid_corr": 0.998343407303282
     },
     "11l": {
       "region_id": "11l",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::11l + 11m + 12m + 13l + 13m",
       "group_members": [
-        "10m",
         "11l",
         "11m",
         "12m",
-        "12o",
         "13l",
         "13m"
       ],
@@ -88,18 +74,16 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 10,
-      "nearest_centroid_corr": 0.9977868640183204
+      "nearest_centroid_corr": 0.9971902797855364
     },
     "11m": {
       "region_id": "11m",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::11l + 11m + 12m + 13l + 13m",
       "group_members": [
-        "10m",
         "11l",
         "11m",
         "12m",
-        "12o",
         "13l",
         "13m"
       ],
@@ -110,18 +94,16 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 7,
-      "nearest_centroid_corr": 0.9985232486558256
+      "nearest_centroid_corr": 0.998343407303282
     },
     "12m": {
       "region_id": "12m",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::11l + 11m + 12m + 13l + 13m",
       "group_members": [
-        "10m",
         "11l",
         "11m",
         "12m",
-        "12o",
         "13l",
         "13m"
       ],
@@ -132,20 +114,15 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 7,
-      "nearest_centroid_corr": 0.9951268332050143
+      "nearest_centroid_corr": 0.9931510914741892
     },
     "12o": {
       "region_id": "12o",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::12o + 32",
       "group_members": [
-        "10m",
-        "11l",
-        "11m",
-        "12m",
         "12o",
-        "13l",
-        "13m"
+        "32"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -154,7 +131,7 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 6,
-      "nearest_centroid_corr": 0.9968133319995658
+      "nearest_centroid_corr": 0.9961391214065414
     },
     "13a": {
       "region_id": "13a",
@@ -172,13 +149,14 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 6,
-      "nearest_centroid_corr": 0.9937653204836686
+      "nearest_centroid_corr": 0.9928113338537737
     },
     "13b": {
       "region_id": "13b",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::13b + 14r",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 13b + 14r",
       "group_members": [
+        "10m",
         "13b",
         "14r"
       ],
@@ -188,18 +166,16 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 10,
-      "nearest_centroid_corr": 0.9985232486558256
+      "nearest_centroid_corr": 0.9983904157315457
     },
     "13l": {
       "region_id": "13l",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::11l + 11m + 12m + 13l + 13m",
       "group_members": [
-        "10m",
         "11l",
         "11m",
         "12m",
-        "12o",
         "13l",
         "13m"
       ],
@@ -209,18 +185,16 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 9,
-      "nearest_centroid_corr": 0.9987253318109622
+      "nearest_centroid_corr": 0.9983995607183531
     },
     "13m": {
       "region_id": "13m",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 11l + 11m + 12m + 12o + 13l + 13m",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::11l + 11m + 12m + 13l + 13m",
       "group_members": [
-        "10m",
         "11l",
         "11m",
         "12m",
-        "12o",
         "13l",
         "13m"
       ],
@@ -231,7 +205,7 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 7,
-      "nearest_centroid_corr": 0.9987253318109622
+      "nearest_centroid_corr": 0.9983995607183531
     },
     "14c": {
       "region_id": "14c",
@@ -248,13 +222,14 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 8,
-      "nearest_centroid_corr": 0.9937653204836686
+      "nearest_centroid_corr": 0.9943248921243544
     },
     "14r": {
       "region_id": "14r",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::13b + 14r",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::10m + 13b + 14r",
       "group_members": [
+        "10m",
         "13b",
         "14r"
       ],
@@ -264,7 +239,7 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 10,
-      "nearest_centroid_corr": 0.9964183194152734
+      "nearest_centroid_corr": 0.9983904157315457
     },
     "25": {
       "region_id": "25",
@@ -282,66 +257,58 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 4,
-      "nearest_centroid_corr": 0.9878161617138492
+      "nearest_centroid_corr": 0.9915016660687497
     },
     "32": {
       "region_id": "32",
       "network_id": "Orbitomedial Prefrontal Cortex (OMPFC)",
-      "resolution_group": "32",
+      "resolution_group": "Orbitomedial Prefrontal Cortex (OMPFC)::12o + 32",
       "group_members": [
+        "12o",
         "32"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
-        "nearest_centroid_corr>=0.95"
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
       ],
       "training_samples": 8,
-      "nearest_centroid_corr": 0.9926794009770201
+      "nearest_centroid_corr": 0.9943248921243544
     },
-    "36c": {
-      "region_id": "36c",
-      "network_id": "Temporal",
-      "resolution_group": "36c",
+    "FST": {
+      "region_id": "FST",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
       "group_members": [
-        "36c"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95"
-      ],
-      "training_samples": 2,
-      "nearest_centroid_corr": 0.9915318864834343
-    },
-    "A1": {
-      "region_id": "A1",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
         "nearest_centroid_corr>=0.95",
         "fold_local_merged_confusion_group"
       ],
-      "training_samples": 9,
-      "nearest_centroid_corr": 0.997567770967238
+      "training_samples": 8,
+      "nearest_centroid_corr": 0.998345181353247
     },
-    "AL": {
-      "region_id": "AL",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::AL + R",
+    "G": {
+      "region_id": "G",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
       "group_members": [
-        "AL",
-        "R"
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -349,171 +316,17 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 10,
-      "nearest_centroid_corr": 0.9969189498427337
+      "nearest_centroid_corr": 0.9975131140804332
     },
-    "CL": {
-      "region_id": "CL",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
+    "Ia": {
+      "region_id": "Ia",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::Ia + Ial + Iapm + Pi",
       "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 7,
-      "nearest_centroid_corr": 0.9982391971585939
-    },
-    "CM": {
-      "region_id": "CM",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9982391971585939
-    },
-    "HC": {
-      "region_id": "HC",
-      "network_id": "Hippocampal formation",
-      "resolution_group": "HC",
-      "group_members": [
-        "HC"
-      ],
-      "resolution_tier": "high_resolution",
-      "resolution_reasons": [],
-      "training_samples": 8,
-      "nearest_centroid_corr": null
-    },
-    "IPa": {
-      "region_id": "IPa",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9980675388165574
-    },
-    "ML": {
-      "region_id": "ML",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9964001560108066
-    },
-    "PGa": {
-      "region_id": "PGa",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
-      "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 9,
-      "nearest_centroid_corr": 0.9980166665828176
-    },
-    "R": {
-      "region_id": "R",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::AL + R",
-      "group_members": [
-        "AL",
-        "R"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 8,
-      "nearest_centroid_corr": 0.9969189498427337
-    },
-    "RM": {
-      "region_id": "RM",
-      "network_id": "Temporal",
-      "resolution_group": "RM",
-      "group_members": [
-        "RM"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95"
-      ],
-      "training_samples": 10,
-      "nearest_centroid_corr": 0.9949554613260705
-    },
-    "RT": {
-      "region_id": "RT",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::RT + RTM",
-      "group_members": [
-        "RT",
-        "RTM"
+        "Ia",
+        "Ial",
+        "Iapm",
+        "Pi"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -522,86 +335,17 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 4,
-      "nearest_centroid_corr": 0.9938658972445665
+      "nearest_centroid_corr": 0.9931177814076955
     },
-    "RTL": {
-      "region_id": "RTL",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::RTL + STG",
+    "Ial": {
+      "region_id": "Ial",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::Ia + Ial + Iapm + Pi",
       "group_members": [
-        "RTL",
-        "STG"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9964126756114926
-    },
-    "RTM": {
-      "region_id": "RTM",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::RT + RTM",
-      "group_members": [
-        "RT",
-        "RTM"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9938658972445665
-    },
-    "STG": {
-      "region_id": "STG",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::RTL + STG",
-      "group_members": [
-        "RTL",
-        "STG"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 15,
-      "nearest_centroid_corr": 0.9964126756114926
-    },
-    "TAa": {
-      "region_id": "TAa",
-      "network_id": "Temporal",
-      "resolution_group": "TAa",
-      "group_members": [
-        "TAa"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95"
-      ],
-      "training_samples": 5,
-      "nearest_centroid_corr": 0.9968271804805894
-    },
-    "TEO": {
-      "region_id": "TEO",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
-      "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
+        "Ia",
+        "Ial",
+        "Iapm",
+        "Pi"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -609,21 +353,179 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 8,
-      "nearest_centroid_corr": 0.9919597994347659
+      "nearest_centroid_corr": 0.9968704758482166
     },
-    "TEa": {
-      "region_id": "TEa",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
+    "Iapl": {
+      "region_id": "Iapl",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
       "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 8,
+      "nearest_centroid_corr": 0.9978591447247713
+    },
+    "Iapm": {
+      "region_id": "Iapm",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::Ia + Ial + Iapm + Pi",
+      "group_members": [
+        "Ia",
+        "Ial",
+        "Iapm",
+        "Pi"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "training_n<8",
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 7,
+      "nearest_centroid_corr": 0.9968704758482166
+    },
+    "Id": {
+      "region_id": "Id",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
+      "group_members": [
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 10,
+      "nearest_centroid_corr": 0.9978591447247713
+    },
+    "Ig": {
+      "region_id": "Ig",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
+      "group_members": [
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 10,
+      "nearest_centroid_corr": 0.996779614707843
+    },
+    "MST": {
+      "region_id": "MST",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
+      "group_members": [
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 8,
+      "nearest_centroid_corr": 0.998345181353247
+    },
+    "MT": {
+      "region_id": "MT",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "MT",
+      "group_members": [
+        "MT"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "training_n<8",
+        "nearest_centroid_corr>=0.95"
+      ],
+      "training_samples": 1,
+      "nearest_centroid_corr": 0.9891019408344811
+    },
+    "Pi": {
+      "region_id": "Pi",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::Ia + Ial + Iapm + Pi",
+      "group_members": [
+        "Ia",
+        "Ial",
+        "Iapm",
+        "Pi"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "training_n<8",
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 4,
+      "nearest_centroid_corr": 0.994504530786234
+    },
+    "PrCo": {
+      "region_id": "PrCo",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
+      "group_members": [
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 8,
+      "nearest_centroid_corr": 0.9975131140804332
+    },
+    "Ri": {
+      "region_id": "Ri",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
+      "group_members": [
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -632,43 +534,20 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 3,
-      "nearest_centroid_corr": 0.9881361182149956
+      "nearest_centroid_corr": 0.9840568055662208
     },
-    "TEad": {
-      "region_id": "TEad",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
+    "SII": {
+      "region_id": "SII",
+      "network_id": "Operculum/Insula",
+      "resolution_group": "Operculum/Insula::G + Iapl + Id + Ig + PrCo + Ri + SII",
       "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 8,
-      "nearest_centroid_corr": 0.9971070865297902
-    },
-    "TEav": {
-      "region_id": "TEav",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
-      "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
+        "G",
+        "Iapl",
+        "Id",
+        "Ig",
+        "PrCo",
+        "Ri",
+        "SII"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -676,43 +555,88 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 9,
-      "nearest_centroid_corr": 0.9968271804805894
+      "nearest_centroid_corr": 0.9887177742523154
     },
-    "TEm": {
-      "region_id": "TEm",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
+    "V1": {
+      "region_id": "V1",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
       "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
         "nearest_centroid_corr>=0.95",
         "fold_local_merged_confusion_group"
       ],
-      "training_samples": 10,
-      "nearest_centroid_corr": 0.9973023441590324
+      "training_samples": 11,
+      "nearest_centroid_corr": 0.970821241487693
     },
-    "TEpd": {
-      "region_id": "TEpd",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
+    "V2": {
+      "region_id": "V2",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
       "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 15,
+      "nearest_centroid_corr": 0.9944531428268208
+    },
+    "V3d": {
+      "region_id": "V3d",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
+      "group_members": [
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
+      ],
+      "resolution_tier": "low_resolution",
+      "resolution_reasons": [
+        "training_n<8",
+        "nearest_centroid_corr>=0.95",
+        "fold_local_merged_confusion_group"
+      ],
+      "training_samples": 5,
+      "nearest_centroid_corr": 0.9904829614653685
+    },
+    "V3v": {
+      "region_id": "V3v",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
+      "group_members": [
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -720,21 +644,21 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 8,
-      "nearest_centroid_corr": 0.9973023441590324
+      "nearest_centroid_corr": 0.9944531428268208
     },
-    "TEpv": {
-      "region_id": "TEpv",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
+    "V4": {
+      "region_id": "V4",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
       "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -743,95 +667,21 @@
         "fold_local_merged_confusion_group"
       ],
       "training_samples": 7,
-      "nearest_centroid_corr": 0.9971070865297902
+      "nearest_centroid_corr": 0.9929239933987504
     },
-    "TF": {
-      "region_id": "TF",
-      "network_id": "Temporal",
-      "resolution_group": "TF",
+    "V4v": {
+      "region_id": "V4v",
+      "network_id": "Occipital/Temporal",
+      "resolution_group": "Occipital/Temporal::FST + MST + V1 + V2 + V3d + V3v + V4 + V4v",
       "group_members": [
-        "TF"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95"
-      ],
-      "training_samples": 2,
-      "nearest_centroid_corr": 0.9915318864834343
-    },
-    "TFO": {
-      "region_id": "TFO",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::PGa + TEO + TEad + TEav + TEm + TEpd + TEpv + TFO",
-      "group_members": [
-        "PGa",
-        "TEO",
-        "TEad",
-        "TEav",
-        "TEm",
-        "TEpd",
-        "TEpv",
-        "TFO"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 8,
-      "nearest_centroid_corr": 0.9926121311836105
-    },
-    "TG": {
-      "region_id": "TG",
-      "network_id": "Temporal",
-      "resolution_group": "TG",
-      "group_members": [
-        "TG"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "training_n<8",
-        "nearest_centroid_corr>=0.95"
-      ],
-      "training_samples": 4,
-      "nearest_centroid_corr": 0.9797665587557465
-    },
-    "TPO": {
-      "region_id": "TPO",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
-      ],
-      "resolution_tier": "low_resolution",
-      "resolution_reasons": [
-        "nearest_centroid_corr>=0.95",
-        "fold_local_merged_confusion_group"
-      ],
-      "training_samples": 11,
-      "nearest_centroid_corr": 0.9980675388165574
-    },
-    "Tpt": {
-      "region_id": "Tpt",
-      "network_id": "Temporal",
-      "resolution_group": "Temporal::A1 + CL + CM + IPa + ML + TEa + TPO + Tpt",
-      "group_members": [
-        "A1",
-        "CL",
-        "CM",
-        "IPa",
-        "ML",
-        "TEa",
-        "TPO",
-        "Tpt"
+        "FST",
+        "MST",
+        "V1",
+        "V2",
+        "V3d",
+        "V3v",
+        "V4",
+        "V4v"
       ],
       "resolution_tier": "low_resolution",
       "resolution_reasons": [
@@ -839,398 +689,9 @@
         "nearest_centroid_corr>=0.95",
         "fold_local_merged_confusion_group"
       ],
-      "training_samples": 6,
-      "nearest_centroid_corr": 0.9954496470954594
+      "training_samples": 7,
+      "nearest_centroid_corr": 0.9914123880359387
     }
   },
-  "training_sample_indices": {
-    "10m": [
-      6,
-      99,
-      155,
-      318,
-      352,
-      610,
-      612,
-      622,
-      626,
-      644,
-      645,
-      732
-    ],
-    "11l": [
-      4,
-      37,
-      103,
-      159,
-      258,
-      301,
-      321,
-      648,
-      650,
-      730
-    ],
-    "11m": [
-      36,
-      273,
-      320,
-      353,
-      561,
-      647,
-      729
-    ],
-    "12m": [
-      74,
-      108,
-      229,
-      500,
-      524,
-      720,
-      728
-    ],
-    "12o": [
-      79,
-      85,
-      121,
-      167,
-      797,
-      808
-    ],
-    "13a": [
-      80,
-      86,
-      565,
-      586,
-      599,
-      604
-    ],
-    "13b": [
-      3,
-      75,
-      81,
-      87,
-      109,
-      164,
-      262,
-      314,
-      721,
-      731
-    ],
-    "13l": [
-      166,
-      405,
-      451,
-      532,
-      540,
-      544,
-      563,
-      798,
-      809
-    ],
-    "13m": [
-      165,
-      450,
-      539,
-      545,
-      585,
-      799,
-      810
-    ],
-    "14c": [
-      82,
-      88,
-      122,
-      234,
-      541,
-      759,
-      800,
-      811
-    ],
-    "14r": [
-      5,
-      76,
-      110,
-      163,
-      261,
-      269,
-      315,
-      319,
-      356,
-      722
-    ],
-    "25": [
-      83,
-      89,
-      562,
-      564
-    ],
-    "32": [
-      77,
-      93,
-      111,
-      230,
-      417,
-      523,
-      723,
-      801
-    ],
-    "36c": [
-      191,
-      224
-    ],
-    "A1": [
-      68,
-      138,
-      182,
-      279,
-      340,
-      463,
-      474,
-      763,
-      774
-    ],
-    "AL": [
-      10,
-      46,
-      178,
-      203,
-      253,
-      387,
-      418,
-      430,
-      662,
-      781
-    ],
-    "CL": [
-      69,
-      183,
-      475,
-      479,
-      594,
-      764,
-      775
-    ],
-    "CM": [
-      280,
-      300,
-      339,
-      462,
-      473,
-      773
-    ],
-    "HC": [
-      48,
-      250,
-      265,
-      311,
-      335,
-      385,
-      402,
-      424
-    ],
-    "IPa": [
-      548,
-      551,
-      555,
-      558,
-      678,
-      767
-    ],
-    "ML": [
-      97,
-      139,
-      277,
-      296,
-      337,
-      598
-    ],
-    "PGa": [
-      547,
-      550,
-      554,
-      559,
-      572,
-      664,
-      677,
-      766,
-      814
-    ],
-    "R": [
-      45,
-      98,
-      133,
-      220,
-      355,
-      384,
-      674,
-      813
-    ],
-    "RM": [
-      44,
-      132,
-      236,
-      254,
-      381,
-      429,
-      443,
-      579,
-      661,
-      673
-    ],
-    "RT": [
-      197,
-      298,
-      438,
-      456
-    ],
-    "RTL": [
-      245,
-      292,
-      377,
-      440,
-      458,
-      536
-    ],
-    "RTM": [
-      193,
-      309,
-      439,
-      457,
-      512,
-      535
-    ],
-    "STG": [
-      41,
-      47,
-      128,
-      140,
-      179,
-      243,
-      270,
-      305,
-      336,
-      372,
-      388,
-      431,
-      441,
-      701,
-      782
-    ],
-    "TAa": [
-      199,
-      231,
-      283,
-      341,
-      675
-    ],
-    "TEO": [
-      25,
-      52,
-      145,
-      219,
-      268,
-      286,
-      519,
-      777
-    ],
-    "TEa": [
-      679,
-      711,
-      776
-    ],
-    "TEad": [
-      18,
-      209,
-      244,
-      373,
-      432,
-      445,
-      712,
-      783
-    ],
-    "TEav": [
-      19,
-      39,
-      134,
-      241,
-      379,
-      433,
-      446,
-      816,
-      817
-    ],
-    "TEm": [
-      202,
-      354,
-      386,
-      419,
-      444,
-      459,
-      464,
-      483,
-      680,
-      815
-    ],
-    "TEpd": [
-      51,
-      70,
-      141,
-      184,
-      256,
-      343,
-      420,
-      465
-    ],
-    "TEpv": [
-      71,
-      142,
-      185,
-      259,
-      421,
-      466,
-      778
-    ],
-    "TF": [
-      557,
-      569
-    ],
-    "TFO": [
-      24,
-      148,
-      232,
-      295,
-      395,
-      476,
-      494,
-      779
-    ],
-    "TG": [
-      40,
-      618,
-      619,
-      620
-    ],
-    "TPO": [
-      23,
-      147,
-      212,
-      255,
-      294,
-      380,
-      394,
-      516,
-      663,
-      676,
-      765
-    ],
-    "Tpt": [
-      144,
-      249,
-      398,
-      490,
-      515,
-      788
-    ]
-  },
-  "n_groups": 15
+  "n_groups": 8
 }

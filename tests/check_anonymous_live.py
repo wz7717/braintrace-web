@@ -13,11 +13,12 @@ def main(out,work):
     records=[]
     try:
         clients=[Client(server),Client(server)]
-        cases=[('macaque','PsychENCODE_HIP',['floor_clip']),('human','GSM755211',['RAW_FIXED','RANK_FIXED'])]
+        macaque_example = b.example_catalog()[-1]['id']
+        cases=[('macaque',macaque_example,['floor_clip']),('human','GSM755211',['RAW_FIXED','RANK_FIXED'])]
         jobs=[]
         for c,(species,eid,configs) in zip(clients,cases):
             if species=='macaque':
-                info=b.example_info(eid);path=b.ROOT/info['input'];sample='uploaded_adult_hip'
+                info=b.example_info(eid);path=b.ROOT/info['input'];sample='uploaded_macaque'
             else:path=web.FILES['human-example'];sample='uploaded_human'
             status,upload,_=c.call('/api/uploads?species='+species+'&sample_id='+sample+'&filename='+path.name,path.read_bytes())
             assert status==201,(status,upload)

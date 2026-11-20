@@ -28,11 +28,11 @@ def main(a):
     human_compare=backend.compare_example(result)
     assert human_compare['pass'],human_compare
     human_seconds=time.monotonic()-started
-    info=backend.example_info('PsychENCODE_HIP')
+    info=backend.example_info(a.macaque_example) if a.macaque_example else backend.example_catalog()[-1]
     path=root/info['input']
     started=time.monotonic()
     macaque=backend.run_macaque(path.read_bytes(),path.suffix,info['sample_id'],['floor_clip'])
-    macaque_compare=backend.compare_example(macaque,'PsychENCODE_HIP')
+    macaque_compare=backend.compare_example(macaque,info['id'])
     assert macaque_compare['pass'],macaque_compare
     (out/'macaque.json').write_text(json.dumps(macaque,ensure_ascii=False,indent=2),encoding='utf-8')
     report={'platform':platform.platform(),'python':platform.python_version(),
@@ -47,4 +47,5 @@ def main(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--prefix',required=True)
     p.add_argument('--human-features',required=True)
+    p.add_argument('--macaque-example', help='Installed example ID; defaults to the last entry in this edition.')
     main(p.parse_args())

@@ -14,12 +14,22 @@ def main():
     a=p.parse_args();b.validate_id(a.sample_id)
     if a.output.exists():p.error('Output exists; use a new file.')
     with b.np.load(a.input,allow_pickle=False) as z:
+        row_count = 30807 if a.mapping.startswith('GSE128537_') else 22515
+        expected = dict(normalization=b.legacy.FULL_LIBRARY_SCALE, contract_version=b.CONTRACT,
+                        mapping_version=a.mapping, full_count_rows=row_count)
+        if 'public_common_annotation_counts_total' in z:
+            p.error('A common-annotation input cannot be extracted as a GEO full-library input.')
+        for field, value in expected.items():
+            if field in z:
+                declared = z[field]
+                if declared.shape != () or declared.item() not in ('', value):
+                    p.error(f'Input {field} conflicts with the requested GEO preparation: expected {value!r}.')
         samples=z['samples'].tolist()
         if samples.count(a.sample_id)!=1:p.error('Sample ID must occur exactly once.')
         i=samples.index(a.sample_id)
         if z['x'].shape!=(21668,len(samples)) or z['full_library_counts'].shape!=(len(samples),):p.error('Unexpected full-axis input dimensions.')
         payload=dict(x=z['x'][:,i:i+1],genes=z['genes'],samples=z['samples'][i:i+1],observed=z['observed'],full_library_counts=z['full_library_counts'][i:i+1],
-                     contract_version=b.np.array(b.CONTRACT),mapping_version=b.np.array(a.mapping),normalization=b.np.array('full_library_ln1p_CPM'),full_count_rows=b.np.array(30807 if a.mapping.startswith('GSE128537_') else 22515))
+                     **{field:b.np.array(value) for field,value in expected.items()})
     buf=io.BytesIO();b.np.savez_compressed(buf,**payload)
     prepared=b.read_input(buf.getvalue(),'.npz',a.sample_id)
     if prepared['lower_status']!='compatible':p.error('Input is not compatible: '+str(prepared['missing_fields']))

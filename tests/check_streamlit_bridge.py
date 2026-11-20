@@ -90,7 +90,8 @@ class BridgeChecks(unittest.TestCase):
             cookie=app.session_state['_anonymous_cookie']
             app.text_input(key='sample_id').set_value('retained_id').run()
             app.radio(key='input_source').set_value('example').run()
-            app.selectbox(key='example_id').set_value('PsychENCODE_HIP').run()
+            selected_example = web.backend.example_catalog()[-1]['id']
+            app.selectbox(key='example_id').set_value(selected_example).run()
             app.button(key='run_inference').click().run()
             job_id=app.session_state['_job']
             eventually(lambda:len(self.runner.started)==1)
@@ -99,7 +100,7 @@ class BridgeChecks(unittest.TestCase):
             self.assertEqual(app.session_state['_job'],job_id)
             self.assertEqual(app.session_state['_anonymous_cookie'],cookie)
             self.assertEqual(app.radio(key='input_source').value,'example')
-            self.assertEqual(app.selectbox(key='example_id').value,'PsychENCODE_HIP')
+            self.assertEqual(app.selectbox(key='example_id').value,selected_example)
             self.assertTrue(app.button(key='run_inference').disabled)
             self.assertIn('expression',app.title[0].value)
             self.assertEqual(len(self.runner.started),1)

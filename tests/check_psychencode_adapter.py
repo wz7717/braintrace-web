@@ -1,9 +1,9 @@
-"""Targeted adapter checks; two HTTP sample jobs only, no cohort rerun or fitting.
+"""Public adapter contract checks and an optional replay of two recorded adult specimens.
 
 Run from an assembled runtime. --live-check is explicit; without it all inference is blocked.
 """
 from pathlib import Path
-import argparse, csv, io, json, sys, threading, time, unittest
+import argparse, csv, io, json, math, sys, threading, time, unittest
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError
 from unittest.mock import patch
@@ -15,6 +15,87 @@ from science.macaque import psychencode_adapter as adapter
 EXAMPLES=('PsychENCODE_AMY','PsychENCODE_HIP')
 
 class AdapterChecks(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        _, mapping, ids = adapter.resources()
+        counts = {gene: i % 17 for i, gene in enumerate(ids)}
+        cls.library = sum(counts.values())
+        cls.expected_mask = b.np.array([row['covered'] for row in mapping])
+        cls.expected_x = b.np.array([
+            math.log1p(1e6 * sum(counts[t] for t in row['target_ids']) / cls.library)
+            if row['covered'] else math.nan for row in mapping
+        ], dtype=b.np.float32)
+        text = io.StringIO(newline='')
+        writer = csv.writer(text, delimiter='\t', lineterminator='\n')
+        writer.writerow(['gene_id', 'count'])
+        writer.writerows(counts.items())
+        cls.count_tsv = text.getvalue().encode()
+
+    def test_count_conversion_uses_full_annotation_total(self):
+        p = b.read_input(self.count_tsv, '.tsv', 'contract_test')
+        self.assertEqual(p['library'], self.library)
+        self.assertTrue(b.np.array_equal(p['x'], self.expected_x, equal_nan=True))
+        self.assertTrue(b.np.array_equal(p['observed'], self.expected_mask))
+        coverage = b.SCHEME['psychencode_contract']
+        self.assertEqual(int(p['observed'].sum()), coverage['lower_axis_covered'])
+        self.assertEqual(int(p['head_observed'].sum()), coverage['network_covered'])
+        self.assertEqual(p['lower_status'], 'compatible')
+        summary = b.input_summary(p)
+        self.assertEqual(summary['normalization_background'], 'public_common_annotation_26514')
+        self.assertEqual(summary['public_common_annotation_counts_total'], self.library)
+
+    def test_raw_csv_and_reordered_rows_follow_same_rules(self):
+        data = self.count_tsv
+        expected=b.read_input(data,'.tsv','unknown')
+        rows=list(csv.reader(io.StringIO(data.decode()),delimiter='\t'))
+        output=io.StringIO(newline='');writer=csv.writer(output)
+        writer.writerow(['gene_id','count']);writer.writerows(reversed(rows[1:]))
+        actual=b.read_input(output.getvalue().encode(),'.csv','unknown')
+        self.assertTrue(b.np.array_equal(actual['x'],expected['x'],equal_nan=True))
+        self.assertEqual(actual['library'],expected['library'])
+
+    def test_partial_duplicate_fractional_or_wrong_id_counts_rejected(self):
+        lines = self.count_tsv.decode().splitlines()
+        variants=[lines[:-1],lines+[lines[1]],lines[:1]+[lines[1].split('\t')[0]+'\t0.5']+lines[2:],
+                  lines[:1]+['ENSG_NOT_IN_COMMON_UNIVERSE\t1']+lines[2:]]
+        for variant in variants:
+            with self.assertRaises(ValueError):b.read_input(('\n'.join(variant)+'\n').encode(),'.tsv','unknown')
+
+    def test_prepared_contract_cannot_claim_whole_library_background(self):
+        fields = adapter.prepare_counts(self.count_tsv, '.tsv', 'contract_test')
+        fields['normalization']=b.np.array('full_library_ln1p_CPM')
+        with self.assertRaisesRegex(ValueError,'normalization'):
+            b.read_input(adapter.npz_bytes(fields),'.npz','unknown')
+        fields['normalization']=b.np.array(adapter.NORMALIZATION)
+        fields.pop('public_common_annotation_counts_total')
+        with self.assertRaisesRegex(ValueError, 'public_common_annotation_counts_total'):
+            b.read_input(adapter.npz_bytes(fields), '.npz', 'unknown')
+
+    def test_conflicting_count_totals_fail_even_with_incomplete_metadata(self):
+        fields = adapter.prepare_counts(self.count_tsv, '.tsv', 'contract_test')
+        fields['full_library_counts'] += 1000
+        del fields['full_count_rows']
+        with self.assertRaisesRegex(ValueError, 'public_common_annotation_counts_total=.*full_library_counts='):
+            b.read_input(adapter.npz_bytes(fields), '.npz', 'contract_test')
+
+    def test_public_saved_examples_use_packaged_results(self):
+        with patch.object(adapter, 'prepare_counts', side_effect=AssertionError('Saved mode cannot prepare counts')):
+            for eid in ('GSE128537', 'GSE179328'):
+                result = b.saved_example('macaque', ['floor_clip'], eid)
+                self.assertEqual(result['mode'], 'saved_example')
+                self.assertEqual(result['input_summary']['normalization_background'], 'full_library')
+
+    def test_original_inputs_retain_prepared_values(self):
+        for eid in ('GSE128537','GSE179328'):
+            info=b.example_info(eid)
+            with b.np.load(b.ROOT/info['input'],allow_pickle=False) as z:
+                p=b.read_input((b.ROOT/info['input']).read_bytes(),'.npz',info['sample_id'])
+                self.assertTrue(b.np.array_equal(p['x'],z['x'][:,0],equal_nan=True))
+                self.assertTrue(b.np.array_equal(p['observed'],z['observed']))
+                self.assertEqual(p['lower_status'],'compatible')
+                self.assertEqual(b.input_summary(p)['normalization_background'],'full_library')
+
+class RecordedAdultChecks(unittest.TestCase):
     def test_two_inputs_match_original_prepared_values(self):
         for eid in EXAMPLES:
             info=b.example_info(eid)
@@ -28,35 +109,6 @@ class AdapterChecks(unittest.TestCase):
             self.assertEqual(int(p['head_observed'].sum()),4064)
             self.assertEqual(b.input_summary(p)['normalization_background'],'public_common_annotation_26514')
 
-    def test_raw_csv_and_reordered_rows_follow_same_rules(self):
-        info=b.example_info(EXAMPLES[0]);data=(b.ROOT/info['input']).read_bytes()
-        expected=b.read_input(data,'.tsv','unknown')
-        rows=list(csv.reader(io.StringIO(data.decode()),delimiter='\t'))
-        output=io.StringIO(newline='');writer=csv.writer(output)
-        writer.writerow(['gene_id','count']);writer.writerows(reversed(rows[1:]))
-        actual=b.read_input(output.getvalue().encode(),'.csv','unknown')
-        self.assertTrue(b.np.array_equal(actual['x'],expected['x'],equal_nan=True))
-        self.assertEqual(actual['library'],expected['library'])
-
-    def test_partial_duplicate_fractional_or_wrong_id_counts_rejected(self):
-        info=b.example_info(EXAMPLES[0]);lines=(b.ROOT/info['input']).read_text().splitlines()
-        variants=[lines[:-1],lines+[lines[1]],lines[:1]+[lines[1].split('\t')[0]+'\t0.5']+lines[2:],
-                  lines[:1]+['ENSG_NOT_IN_COMMON_UNIVERSE\t1']+lines[2:]]
-        for variant in variants:
-            with self.assertRaises(ValueError):b.read_input(('\n'.join(variant)+'\n').encode(),'.tsv','unknown')
-
-    def test_prepared_contract_cannot_claim_whole_library_background(self):
-        info=b.example_info(EXAMPLES[0])
-        with b.np.load(b.ROOT/info['prepared_input'],allow_pickle=False) as z:fields={k:z[k] for k in z.files}
-        fields['normalization']=b.np.array('full_library_ln1p_CPM')
-        p=b.read_input(adapter.npz_bytes(fields),'.npz','unknown')
-        self.assertEqual(p['lower_status'],'input_incompatible')
-        self.assertIn(adapter.NORMALIZATION,p['missing_fields'])
-        fields['normalization']=b.np.array(adapter.NORMALIZATION)
-        fields.pop('public_common_annotation_counts_total')
-        p=b.read_input(adapter.npz_bytes(fields),'.npz','unknown')
-        self.assertIn('matching_public_common_annotation_counts_total',p['missing_fields'])
-
     def test_saved_mode_does_not_normalize_or_infer(self):
         with patch.object(adapter,'prepare_counts',side_effect=AssertionError('Saved mode cannot normalize')):
             for eid in EXAMPLES:
@@ -67,15 +119,6 @@ class AdapterChecks(unittest.TestCase):
                 self.assertTrue(all(r['normalization_background']=='public_common_annotation_26514' for r in rows))
                 self.assertTrue(all(r['public_common_annotation_counts_total'] for r in rows))
 
-    def test_original_inputs_retain_prepared_values(self):
-        for eid in ('GSE128537','GSE179328'):
-            info=b.example_info(eid)
-            with b.np.load(b.ROOT/info['input'],allow_pickle=False) as z:
-                p=b.read_input((b.ROOT/info['input']).read_bytes(),'.npz',info['sample_id'])
-                self.assertTrue(b.np.array_equal(p['x'],z['x'][:,0],equal_nan=True))
-                self.assertTrue(b.np.array_equal(p['observed'],z['observed']))
-                self.assertEqual(p['lower_status'],'compatible')
-                self.assertEqual(b.input_summary(p)['normalization_background'],'full_library')
 
 def live_checks(output):
     """Two jobs: an explicit example, then a generic upload. Never call fit or cohort code."""
@@ -126,8 +169,15 @@ if __name__=='__main__':
     parser.add_argument('--live-check',action='store_true')
     parser.add_argument('--out',type=Path)
     args=parser.parse_args()
+    available = {info['id'] for info in b.example_catalog()}
+    recorded = all(name in available for name in EXAMPLES)
+    if args.live_check and not recorded:
+        parser.error('--live-check replays the original PsychENCODE_AMY and PsychENCODE_HIP fixtures. Install that recorded example edition or use --input with your own adult counts.')
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(AdapterChecks)
+    if recorded:
+        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(RecordedAdultChecks))
     with patch.object(b,'run_macaque',side_effect=AssertionError('No inference in structural checks')),patch.object(b,'run_human',side_effect=AssertionError('No human inference')):
-        tests=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(AdapterChecks))
+        tests=unittest.TextTestRunner(verbosity=2).run(suite)
     if not tests.wasSuccessful():sys.exit(1)
     if args.live_check:
         if args.out is None:parser.error('--live-check requires a NEW --out directory')

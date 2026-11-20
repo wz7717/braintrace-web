@@ -30,8 +30,11 @@ class SyncDeliveryChecks(unittest.TestCase):
 
     def test_current_bootstrap_and_saved_outputs(self):
         boot=json.loads(self.get('/api/bootstrap')[1])
-        self.assertEqual(boot['scheme']['deployment_asset_version'],'20261101_43_beams_psychencode_v1')
-        for cohort in ('GSE128537','GSE179328','PsychENCODE_AMY','PsychENCODE_HIP'):
+        edition=backend.read_json(backend.ROOT/'ASSET_EDITION.json')
+        self.assertEqual(boot['scheme']['deployment_asset_version'],edition['edition'])
+        self.assertEqual(boot['examples'],backend.example_catalog())
+        for info in boot['examples']:
+            cohort=info['id']
             saved=json.loads(self.get('/api/examples?species=macaque&configurations=floor_clip&example_id='+cohort)[1])
             self.assertEqual(saved,backend.saved_example('macaque',['floor_clip'],cohort))
         saved=json.loads(self.get('/api/examples?species=human&configurations=RAW_FIXED,RANK_FIXED')[1])
@@ -43,21 +46,30 @@ class SyncDeliveryChecks(unittest.TestCase):
             self.assertTrue(path.is_relative_to(backend.ROOT.resolve()))
             self.assertTrue(path.is_file(),str(path))
         for key in list(paths)+list(web.FILES):
+            if key == 'human-example' and not web.FILES[key].is_file():
+                with self.assertRaises(HTTPError) as caught:
+                    self.get('/api/files/'+key)
+                self.assertEqual(caught.exception.code, 404)
+                continue
             self.assertEqual(self.get('/api/files/'+key)[0],200,key)
         js=(backend.ROOT/'web/resources.js').read_text(encoding='utf-8')
         pages=json.loads(js.split('const pages = ',1)[1].split(';\n',1)[0])
         for body in pages.values():
             for path in re.findall(r'href="([^"]+)"',body):
-                self.assertEqual(self.get(path)[0],200,path)
+                if path.startswith('https://'):
+                    self.assertEqual(path, backend.read_json(backend.ROOT / 'GEO_CEL_SOURCE.json')['official_source_url'])
+                else:
+                    self.assertEqual(self.get(path)[0],200,path)
         for key in ('local-package','reviewer-package','human-addon','current-main','current-supplement','paper-data'):
             with self.assertRaises(HTTPError) as caught: self.get('/api/files/'+key)
             self.assertEqual(caught.exception.code,404)
 
-    def test_six_reference_pairs_resolve_without_scoring(self):
+    def test_reference_combinations_resolve_without_scoring(self):
         _,_,lookup=backend.assets()
-        self.assertEqual(len(lookup),43)
+        count=backend.read_json(backend.ROOT/'ASSET_EDITION.json')['combination_count']
+        self.assertEqual(len(lookup),count)
         entries=backend.read_json(backend.ROOT/'science/lower/BEAMS.json')
-        self.assertEqual(len({e['id'] for e in entries}),43)
+        self.assertEqual(len({e['id'] for e in entries}),count)
         for entry in entries[37:]:
             self.assertEqual(lookup[tuple(sorted(entry['networks']))],entry['id'])
             directory=backend.ROOT/'science/lower/beams'/entry['id']

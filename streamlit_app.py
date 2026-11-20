@@ -123,7 +123,7 @@ active = False
 if st.session_state.get('_job'):
     try: active = svc.result(owner, st.session_state['_job'])['status'] in ('queued','running')
     except Exception: pass
-choices=svc.backend.read_json(svc.backend.ROOT/'examples/three_tier/EXAMPLES.json')
+choices=svc.backend.example_catalog()
 human_cel_ready = (svc.backend.ROOT/'examples/human/GSM755211.CEL.gz').is_file()
 left,right = st.columns([2.2,1],gap='large')
 with left, st.container(border=True, key='input_panel'):
@@ -254,7 +254,18 @@ with st.container(border=True, key='resources_panel'):
         path=svc.backend.ROOT/item['input']
         components.html(local_download(path.read_bytes(),path.name,tr('下载所选示例','Download selected example')),height=40)
     with c2:
-        guide=st.selectbox(tr('技术说明（英文原文）','Technical guide (English)'),['INPUT_FORMATS.md','PSYCHENCODE_INPUT.md','MODEL_CARD.md','COVERAGE.md','DATA_AND_LICENSES.md'],key='guide')
+        guide = st.selectbox(
+            tr('技术说明（英文原文）', 'Technical guide (English)'),
+            [
+                'INPUT_FORMATS.md',
+                'PSYCHENCODE_INPUT.md',
+                'MODEL_CARD.md',
+                'COVERAGE.md',
+                'DATA_AND_LICENSES.md',
+                'STREAMLIT_CLOUD.md',
+            ],
+            key='guide',
+        )
     with st.expander(tr('阅读说明','Read guide')):
         guide_text=(svc.backend.ROOT/'docs'/guide).read_text(encoding='utf-8-sig')
         guide_text=re.sub(r'\[([^\]]+)\]\((?!https?://)([^)]+\.md(?:#[^)]*)?)\)',

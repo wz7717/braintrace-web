@@ -29,4 +29,11 @@ python -B tests/check_psychencode_adapter.py
 python -B tests/check_streamlit_bridge.py
 ```
 
+The default PsychENCODE adapter suite uses the packaged common-annotation ID list to construct
+test counts and checks the two distributed GEO examples. These are input-contract checks.
+The separate `check_psychencode_adapter.py --live-check --out NEW_DIRECTORY` replays the
+two original recorded adult specimens only in an assembled edition that includes both its AMY
+and HIP example assets. For a real adult count file in the public edition, follow
+[the PsychENCODE input guide](docs/PSYCHENCODE_INPUT.md).
+
 These suites exercise hostile small containers, session separation/expiry/limits, timeout recovery and original input compatibility without cohort inference or model fitting. The separate Linux scientific portability results are documented in `docs/CODE_PROVENANCE.md`; they are not replaced by security checks.

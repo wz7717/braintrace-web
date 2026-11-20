@@ -1,10 +1,10 @@
 {
-  "application_edition": "braintrace_web_120_integrated_20261115",
+  "application_edition": "braintrace_ensembl97_20261120",
   "source_repository": "https://github.com/wz7717/braintrace-web",
-  "source_base_commit": "ca445528eb396c2ebe8ce0951099b82d579e0e74",
+  "source_base_commit": "2bf9563cef8190f0483e23a4d54f7e6466fe6c77",
   "streamlit_entry": "streamlit_app.py",
-  "scheme_id": "BrainTrace_macaque_floor_clip_original_lower_research_20261101_v1",
-  "asset_edition": "20261109_120_beams_local_v1",
+  "scheme_id": "BrainTrace_macaque_source_Ensembl97_floor_clip_20261120",
+  "asset_edition": "source97_20261120",
   "reference_combinations": 120,
   "input_mapping_count": 3,
   "macaque_examples": [
