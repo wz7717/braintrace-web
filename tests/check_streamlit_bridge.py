@@ -162,12 +162,13 @@ class BridgeChecks(unittest.TestCase):
         with patch('cloud_service.get_startup',return_value=self.ready_manager()), \
              patch.object(self.svc.backend,'result_csv',return_value='synthetic,csv\n'):
             app=AppTest.from_file(str(web.ROOT/'streamlit_app.py')).run(timeout=20)
+            app.radio(key='ui_language').set_value('中文').run()
             app.radio(key='input_source').set_value('example').run()
             app.button(key='run_inference').click().run()
             eventually(lambda:next(iter(self.svc.store.jobs.values()))['status']=='succeeded')
             app.run()
             self.assertFalse(app.exception)
-            self.assertTrue(any('排名' in x.value for x in app.markdown))
+            self.assertTrue(any('排名' in x.value and '0.6' in x.value for x in app.markdown))
             app.radio(key='ui_language').set_value('English').run()
             self.assertFalse(app.exception)
             self.assertTrue(any('Candidate' in x.value and '0.6' in x.value for x in app.markdown))

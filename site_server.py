@@ -32,7 +32,7 @@ ROOT = backend.ROOT
 MAX_UPLOADS_BYTES = 160 * 1024**2
 RETENTION_SECONDS = 30 * 60
 FILES = {
-    'human-example': ROOT / 'examples/human/GSM755211.CEL.gz',
+    'human-example': ROOT / backend.HUMAN_EXAMPLE['input'],
     'macaque-example': ROOT / 'examples/three_tier/GSE128537/SINGLE_SAMPLE.npz',
     'macaque-second-example': ROOT / 'examples/three_tier/GSE179328/SINGLE_SAMPLE.npz',
     'full-genes': ROOT / 'science/lower/genes.json',
@@ -264,7 +264,7 @@ class Handler(BaseHTTPRequestHandler):
             self.check_local()
             parsed = urlsplit(self.path)
             path = unquote(parsed.path)
-            query = {k:v[-1] for k,v in parse_qs(parsed.query).items()}
+            query = {k:v[-1] for k,v in parse_qs(parsed.query, keep_blank_values=True).items()}
             owner = self.session(mutation=True)[0] if method != 'GET' else None
             if method == 'GET':
                 if path == '/api/bootstrap':
@@ -283,7 +283,7 @@ class Handler(BaseHTTPRequestHandler):
                 elif path == '/api/examples':
                     species = require_species(query.get('species'))
                     selected = configurations(species, query.get('configurations', '').split(','))
-                    result = backend.saved_example(species, selected, query.get('example_id','GSE128537'))
+                    result = backend.saved_example(species, selected, query.get('example_id', backend.UNSPECIFIED_EXAMPLE))
                     if query.get('format') == 'csv':
                         self.respond(backend.result_csv(result).encode('utf-8'), content_type='text/csv; charset=utf-8', filename='braintrace_saved_scores.csv')
                     else:
@@ -330,6 +330,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.respond({'removed':True})
             else:
                 raise APIError('接口不存在。', 'not_found', 404)
+        except backend.ExampleSelectionError as exc:
+            self.respond({'error':{'code':exc.code,'message':str(exc),'detail':None}}, 400)
         except APIError as exc:
             self.respond({'error':{'code':exc.code,'message':str(exc),'detail':exc.detail}}, exc.status)
         except TimeoutError:

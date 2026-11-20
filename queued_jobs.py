@@ -122,10 +122,17 @@ class JobStore:
     def submit(self, owner, ip, payload):
         species = self.api.require_species(payload.get('species'))
         selected = self.api.configurations(species, payload.get('configurations'))
-        sample_id = self.api.require_sample_id(payload.get('sample_id'))
         source, key = payload.get('source'), payload.get('request_key')
         if source not in ('example', 'upload'):
             raise APIError('请选择已验证示例或上传单样本。')
+        example = None
+        if source == 'example':
+            backend = self.api.backend
+            try:
+                example = backend.example_info(payload.get('example_id', backend.UNSPECIFIED_EXAMPLE), species=species)
+            except backend.ExampleSelectionError as exc:
+                raise APIError(str(exc), exc.code) from exc
+        sample_id = self.api.require_sample_id(payload.get('sample_id'))
         if not isinstance(key, str) or not 8 <= len(key) <= 128:
             raise APIError('缺少有效请求标识，请刷新页面后重试。')
         self.cleanup()
@@ -159,14 +166,7 @@ class JobStore:
                 if summary['species'] != species or summary['sample_id'] != sample_id:
                     raise APIError('文件校验上下文与当前样本不一致。', 'input_changed', 409)
             else:
-                if species == 'human':
-                    path, sample_id = self.api.FILES['human-example'], 'GSM755211'
-                else:
-                    try:
-                        info = self.api.backend.example_info(payload.get('example_id', 'GSE128537'))
-                    except (ValueError, TypeError) as exc:
-                        raise APIError('示例不存在。') from exc
-                    path, sample_id = self.api.ROOT/info['input'], info['sample_id']
+                path, sample_id = self.api.ROOT / example['input'], example['sample_id']
                 self._check_bytes(owner, path.stat().st_size)
                 data = path.read_bytes()
                 summary = self.api.validate_input(species, sample_id, path.name, data)
@@ -176,7 +176,7 @@ class JobStore:
             job_id = secrets.token_urlsafe(18)
             job = {'id':job_id,'owner':owner,'ip':ip,'request':dict(payload),'data':data,'cancel':threading.Event(),
                 'species':species,'sample_id':sample_id,'configurations':selected,'source':source,
-                'example_id':payload.get('example_id','GSE128537'),'input_summary':summary,
+                'example_id':example['id'] if example is not None else None,'input_summary':summary,
                 'created_at':self.api.now(),'created_epoch':self.clock(),'status':'queued','phase':'queued',
                 'events':[],'result':None,'error':None}
             self.jobs[job_id] = job

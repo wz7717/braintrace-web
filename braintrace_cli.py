@@ -32,19 +32,20 @@ def main():
                      'Omit --program to use floor_clip.')
     program = args.program or ('RAW_FIXED' if species == 'human' else 'floor_clip')
     configs = ['RAW_FIXED', 'RANK_FIXED'] if program == 'BOTH' else [program]
+    example_id = backend.HUMAN_EXAMPLE['id'] if args.example == 'human' else args.example
     args.out.mkdir(parents=True,exist_ok=False)
     try:
-        if args.saved:result=backend.saved_example(species,configs,args.example)
+        if args.saved:result=backend.saved_example(species,configs,example_id)
         else:
             if args.example:
-                info=backend.example_info(args.example) if species=='macaque' else {'input':'examples/human/GSM755211.CEL.gz','sample_id':'GSM755211'}
+                info=backend.example_info(example_id, species=species)
                 path=backend.ROOT/info['input'];sid=info['sample_id']
             else:path=args.input;sid=args.sample_id
             suffix='.cel.gz' if path.name.lower().endswith('.cel.gz') else path.suffix
             result=backend.run_macaque(path.read_bytes(),suffix,sid,configs) if species=='macaque' else backend.run_human(path.read_bytes(),suffix,sid,program)
             if args.example:
-                result['saved_output_comparison']=backend.compare_example(result,args.example)
-                if species=='macaque':backend.add_example_context(result,args.example)
+                result['saved_output_comparison']=backend.compare_example(result,example_id)
+                if species=='macaque':backend.add_example_context(result,example_id)
         (args.out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
         (args.out/'scores.csv').write_text(backend.result_csv(result),encoding='utf-8',newline='')
     except Exception as exc:

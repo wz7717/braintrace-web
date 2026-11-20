@@ -96,6 +96,11 @@ class AdapterChecks(unittest.TestCase):
                 self.assertEqual(b.input_summary(p)['normalization_background'],'full_library')
 
 class RecordedAdultChecks(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        if not any(info['id'] in EXAMPLES for info in b.example_catalog()):
+            raise unittest.SkipTest('These two tests require the historical PsychENCODE_AMY and PsychENCODE_HIP example edition.')
+
     def test_two_inputs_match_original_prepared_values(self):
         for eid in EXAMPLES:
             info=b.example_info(eid)
@@ -105,8 +110,9 @@ class RecordedAdultChecks(unittest.TestCase):
                 self.assertTrue(b.np.array_equal(p['observed'],z['observed']))
                 self.assertEqual(p['library'],z['public_common_annotation_counts_total'][0])
             self.assertEqual(p['lower_status'],'compatible')
-            self.assertEqual(int(p['observed'].sum()),14382)
-            self.assertEqual(int(p['head_observed'].sum()),4064)
+            coverage = b.SCHEME['psychencode_contract']
+            self.assertEqual(int(p['observed'].sum()), coverage['lower_axis_covered'])
+            self.assertEqual(int(p['head_observed'].sum()), coverage['network_covered'])
             self.assertEqual(b.input_summary(p)['normalization_background'],'public_common_annotation_26514')
 
     def test_saved_mode_does_not_normalize_or_infer(self):
@@ -174,8 +180,7 @@ if __name__=='__main__':
     if args.live_check and not recorded:
         parser.error('--live-check replays the original PsychENCODE_AMY and PsychENCODE_HIP fixtures. Install that recorded example edition or use --input with your own adult counts.')
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(AdapterChecks)
-    if recorded:
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(RecordedAdultChecks))
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(RecordedAdultChecks))
     with patch.object(b,'run_macaque',side_effect=AssertionError('No inference in structural checks')),patch.object(b,'run_human',side_effect=AssertionError('No human inference')):
         tests=unittest.TextTestRunner(verbosity=2).run(suite)
     if not tests.wasSuccessful():sys.exit(1)

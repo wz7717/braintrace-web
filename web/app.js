@@ -383,7 +383,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 Object.assign(messages, {"PsychENCODE 成年恒河猴 · 26,514 行共同注释原始计数": "PsychENCODE adult rhesus · 26,514 common-annotation count rows", "NPZ / CSV：模型输入；TSV / CSV：PsychENCODE 26,514 行计数 · 最大 8 MiB": "NPZ / CSV: model input; TSV / CSV: 26,514-row PsychENCODE counts · up to 8 MiB", "我确认输入符合所选数据来源：原有完整库模型输入，或成年恒河猴 PsychENCODE 全部共同注释行的原始计数；未以 TPM、log2 或截短面板替代。": "I confirm the documented input source: original full-library model input, or all common-annotation raw-count rows from adult rhesus PsychENCODE; not TPM, log2 or a truncated panel.", "PsychENCODE 可提交全部 26,514 行单样本原始计数；使用共同注释背景归一化，与原始完整测序文库不同。": "PsychENCODE accepts all 26,514 raw-count rows for one profile. Normalization uses the common-annotation background, distinct from the original full sequencing library.", "观测 {observed} / 缺失 {missing} · 共同注释计数总和 {library}": "Observed {observed} / missing {missing} · common-annotation count total {library}", "PsychENCODE 共同注释输入检查通过；分母为全部 26,514 行计数，不是原始未过滤测序文库。": "PsychENCODE common-annotation input validated; the denominator includes all 26,514 count rows, not the original unfiltered sequencing library."});
 
-const state = {species:'human', mode:'live', source:'example', config:'RAW_FIXED', example:'GSE128537', bootstrap:null,
+const state = {species:'human', mode:'live', source:'example', config:'RAW_FIXED', macaqueExample:'GSE128537', bootstrap:null,
   file:null, upload:null, uploading:false, xhr:null, epoch:0, result:null, resultConfig:null,
   busy:false, job:null, timer:null, submitting:false, retryRequest:null};
 const zhLabels = {
@@ -405,8 +405,9 @@ const descriptions = {
 const phaseNames = {queued:'检查完成并入队', inference:'开始冻结推断', verifying:'对照原输出', complete:'完成', error:'失败'};
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const show = (selector, visible) => $(selector).classList.toggle('hidden', !visible);
-const exampleInfo = () => state.bootstrap?.examples?.find(x=>x.id===state.example);
-const exampleId = () => state.species === 'human' ? 'GSM755211' : (exampleInfo()?.sample_id || ({GSE128537:'10_10',GSE179328:'LID_100660'}[state.example]));
+const selectedExampleId = () => state.species === 'human' ? 'GSM755211' : state.macaqueExample;
+const exampleSampleId = () => state.species === 'human' ? selectedExampleId()
+  : (state.bootstrap?.examples?.find(x=>x.id===state.macaqueExample)?.sample_id || ({GSE128537:'10_10',GSE179328:'LID_100660'}[state.macaqueExample]));
 const selectedConfigs = () => state.config === 'BOTH' ? ['RAW_FIXED','RANK_FIXED'] : state.config === 'ALL' ? ['baseline','floor_clip','floor_only','clip_only'] : [state.config];
 const regionName = id => language==='zh' ? (zhLabels[id] || englishName(id)) : englishName(id);
 const englishName = id => state.bootstrap?.human_labels[id] || id;
@@ -493,12 +494,12 @@ function renderControls() {
   $('#configuration').value=state.config;
   setText('#config-description',descriptions[state.config]);
   $('#region-count').textContent=human?'09':'10'; $('#feature-count').textContent=human?'200':'5,000';
-  $('#example-title').textContent=human?'GSM755211.CEL.gz':`${state.example} · ${exampleId()}`;
-  show('#macaque-example-choice',!human&&(state.source==='example'||state.mode==='saved'));$('#example-choice').value=state.example;$('#example-choice').disabled=state.busy;
+  $('#example-title').textContent=human?'GSM755211.CEL.gz':`${state.macaqueExample} · ${exampleSampleId()}`;
+  show('#macaque-example-choice',!human&&(state.source==='example'||state.mode==='saved'));$('#example-choice').value=state.macaqueExample;$('#example-choice').disabled=state.busy;
   $('#example-ext').textContent=human?'CEL':'NPZ';
   setText('#example-subtitle',human?'Human Exon 1.0 ST · bulk tissue · GSM755211':'三层示例 · 完整 21,668 基因轴');
   const humanDownload=state.bootstrap?.human_example_available?'/api/files/human-example':'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM755211';
-  $('#example-download').href=human?humanDownload:state.example==='GSE179328'?'/api/files/macaque-second-example':'/api/files/macaque-example';
+  $('#example-download').href=human?humanDownload:state.macaqueExample==='GSE179328'?'/api/files/macaque-second-example':'/api/files/macaque-example';
   $('#file-input').accept=human?'.cel,.CEL,.cel.gz,.CEL.gz':'.npz,.csv,.tsv';
   setText('#upload-format',human?'CEL / CEL.gz · 单个文件 · 最大 80 MiB':'NPZ / CSV：模型输入；TSV / CSV：PsychENCODE 26,514 行计数 · 最大 8 MiB');
   setText('#contract-text',human?'我确认这是符合规范的成人 bulk-tissue Human Exon 1.0 ST CEL 样本。':'我确认输入符合所选数据来源：原有完整库模型输入，或成年恒河猴 PsychENCODE 全部共同注释行的原始计数；未以 TPM、log2 或截短面板替代。');
@@ -544,7 +545,7 @@ async function loadSaved() {
   const epoch=state.epoch;
   setText('#empty-result h3','正在读取保存输出…');
   try {
-    const result=await api(`/api/examples?${new URLSearchParams({species:state.species,configurations:selectedConfigs().join(','),example_id:state.example})}`);
+    const result=await api(`/api/examples?${new URLSearchParams({species:state.species,configurations:selectedConfigs().join(','),example_id:selectedExampleId()})}`);
     if(epoch!==state.epoch||state.mode!=='saved')return;
     state.result=result;renderResult();
   } catch(error) { if(epoch===state.epoch)banner(error.message,'重试读取',loadSaved); }
@@ -619,8 +620,9 @@ function validateFile() {
 
 async function startRun() {
   if(state.busy)return;
-  const payload=state.retryRequest || {species:state.species,configurations:selectedConfigs(),source:state.source,example_id:state.example,
-    sample_id:state.source==='example'?exampleId():$('#sample-id').value,upload_id:state.upload?.upload_id,
+  const payload=state.retryRequest || {species:state.species,configurations:selectedConfigs(),source:state.source,
+    example_id:state.source==='example'?selectedExampleId():undefined,
+    sample_id:state.source==='example'?exampleSampleId():$('#sample-id').value,upload_id:state.upload?.upload_id,
     contract_confirmed:$('#contract').checked,request_key:crypto.randomUUID()};
   state.busy=true;state.submitting=true;state.job=null;clearResult();show('#connection-banner',false);renderControls();
   show('#job-panel',true);setText('#job-heading','正在提交任务');setText('#job-detail','等待服务确认，尚未报告推断完成。');
@@ -724,7 +726,7 @@ async function download(kind) {
   let text,type;
   if(kind==='json'){text=JSON.stringify(result,null,2)+'\n';type='application/json';}
   else {
-    const path=result.mode==='live_frozen_inference'?`/api/jobs/${encodeURIComponent(state.job.id)}/scores.csv`:`/api/examples?${new URLSearchParams({species:result.species,configurations:Object.keys(result.predictions).join(','),example_id:state.example,format:'csv'})}`;
+    const path=result.mode==='live_frozen_inference'?`/api/jobs/${encodeURIComponent(state.job.id)}/scores.csv`:`/api/examples?${new URLSearchParams({species:result.species,configurations:Object.keys(result.predictions).join(','),example_id:result.example_id,format:'csv'})}`;
     try {const response=await fetch(path,{credentials:'same-origin',cache:'no-store'});if(!response.ok){
       const payload=await response.json();if(expiredSession({code:payload.error?.code,message:payload.error?.message}))return;
       banner(payload.error?.message||'下载未完成，请重试。');return;
@@ -775,7 +777,7 @@ $$('[data-language]').forEach(node=>node.addEventListener('change',()=>setLangua
 $$('[data-species]').forEach(node=>node.addEventListener('click',()=>switchSpecies(node.dataset.species)));
 $$('[data-mode]').forEach(node=>node.addEventListener('click',()=>switchMode(node.dataset.mode)));
 $$('[data-source]').forEach(node=>node.addEventListener('click',()=>{if(state.busy)return;resetContext();state.source=node.dataset.source;renderControls();}));
-$('#example-choice').addEventListener('change',()=>{if(state.busy)return;const value=$('#example-choice').value;resetContext();state.example=value;renderControls();if(state.mode==='saved')loadSaved();});
+$('#example-choice').addEventListener('change',()=>{if(state.busy)return;const value=$('#example-choice').value;resetContext();state.macaqueExample=value;renderControls();if(state.mode==='saved')loadSaved();});
 $('#configuration').addEventListener('change',()=>{if(state.busy)return;const config=$('#configuration').value;resetContext({removeFile:false});state.config=config;renderControls();if(state.mode==='saved')loadSaved();else if(state.file&&!state.upload)validateFile();});
 $('#file-input').addEventListener('change',event=>selectFile(event.target.files[0]));
 $('#remove-file').addEventListener('click',()=>selectFile(null));
@@ -807,7 +809,8 @@ async function initialize() {
     if(previous){
       try {
         const job=await api(`/api/jobs/${encodeURIComponent(previous)}`);
-        state.species=job.species;state.mode='live';state.source=job.source;state.example=job.example_id||'GSE128537';
+        state.species=job.species;state.mode='live';state.source=job.source;
+        if(job.species==='macaque'&&job.source==='example')state.macaqueExample=job.example_id||state.macaqueExample;
         state.config=job.configurations.length===2&&job.species==='human'?'BOTH':job.configurations.length===4?'ALL':job.configurations[0];
         $('#sample-id').value=job.sample_id;populateConfigs();state.job=job;renderJob(job);
         if(job.status==='queued'||job.status==='running')pollJob(job.id);

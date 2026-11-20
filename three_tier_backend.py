@@ -231,20 +231,43 @@ def example_catalog():
     return []
 
 
-def example_info(example_id='GSE128537'):
-    for info in example_catalog():
-        if info['id']==example_id:return info
-    raise ValueError('Unknown saved example.')
+HUMAN_EXAMPLE = {'id': 'GSM755211', 'sample_id': 'GSM755211', 'input': 'examples/human/GSM755211.CEL.gz'}
+UNSPECIFIED_EXAMPLE = object()
 
-def saved_example(species,configurations,example_id='GSE128537'):
-    if species=='human':return legacy.saved_example(species,configurations)
+
+class ExampleSelectionError(ValueError):
+    """The requested example is unknown or belongs to another species."""
+    code = 'invalid_example'
+
+
+def example_info(example_id=UNSPECIFIED_EXAMPLE, *, species='macaque'):
+    if example_id is UNSPECIFIED_EXAMPLE:
+        example_id = HUMAN_EXAMPLE['id'] if species == 'human' else 'GSE128537'
+    if example_id == HUMAN_EXAMPLE['id']:
+        info, owner = HUMAN_EXAMPLE, 'human'
+    else:
+        info = next((item for item in example_catalog() if item['id'] == example_id), None)
+        if info is None:
+            raise ExampleSelectionError(f"所选物种为 {species}，找不到示例 {example_id!r}。")
+        owner = 'macaque'
+    if species != owner:
+        raise ExampleSelectionError(f"示例 {example_id!r} 属于 {owner}，与所选物种 {species} 不匹配。")
+    return info
+
+
+def saved_example(species,configurations,example_id=UNSPECIFIED_EXAMPLE):
+    info = example_info(example_id, species=species)
+    if species == 'human':
+        result = legacy.saved_example(species, configurations)
+        result['example_id'] = info['id']
+        return result
     if list(configurations)!=['floor_clip']:raise ValueError('Only the current floor_clip scheme is available.')
-    info=example_info(example_id);row=read_json(ROOT/info['saved_row'])
+    row=read_json(ROOT/info['saved_row'])
     network=legacy.result_item(json.loads(row['head_classes_json']),json.loads(row['head_probabilities_json']))
     _,_,beams=assets();beam_id=beams[tuple(sorted(network['ranking'][:3]))]
     saved_input=ROOT/info.get('prepared_input',info['input'])
     p=read_input(saved_input.read_bytes(),saved_input.suffix,info['sample_id'])
-    result={'schema':'braintrace.three_tier_result.v1','species':'macaque','sample_id':info['sample_id'],'mode':'saved_example','scheme_id':SCHEME_ID,
+    result={'schema':'braintrace.three_tier_result.v1','species':'macaque','sample_id':info['sample_id'],'example_id':info['id'],'mode':'saved_example','scheme_id':SCHEME_ID,
             'input_type':'full_axis_21668','input_metadata':p['metadata'],'input_summary':input_summary(p),'new_fits':0,
             'predictions':{'floor_clip':network},'candidate_networks':network['ranking'][:3],'reference_id':beam_id,
             'tiers':{'Network':dict(network,status='succeeded',reason=None,score_type='model_score'),**tiers_from_row(row,beam_id)}}
@@ -254,18 +277,23 @@ def saved_example(species,configurations,example_id='GSE128537'):
     result.update({k:v for k,v in input_summary(p).items() if k in ('observed_features','missing_features','full_library_counts')})
     if p.get('metadata',{}).get('mapping_version')==adult.MAPPING:
         result['warnings'].append('Normalization uses all 26514 public common-annotation rows, not the original unfiltered sequencing library; exploratory input adaptation.')
-    add_example_context(result,example_id)
+    _add_context_from_row(result, row)
     return result
 
 def add_example_context(result,example_id):
-    info=example_info(example_id);row=read_json(ROOT/info['saved_row'])
+    info = example_info(example_id, species=result['species'])
+    _add_context_from_row(result, read_json(ROOT/info['saved_row']))
+
+def _add_context_from_row(result, row):
     result['example_context']={k:row[k] for k in ('cohort','GSM','region_original','fine_endpoint','reason')}
     result['example_context']['allowed_regions']=json.loads(row['allowed_regions_json'])
     parents=read_json(ROOT/'science/lower/REGION_PARENT.json')
     result['reference_labels']=sorted({parents[r] for r in result['example_context']['allowed_regions']})
 
-def compare_example(result,example_id='GSE128537'):
-    if result['species']=='human':return legacy.compare_example(result)
+def compare_example(result,example_id=UNSPECIFIED_EXAMPLE):
+    if result['species']=='human':
+        example_info(example_id, species='human')
+        return legacy.compare_example(result)
     expected=saved_example('macaque',['floor_clip'],example_id);details={}
     for tier,item in result['tiers'].items():
         other=expected['tiers'][tier]

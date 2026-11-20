@@ -13,6 +13,10 @@ The server holds its verifier and a separate CSRF token in memory. Upload, task,
 are checked against that session. Knowing a task or upload ID is insufficient to access it from another session.
 Saved examples and allowlisted documentation remain public; user uploads and job directories have no file-serving route.
 
+For saved JSON or CSV and queued example jobs, the human example ID is `GSM755211`. Macaque IDs come from the installed example catalog. An unknown ID or a species mismatch returns HTTP 400 with `invalid_example`. Omitting `example_id` selects the species default. CSV downloads use the example ID of the displayed result.
+
+保存示例、下载分数 CSV 和提交实时示例任务均按物种核对编号。人源示例为 `GSM755211`，猕猴示例以随包清单为准。编号不存在或与物种不匹配时返回 HTTP 400 和 `invalid_example`。省略 `example_id` 时采用所选物种的默认示例。下载的 CSV 对应页面显示的标本。
+
 ## 默认限额
 
 | 项目 | 默认值 |
