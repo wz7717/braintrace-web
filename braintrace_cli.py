@@ -14,7 +14,8 @@ def main():
     source.add_argument('--example', choices=example_species,
                         help='Select an installed macaque example or the human example. Human live inference requires the GSM755211 CEL; --saved reads its packaged result.')
     parser.add_argument('--sample-id',default='query_001')
-    parser.add_argument('--program',choices=['RAW_FIXED','RANK_FIXED','BOTH'],default='RAW_FIXED')
+    parser.add_argument('--program', choices=['RAW_FIXED', 'RANK_FIXED', 'BOTH'],
+                        help='Human program (default: RAW_FIXED). Omit for macaque to use floor_clip.')
     parser.add_argument('--saved',action='store_true',help='View saved output, without inference; requires --example.')
     parser.add_argument('--out',type=Path,required=True,help='New output directory; an existing directory is never overwritten.')
     args=parser.parse_args()
@@ -26,7 +27,11 @@ def main():
         if args.species is not None and args.species != species:
             parser.error(f'--species {args.species} conflicts with --example {args.example}. '
                          f'Use --species {species} or omit --species.')
-    configs=(['RAW_FIXED','RANK_FIXED'] if args.program=='BOTH' else [args.program]) if species=='human' else ['floor_clip']
+    if args.program is not None and species == 'macaque':
+        parser.error(f'--program {args.program} is a human program and conflicts with macaque input. '
+                     'Omit --program to use floor_clip.')
+    program = args.program or ('RAW_FIXED' if species == 'human' else 'floor_clip')
+    configs = ['RAW_FIXED', 'RANK_FIXED'] if program == 'BOTH' else [program]
     args.out.mkdir(parents=True,exist_ok=False)
     try:
         if args.saved:result=backend.saved_example(species,configs,args.example)
@@ -36,7 +41,7 @@ def main():
                 path=backend.ROOT/info['input'];sid=info['sample_id']
             else:path=args.input;sid=args.sample_id
             suffix='.cel.gz' if path.name.lower().endswith('.cel.gz') else path.suffix
-            result=backend.run_macaque(path.read_bytes(),suffix,sid,configs) if species=='macaque' else backend.run_human(path.read_bytes(),suffix,sid,args.program)
+            result=backend.run_macaque(path.read_bytes(),suffix,sid,configs) if species=='macaque' else backend.run_human(path.read_bytes(),suffix,sid,program)
             if args.example:
                 result['saved_output_comparison']=backend.compare_example(result,args.example)
                 if species=='macaque':backend.add_example_context(result,args.example)

@@ -60,6 +60,29 @@ class CliSpeciesChecks(unittest.TestCase):
     def test_human_saved_example(self):
         self.assert_same_rankings('human', 'GSM755211', '--example', 'human', '--program', 'BOTH', '--saved')
 
+    def test_macaque_rejects_explicit_human_programs(self):
+        cases = [
+            ('RANK_FIXED', ['--example', 'GSE128537', '--saved']),
+            ('BOTH', ['--species', 'macaque', '--example', 'GSE179328']),
+            ('RAW_FIXED', ['--input', str(MACAQUE_INPUT)]),
+        ]
+        for program, source in cases:
+            with self.subTest(program=program):
+                run, out = self.cli(program, *source, '--program', program)
+                self.assertEqual(run.returncode, 2, run.stderr)
+                self.assertIn(f'--program {program}', run.stderr)
+                self.assertIn('macaque', run.stderr)
+                self.assertIn('floor_clip', run.stderr)
+                self.assertFalse(out.exists())
+
+    def test_single_human_program_and_default(self):
+        for flags, expected in [([], 'RAW_FIXED'), (['--program', 'RANK_FIXED'], 'RANK_FIXED')]:
+            with self.subTest(program=expected):
+                run, out = self.cli(expected, '--example', 'human', '--saved', *flags)
+                self.assertEqual(run.returncode, 0, run.stderr)
+                result = json.loads((out / 'result.json').read_text(encoding='utf-8'))
+                self.assertEqual(set(result['predictions']), {expected})
+
     def test_macaque_live_example(self):
         self.assert_same_rankings('macaque', 'LID_100660', '--example', 'GSE179328')
 

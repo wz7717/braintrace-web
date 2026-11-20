@@ -6,6 +6,8 @@ Human: adult bulk-tissue Human Exon 1.0 ST CEL or CEL.gz, nonempty, at most 80 M
 
 Macaque files are at most 8 MiB; compressed NPZ expands to at most 16 MiB. Load with allow_pickle=False. Values must be finite and nonnegative at observed coordinates, measured zeros remain observed. Input values are converted to the original float32 representation before scoring. The original two mappings below use a positive complete-library total before mapping or panel selection. PsychENCODE uses a separate common-annotation denominator and contract, described in [PSYCHENCODE_INPUT](PSYCHENCODE_INPUT.md).
 
+For the single-sample CLI, human input defaults to `RAW_FIXED`; `--program RANK_FIXED` selects the rank model and `--program BOTH` runs both human models. Omit `--program` for macaque input to run `floor_clip`.
+
 ## Network-only legacy input
 
 NPZ: `observed_logcpm` float shape (1,5000); `observed` Boolean (5000,); `genes` the exact supplied 5,000 strings in order; `samples` one string; `full_library_counts` shape (1,).
