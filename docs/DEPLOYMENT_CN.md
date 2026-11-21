@@ -8,7 +8,7 @@
 - `runtime_assets/` 提供同版人源绑定文件、猕猴冻结模型、120 套参考、映射和示例。完整人源 CEL 推断需要同版完整人源资产。使用分析复现包时，请按归档根 README 获取单独提供的人源文件。
 - `assembled_runtime/` 是组装后使用的运行目录。源目录和资产目录各自保留。
 
-应用来源为[固定提交 2bf9563](https://github.com/wz7717/braintrace-web/tree/2bf9563cef8190f0483e23a4d54f7e6466fe6c77)。资产版号 `20261109_120_beams_local_v1` 可与 `runtime_assets/ASSET_EDITION.json`、`metadata/SCHEME.json` 和[版本记录](../resources/VERSION.json)对照。
+应用来源为[固定提交 45666e9](https://github.com/wz7717/braintrace-web/tree/45666e9dca04df29a1541c88ba8aaff36a0213dc)。资产版号 `source97_20261120` 可与 `runtime_assets/ASSET_EDITION.json`、`metadata/SCHEME.json` 和[版本记录](../resources/VERSION.json)对照。
 
 ## 2. 环境
 
